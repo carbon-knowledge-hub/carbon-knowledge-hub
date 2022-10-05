@@ -49,8 +49,6 @@ jobs:
         run: yarn export
         env:
           SITE_URL: ${{ secrets.SITE_URL }}
-          MAILCHIMP_ADDRESS: ${{ secrets.MAILCHIMP_ADDRESS }}
-          MAPBOX_TOKEN: ${{ secrets.MB_TOKEN }}
 
   deploy:
     runs-on: ubuntu-latest
