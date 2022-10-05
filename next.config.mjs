@@ -1,5 +1,4 @@
 import withMDXPlugin from "@next/mdx"
-import remarkPrism from "remark-prism"
 import recmaNextjsStaticProps from "recma-nextjs-static-props"
 
 import addMetadataPlugin from "./scripts/addMetadataPlugin.mjs"
@@ -9,7 +8,6 @@ const withMDX = withMDXPlugin({
   extension: /\.(md|mdx)$/,
   options: {
     providerImportSource: "@mdx-js/react",
-    remarkPlugins: [[remarkPrism, {}]],
     recmaPlugins: [
       addMetadataPlugin,
       addTOCPlugin,
@@ -24,7 +22,7 @@ const nextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx"],
   trailingSlash: true,
   env: {
-    MAILCHIMP_ADDRESS: "",
+    MAILCHIMP_ADDRESS: process.env.MAILCHIMP_ADDRESS || "",
     MAILCHIMP_TIMEOUT: 3500,
   },
   basePath: process.env.BASE_PATH || "",

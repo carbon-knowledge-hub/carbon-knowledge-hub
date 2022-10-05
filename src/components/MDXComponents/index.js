@@ -1,17 +1,4 @@
-import { useRef } from "react"
-import {
-  Box,
-  Heading,
-  Text,
-  Stack,
-  SimpleGrid,
-  HStack,
-} from "@chakra-ui/layout"
-import { Button } from "@chakra-ui/button"
-// import { VisuallyHidden } from "@chakra-ui/visually-hidden"
-import { CopyIcon } from "@components/Icon"
-import PrismCodeBlock from "@components/PrismCodeBlock"
-import copyToClipboard from "@utils/copyToClipboard"
+import { Box, Heading, Text, Stack } from "@chakra-ui/layout"
 
 import { Link } from "@components/Link"
 import PagesLayout from "@layouts/PagesLayout"
@@ -119,81 +106,6 @@ const components = {
         }}
         {...props}
       />
-    )
-  },
-  pre: (props) => {
-    const codeRef = useRef()
-    const cssClasses = props?.children?.props?.className || ""
-    const langClass = cssClasses
-      .split(" ")
-      .find((s) => s.trim().split("-")[0] === "language")
-    const lang = langClass.split("-")[1]
-
-    const handleCopy = () => {
-      copyToClipboard(codeRef)
-    }
-
-    return (
-      <SimpleGrid
-        columns={1}
-        borderLeft="0.25rem solid"
-        borderColor="brand.500"
-        pl="0.125rem"
-      >
-        <Box gridColumn="1 / -1" gridRow="1">
-          <PrismCodeBlock ref={codeRef} {...props} />
-        </Box>
-        <HStack
-          gridColumn="1 / -1"
-          gridRow="1"
-          position="relative"
-          alignSelf="start"
-          pointerEvents="none"
-        >
-          <Text
-            bg="brand.500"
-            color="white"
-            pl={4}
-            pr={3}
-            py={0.5}
-            fontSize="xs"
-            lineHeight="shorter"
-            fontWeight={600}
-            fontFamily="mono"
-          >
-            {lang}
-          </Text>
-        </HStack>
-        <HStack
-          gridColumn="1 / -1"
-          gridRow="1"
-          position="relative"
-          justifyContent="flex-end"
-          pointerEvents="none"
-          color="white"
-          pb={8}
-        >
-          <Stack
-            bgGradient="linear(to-r, rgba(26,37,61,0) 0%, rgba(26,37,61,0.9) 30%, rgba(26,37,61,1) 60%)"
-            flex="none"
-            h="100%"
-            pl={20}
-            pr={3}
-            justifyContent="flex-end"
-          >
-            <Button
-              size="xs"
-              minW="none"
-              colorScheme="whiteAlpha"
-              pointerEvents="all"
-              leftIcon={<CopyIcon size="0.875rem" mr={1} />}
-              onClick={handleCopy}
-            >
-              {"Copy"}
-            </Button>
-          </Stack>
-        </HStack>
-      </SimpleGrid>
     )
   },
   ul: (props) => {
