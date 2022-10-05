@@ -1,0 +1,1 @@
+export default {"defaultProps":{"colorScheme":"action","size":"md"},"baseStyle":{"fontSize":"md","marginEnd":3,"mb":2,"fontWeight":"medium","transitionProperty":"common","transitionDuration":"normal","opacity":1,"_disabled":{"opacity":0.4}},"variants":{},"sizes":{}}

@@ -1,0 +1,1 @@
+export default {"defaultProps":{"colorScheme":"action","size":"md"},"baseStyle":{"opacity":0.7,"borderRadius":"2px","animation":"undefineds linear infinite alternate _EMO_animation-vj5ujs_@keyframes animation-vj5ujs{from{}to{}}_EMO_"},"variants":{},"sizes":{}}

@@ -1,0 +1,1 @@
+export default {"defaultProps":{"colorScheme":"action","size":"md"},"parts":["container","item","icon"],"baseStyle":{"container":{},"item":{},"icon":{"marginEnd":"0.5rem","display":"inline","verticalAlign":"text-bottom"}},"variants":{},"sizes":{}}

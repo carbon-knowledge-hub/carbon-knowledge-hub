@@ -1,0 +1,52 @@
+export default {
+  "defaultProps": { "size": "md", "colorScheme": "action" },
+  "parts": [
+    "overlay",
+    "dialogContainer",
+    "dialog",
+    "header",
+    "closeButton",
+    "body",
+    "footer",
+  ],
+  "baseStyle": {
+    "overlay": { "bg": "blackAlpha.600", "zIndex": "overlay" },
+    "dialogContainer": {
+      "display": "flex",
+      "zIndex": "modal",
+      "justifyContent": "center",
+    },
+    "dialog": {
+      "zIndex": "modal",
+      "maxH": "100vh",
+      "bg": "white",
+      "color": "inherit",
+      "boxShadow": "lg",
+    },
+    "header": { "px": 6, "py": 4, "fontSize": "xl", "fontWeight": "semibold" },
+    "closeButton": {
+      "position": "absolute",
+      "top": 6,
+      "insetEnd": 3,
+      _hover: { bg: "gray.50" },
+      _focusVisible: {
+        bg: "gray.50",
+        outline: "0.125rem solid",
+        outlineColor: "gray.200",
+        outlineOffset: "0.125rem",
+      },
+      _active: { bg: "gray.100" },
+    },
+    "body": { "px": 6, "py": 2, "flex": 1, "overflow": "auto" },
+    "footer": { "px": 6, "py": 4 },
+  },
+  "variants": {},
+  "sizes": {
+    "xs": { "dialog": { "maxW": "20rem" } },
+    "sm": { "dialog": { "maxW": "22rem" } },
+    "md": { "dialog": { "maxW": "24rem" } },
+    "lg": { "dialog": { "maxW": "26rem" } },
+    "xl": { "dialog": { "maxW": "30rem" } },
+    "full": { "dialog": { "maxW": "100vw", "h": "100vh" } },
+  },
+}

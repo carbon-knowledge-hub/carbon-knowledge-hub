@@ -1,0 +1,1 @@
+export default {"defaultProps":{"variant":"subtle","colorScheme":"action","size":"md"},"baseStyle":{"px":1,"textTransform":"uppercase","fontSize":"xs","borderRadius":"sm","fontWeight":"bold"},"variants":{"solid":{"bg":"action.500","color":"white"},"subtle":{"bg":"action.100","color":"action.800"},"outline":{"boxShadow":"inset 0 0 0px 1px undefined"}},"sizes":{}}
