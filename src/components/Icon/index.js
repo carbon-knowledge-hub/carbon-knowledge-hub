@@ -264,3 +264,24 @@ export const SearchIcon = ({
     </SvgContainer>
   )
 }
+
+export const ShareIcon = ({
+  strokeWidth = 2.5,
+  stroke = "currentcolor",
+  ...restProps
+}) => {
+  return (
+    <SvgContainer
+      strokeWidth={strokeWidth}
+      stroke={stroke}
+      fill="none"
+      {...restProps}
+    >
+      <circle cx="18" cy="5" r="3" />
+      <circle cx="6" cy="12" r="3" />
+      <circle cx="18" cy="19" r="3" />
+      <path d="M8.59 13.51L15.42 17.49" />
+      <path d="M15.41 6.51L8.59 10.49" />
+    </SvgContainer>
+  )
+}
