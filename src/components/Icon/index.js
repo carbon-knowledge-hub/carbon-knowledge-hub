@@ -285,3 +285,21 @@ export const ShareIcon = ({
     </SvgContainer>
   )
 }
+
+export const MailIcon = ({
+  strokeWidth = 2.5,
+  stroke = "currentcolor",
+  ...restProps
+}) => {
+  return (
+    <SvgContainer
+      strokeWidth={strokeWidth}
+      stroke={stroke}
+      fill="none"
+      {...restProps}
+    >
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+      <path d="M22 6L12 13 2 6" />
+    </SvgContainer>
+  )
+}

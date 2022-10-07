@@ -221,13 +221,14 @@ const colors = {
     "800": "#005885",
     "900": "#003F5E",
   },
+
   "brand": {
   "900": "#1B1B3C",
   "800": "#24244F",
   "700": "#2D2D63",
-  "600": "#39397D",
+  "600": "#3E3E89",
   "500": "#454597",
-  "400": "#6666AE",
+  "400": "#5858A7",
   "300": "#8D8DC5",
   "200": "#B9B9DD",
   "100": "#ECECF4",
@@ -262,4 +263,4 @@ const colors = {
 
 }
 
-export default { ...colors, brand: colors.cyan }
+export default { ...colors, brand: colors.brand }

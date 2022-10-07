@@ -5,6 +5,8 @@ import { Checkbox } from "@chakra-ui/checkbox"
 import { Input } from "@chakra-ui/input"
 import { useTheme } from "@chakra-ui/system"
 
+import { MailIcon } from "@components/Icon"
+
 import addToMailchimp from "@utils/mailchimp"
 
 const NewsletterSection = () => {
@@ -59,31 +61,46 @@ const NewsletterSection = () => {
 
   return (
     <Stack spacing={3}>
-      <Stack as="form" spacing={3} onSubmit={handleSubmit}>
+      <Stack
+        as="form"
+        spacing={3}
+        onSubmit={handleSubmit}
+        direction={["column", null, "row"]}
+      >
         <Input
           placeholder="Your email address"
-          variant="filled"
+          variant="outline"
+          size="lg"
           type="email"
           name="email"
           isRequired
           onChange={handleChange}
+          borderColor="gray.400"
+          borderRadius="sm"
         />
-        <Button type="submit" colorScheme="brand">
-          {"Subscribe"}
-        </Button>
-        <Checkbox
-          isRequired
-          alignItems="flex-start"
-          spacing="0.8125rem"
-          onChange={handleOptIn}
+        <Button
+          type="submit"
+          bg="brand.400"
+          _hover={{ "bg": "brand.500" }}
+          _active={{ "bg": "brand.600" }}
+          _focus={{ "bg": "brand.600" }}
+          size="lg"
+          px={10}
+          leftIcon={<MailIcon />}
         >
-          <Text mt="-0.125rem" lineHeight="short">
-            {
-              "Send me news about react-simple-maps releases, feature improvements, and guide articles."
-            }
-          </Text>
-        </Checkbox>
+          {"Sign up"}
+        </Button>
       </Stack>
+      <Checkbox
+        isRequired
+        alignItems="flex-start"
+        spacing="0.8125rem"
+        onChange={handleOptIn}
+      >
+        <Text mt="-0.125rem" lineHeight="short" color="white">
+          {"Send me news about the Carbon Knowledge Hub releases."}
+        </Text>
+      </Checkbox>
       {message ? (
         <Box
           borderRadius="lg"
