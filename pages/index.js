@@ -71,7 +71,7 @@ export default function IndexPage() {
                   >
                     {"Get involved"}
                   </ButtonLink>
-                  <ButtonLink size="lg" colorScheme="gray" href="/factsheets">
+                  <ButtonLink size="lg" colorScheme="gray" href="/">
                     {"Read more"}
                   </ButtonLink>
                 </HStack>
