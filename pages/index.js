@@ -22,7 +22,7 @@ export default function IndexPage() {
     <>
       <SiteHeader />
 
-      <Stack alignItems="center" spacing={20}>
+      <Stack alignItems="center" spacing={20} mb={20}>
         <Container>
           <SimpleGrid
             columns={8}
@@ -133,7 +133,7 @@ export default function IndexPage() {
                 fontFamily="mono"
                 fontSize="sm"
                 borderRadius="full"
-                colorScheme="green"
+                borderColor="green.500"
                 color="green.500"
                 size="sm"
               >
