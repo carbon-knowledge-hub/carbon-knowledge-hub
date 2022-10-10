@@ -16,6 +16,7 @@ import SiteHeader from "@components/SiteHeader"
 import NewsletterSignup from "@components/NewsletterSignup"
 import FAQSection from "@components/FAQSection"
 import SiteFooter from "@components/SiteFooter"
+import EmailLink from "@components/EmailLink"
 
 export default function IndexPage() {
   return (
@@ -63,14 +64,15 @@ export default function IndexPage() {
                   }
                 </Text>
                 <HStack spacing={3}>
-                  <ButtonLink
+                  {/* <ButtonLink
                     size="lg"
                     href="mailto:co2excel@bloomberg.net"
                     colorScheme="brand"
                     rightIcon={<ArrowRightIcon size="1.25rem" />}
                   >
                     {"Get involved"}
-                  </ButtonLink>
+                  </ButtonLink> */}
+                  <EmailLink label="Get involved" colorScheme="brand" size="lg" />
                   <ButtonLink size="lg" colorScheme="gray" href="/">
                     {"Read more"}
                   </ButtonLink>
@@ -232,15 +234,7 @@ export default function IndexPage() {
                     "The Carbon Centre of Excellence is a collaboration between BloombergNEF and the Indonesia Chamber of Commerce and Industry (KADIN) on behalf of the B20 Indonesia."
                   }
                 </Text>
-                <ButtonLink
-                  size="lg"
-                  href="mailto:co2excel@bloomberg.net"
-                  colorScheme="brand"
-                  rightIcon={<ArrowRightIcon size="1.25rem" />}
-                  alignSelf="flex-start"
-                >
-                  {"Get involved"}
-                </ButtonLink>
+                <EmailLink label="Get involved" size="lg" />
               </Stack>
             </Box>
           </SimpleGrid>

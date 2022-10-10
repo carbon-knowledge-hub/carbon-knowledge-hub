@@ -7,22 +7,14 @@ import {
   Text,
 } from "@chakra-ui/layout"
 import { Tag } from "@chakra-ui/tag"
-import {
-  ArrowRightIcon,
-  ChevronRightIcon,
-  EnvelopeIcon,
-  ExternalLinkIcon,
-} from "@components/Icon"
 
-import { ButtonLink, Link } from "@components/Link"
-
-import NewsletterSignup from "@components/NewsletterSignup"
+import EmailLink from "@components/EmailLink"
 
 export default function SiteFooter() {
   return (
     <Stack bg="brand.900" color="gray.300" py={20} alignItems="center">
       <Container>
-        <SimpleGrid columns={[1, null, 4]} gridGap={10}>
+        <SimpleGrid columns={[1, null, 2, 4]} gridGap={10}>
           <Stack spacing={5}>
             <HStack spacing={3}>
               <Box textTransform="uppercase" fontFamily="mono" fontSize="sm">
@@ -67,35 +59,30 @@ export default function SiteFooter() {
             <Box textTransform="uppercase" fontFamily="mono" fontSize="sm">
               {"Partners"}
             </Box>
-            <ButtonLink
+            <EmailLink
+              label="Become a partner"
               color="white"
               bg="transparent"
               _hover={{ "bg": "transparent", "color": "brand.200" }}
-              href="mailto:co2excel@bloomberg.net"
+              _focus={{ "bg": "transparent", "color": "brand.200" }}
+              _active={{ "bg": "transparent", "color": "brand.200" }}
               px="0"
-              alignSelf="flex-start"
-              rightIcon={<ArrowRightIcon size="1.25rem"/>}
-            >
-              {"Become a partner"}
-            </ButtonLink>
+            />
           </Stack>
           <Stack spacing={5}>
             <Box textTransform="uppercase" fontFamily="mono" fontSize="sm">
               {"Contact"}
             </Box>
-            <ButtonLink
+            <EmailLink
+              label="Get in touch"
               color="white"
               bg="transparent"
               _hover={{ "bg": "transparent", "color": "brand.200" }}
-              href="mailto:co2excel@bloomberg.net"
+              _focus={{ "bg": "transparent", "color": "brand.200" }}
+              _active={{ "bg": "transparent", "color": "brand.200" }}
               px="0"
-              alignSelf="flex-start"
-              rightIcon={<ArrowRightIcon size="1.25rem"/>}
-            >
-              {"Get in touch"}
-            </ButtonLink>
+            />
           </Stack>
-          
         </SimpleGrid>
       </Container>
     </Stack>
