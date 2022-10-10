@@ -1,9 +1,7 @@
-import { Box, Stack, HStack, Text, Container, Divider } from "@chakra-ui/layout"
+import { Box, Stack, HStack, Container, Divider } from "@chakra-ui/layout"
 import { Button } from "@chakra-ui/button"
 
-import { Link } from "@components/Link"
-import Logo from "@components/Logo/Logo"
-
+import Share from "@components/Share"
 import { ShareIcon } from "@components/Icon"
 
 export default function SiteHeader() {
@@ -31,9 +29,7 @@ export default function SiteHeader() {
               />
             </Box>
           </HStack>
-          <Button colorScheme="gray" rightIcon={<ShareIcon size="1.25rem" />}>
-            {"Share"}
-          </Button>
+          <Share />
         </HStack>
       </Container>
     </Stack>
