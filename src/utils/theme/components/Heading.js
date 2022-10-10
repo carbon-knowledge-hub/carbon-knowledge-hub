@@ -1,6 +1,6 @@
 export default {
   "defaultProps": { "size": "md", "colorScheme": "action" },
-  "baseStyle": { "fontFamily": "heading", "fontWeight": "bold" },
+  "baseStyle": { "fontFamily": "heading", "fontWeight": "semibold" },
   "variants": {
     "bannerTitle": { fontSize: "5xl" },
     "featuredTitle": { fontSize: "3xl" },

@@ -23,20 +23,20 @@ export default function IndexPage() {
     <>
       <SiteHeader />
 
-      <Stack alignItems="center" spacing={20} mb={20}>
+      <Stack alignItems="center" spacing={[14, null, 20]} mb={[14, null, 20]}>
         <Container>
           <SimpleGrid
             columns={8}
             gridGap={10}
             alignItems="center"
-            mx={[-5, null, -10]}
+            mx={[-5, null, null, -10]}
           >
             <Box
               gridColumn={["span 8", null, "span 4"]}
               order={[2, null, 1]}
               pt={[5, null, 12]}
               pb={20}
-              mx={[5, null, 10]}
+              mx={[5, null, null, 10]}
             >
               <Stack spacing={8}>
                 <Stack spacing={3}>
@@ -64,16 +64,8 @@ export default function IndexPage() {
                   }
                 </Text>
                 <HStack spacing={3}>
-                  {/* <ButtonLink
-                    size="lg"
-                    href="mailto:co2excel@bloomberg.net"
-                    colorScheme="brand"
-                    rightIcon={<ArrowRightIcon size="1.25rem" />}
-                  >
-                    {"Get involved"}
-                  </ButtonLink> */}
                   <EmailLink label="Get involved" colorScheme="brand" size="lg" />
-                  <ButtonLink size="lg" colorScheme="gray" href="/">
+                  <ButtonLink size="lg" colorScheme="gray" href="/" display={["none", null, "flex"]}>
                     {"Read more"}
                   </ButtonLink>
                 </HStack>
@@ -104,7 +96,7 @@ export default function IndexPage() {
         <Container>
           <SimpleGrid
             bg="brand.900"
-            mx={[-5, null, -10]}
+            mx={[-5, null, null, -10]}
             columns={8}
             gridGap={10}
           >
@@ -112,7 +104,7 @@ export default function IndexPage() {
               gridColumn={[" 1 / -1", null, "2 / -2", " 3 / -3"]}
               spacing={[5, null, 10]}
               py={20}
-              mx={[5, null, 10]}
+              mx={[5, null, null, 10]}
             >
               <Heading as="h2" fontSize={["xl", null, "2xl"]} color="white">
                 {"Stay up to date"}
@@ -195,17 +187,17 @@ export default function IndexPage() {
         <Container>
           <SimpleGrid
             columns={8}
-            gridGap={10}
+            gridGap={[10, null, 20]}
             py={[10, null, 20]}
             bg="gray.100"
             borderRadius="md"
             alignItems="center"
-            mx={[-10, null, 0]}
+            mx={[-5, null, null, -10]}
           >
             <Box
-              gridColumn={["span 8", null, "1 / span 3"]}
+              gridColumn={["span 8", null, "1 / span 4"]}
               order={[2, null, 1]}
-              mx={[10, null, 20]}
+              mx={[5, null, null, 10]}
             >
               <SimpleGrid
                 columns={2}
@@ -221,9 +213,9 @@ export default function IndexPage() {
               </SimpleGrid>
             </Box>
             <Box
-              gridColumn={["span 8", null, "5 / span 3"]}
+              gridColumn={["span 8", null, "5 / -1"]}
               order={[1, null, 2]}
-              mx={[10, null, 0]}
+              mx={[5, null, null, 10]}
             >
               <Stack spacing={5}>
                 <Heading as="h3" fontSize={["xl", null, "2xl"]}>

@@ -13,7 +13,7 @@ export default function SiteHeader() {
       alignItems="center"
     >
       <Container>
-        <HStack spacing={6} justifyContent="space-between" h={20}>
+        <HStack spacing={[3, null, 6]} justifyContent="space-between" h={20}>
           <HStack
             spacing={4}
             divider={<Divider h={14} borderColor="gray.300" display={["none", null, "block"]} />}

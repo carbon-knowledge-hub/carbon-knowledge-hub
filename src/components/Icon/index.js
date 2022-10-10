@@ -26,7 +26,7 @@ const SvgContainer = ({
 }
 
 export const ChevronRightIcon = ({
-  strokeWidth = 1.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -43,7 +43,7 @@ export const ChevronRightIcon = ({
 }
 
 export const ChevronLeftIcon = ({
-  strokeWidth = 1.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -60,7 +60,7 @@ export const ChevronLeftIcon = ({
 }
 
 export const ChevronDownIcon = ({
-  strokeWidth = 1.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -77,7 +77,7 @@ export const ChevronDownIcon = ({
 }
 
 export const ChevronUpIcon = ({
-  strokeWidth = 1.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -94,7 +94,7 @@ export const ChevronUpIcon = ({
 }
 
 export const ArrowRightIcon = ({
-  strokeWidth = 1.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -112,7 +112,7 @@ export const ArrowRightIcon = ({
 
 
 export const CopyIcon = ({
-  strokeWidth = 1.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -132,7 +132,7 @@ export const CopyIcon = ({
 }
 
 export const CheckIcon = ({
-  strokeWidth = 1.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -150,7 +150,7 @@ export const CheckIcon = ({
 
 
 export const LinkIcon = ({
-  strokeWidth = 1.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -170,7 +170,7 @@ export const LinkIcon = ({
 }
 
 export const NavigationIcon = ({
-  strokeWidth = 1.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -189,7 +189,7 @@ export const NavigationIcon = ({
 }
 
 export const ClipboardIcon = ({
-  strokeWidth = 1.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -207,7 +207,7 @@ export const ClipboardIcon = ({
 }
 
 export const ExternalLinkIcon = ({
-  strokeWidth = 1.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -224,7 +224,7 @@ export const ExternalLinkIcon = ({
 }
 
 export const SearchIcon = ({
-  strokeWidth = 1.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -242,7 +242,7 @@ export const SearchIcon = ({
 }
 
 export const ShareIcon = ({
-  strokeWidth = 1.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -263,7 +263,7 @@ export const ShareIcon = ({
 }
 
 export const MailIcon = ({
-  strokeWidth = 1.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -281,7 +281,7 @@ export const MailIcon = ({
 }
 
 export const TwitterIcon = ({
-  strokeWidth = 1.5,
+  strokeWidth = 2,
   fill = "currentcolor",
   ...restProps
 }) => {
@@ -298,7 +298,7 @@ export const TwitterIcon = ({
 }
 
 export const LinkedinIcon = ({
-  strokeWidth = 1.5,
+  strokeWidth = 2,
   fill = "currentcolor",
   ...restProps
 }) => {

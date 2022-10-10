@@ -12,7 +12,7 @@ import EmailLink from "@components/EmailLink"
 
 export default function SiteFooter() {
   return (
-    <Stack bg="brand.900" color="gray.300" py={20} alignItems="center">
+    <Stack bg="brand.900" color="gray.300" py={[10, null, 20]} alignItems="center">
       <Container>
         <SimpleGrid columns={[1, null, 2, 4]} gridGap={10}>
           <Stack spacing={5}>
