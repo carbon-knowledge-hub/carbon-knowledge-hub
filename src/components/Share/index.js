@@ -16,6 +16,19 @@ import {
   LinkedinIcon,
 } from "@components/Icon"
 
+const twitterRoot = "http://twitter.com/intent/tweet"
+const linkedinRoot = "http://linkedin.com/sharing/share-offsite"
+
+const shareUrl = "https://b20-carbon-knowledge-hub.org/"
+
+const twitterShareText  = encodeURIComponent("Coming soon - new web platform to help companies and governments navigate \#carbon trading, by @BloombergNEF and @B20 Find out how to get involved and raise your profile as a key carbon market player")
+const emailSubject = "B20/BNEF Carbon Centre of Excellence"
+const emailText = "I would like to find out more about becoming a partner to the Carbon Centre of Excellence. Please contact me to set up a discussion."
+
+const twitterShareUrl = `${twitterRoot}?url=${shareUrl}&text=${twitterShareText}&original_referer=${shareUrl}`
+const linkedinShareUrl = `${linkedinRoot}?url=${shareUrl}`
+const emailShareUrl = `mailto:co2excel@bloomberg.net?subject=${emailSubject}&body=${emailText}`
+
 const SocialButton = ({
   children,
   href,
@@ -70,19 +83,19 @@ export default function Share() {
             <HStack spacing={5} justifyContent="space-between">
               <SocialButton
                 name="Twitter"
-                href="/"
+                href={twitterShareUrl}
                 bg="twitter.500"
                 color="white"
               >
                 <TwitterIcon size="1.75rem" />
               </SocialButton>
 
-              <SocialButton name="Email" href="/" bg="gray.100">
+              <SocialButton name="Email" href={emailShareUrl} bg="gray.100">
                 <MailIcon size="1.75rem" />
               </SocialButton>
               <SocialButton
                 name="Linkedin"
-                href="/"
+                href={linkedinShareUrl}
                 bg="linkedin.500"
                 color="white"
               >
