@@ -50,6 +50,7 @@ jobs:
         env:
           SITE_URL: ${{ secrets.SITE_URL }}
           BASE_PATH: ${{ secrets.BASE_PATH }}
+          MAILCHIMP_ADDRESS: ${{ secrets.MAILCHIMP_ADDRESS }}
 
   deploy:
     runs-on: ubuntu-latest

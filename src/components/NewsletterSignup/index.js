@@ -36,7 +36,7 @@ const NewsletterSection = () => {
     if (diff < 2000) return
     lastPressed.current = Date.now()
 
-    addToMailchimp(email, { "group[4611][4]": "4" })
+    addToMailchimp(email)
       .then(({ msg, result }) => {
         if (result !== "success") {
           throw msg
