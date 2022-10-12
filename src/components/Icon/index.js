@@ -26,7 +26,7 @@ const SvgContainer = ({
 }
 
 export const ChevronRightIcon = ({
-  strokeWidth = 2.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -43,7 +43,7 @@ export const ChevronRightIcon = ({
 }
 
 export const ChevronLeftIcon = ({
-  strokeWidth = 2.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -60,7 +60,7 @@ export const ChevronLeftIcon = ({
 }
 
 export const ChevronDownIcon = ({
-  strokeWidth = 2.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -77,7 +77,7 @@ export const ChevronDownIcon = ({
 }
 
 export const ChevronUpIcon = ({
-  strokeWidth = 2.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -94,7 +94,7 @@ export const ChevronUpIcon = ({
 }
 
 export const ArrowRightIcon = ({
-  strokeWidth = 2.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -110,16 +110,9 @@ export const ArrowRightIcon = ({
   )
 }
 
-export const GithubIcon = ({ fill = "currentcolor", ...restProps }) => {
-  return (
-    <SvgContainer fill={fill} viewBox="0 0 20 20" {...restProps}>
-      <path d="M10 0a10 10 0 0 0-3.16 19.49c.5.1.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69a3.6 3.6 0 0 1 .1-2.64s.84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.4.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85l-.01 2.75c0 .26.18.58.69.48A10 10 0 0 0 10 0" />
-    </SvgContainer>
-  )
-}
 
 export const CopyIcon = ({
-  strokeWidth = 2.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -139,7 +132,7 @@ export const CopyIcon = ({
 }
 
 export const CheckIcon = ({
-  strokeWidth = 2.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -155,26 +148,9 @@ export const CheckIcon = ({
   )
 }
 
-export const EnvelopeIcon = ({
-  strokeWidth = 2.5,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
-  return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-      <path d="M22 6L12 13 2 6" />
-    </SvgContainer>
-  )
-}
 
 export const LinkIcon = ({
-  strokeWidth = 2.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -194,7 +170,7 @@ export const LinkIcon = ({
 }
 
 export const NavigationIcon = ({
-  strokeWidth = 2.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -213,7 +189,7 @@ export const NavigationIcon = ({
 }
 
 export const ClipboardIcon = ({
-  strokeWidth = 2.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -231,7 +207,7 @@ export const ClipboardIcon = ({
 }
 
 export const ExternalLinkIcon = ({
-  strokeWidth = 2.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -248,7 +224,7 @@ export const ExternalLinkIcon = ({
 }
 
 export const SearchIcon = ({
-  strokeWidth = 2.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -266,7 +242,7 @@ export const SearchIcon = ({
 }
 
 export const ShareIcon = ({
-  strokeWidth = 2.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -287,7 +263,7 @@ export const ShareIcon = ({
 }
 
 export const MailIcon = ({
-  strokeWidth = 2.5,
+  strokeWidth = 2,
   stroke = "currentcolor",
   ...restProps
 }) => {
@@ -300,6 +276,40 @@ export const MailIcon = ({
     >
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
       <path d="M22 6L12 13 2 6" />
+    </SvgContainer>
+  )
+}
+
+export const TwitterIcon = ({
+  strokeWidth = 2,
+  fill = "currentcolor",
+  ...restProps
+}) => {
+  return (
+    <SvgContainer
+      strokeWidth="none"
+      stroke="none"
+      fill={fill}
+      {...restProps}
+    >
+      <path d="M24 4.37a9.6 9.6 0 01-2.83.8 5.04 5.04 0 002.17-2.8c-.95.58-2 1-3.13 1.22A4.86 4.86 0 0016.61 2a4.99 4.99 0 00-4.79 6.2A13.87 13.87 0 011.67 2.92 5.12 5.12 0 003.2 9.67a4.82 4.82 0 01-2.23-.64v.07c0 2.44 1.7 4.48 3.95 4.95a4.84 4.84 0 01-2.22.08c.63 2.01 2.45 3.47 4.6 3.51a9.72 9.72 0 01-7.3 2.1A13.68 13.68 0 007.55 22c9.06 0 14-7.7 14-14.37v-.65c.96-.71 1.79-1.6 2.45-2.61z" />
+    </SvgContainer>
+  )
+}
+
+export const LinkedinIcon = ({
+  strokeWidth = 2,
+  fill = "currentcolor",
+  ...restProps
+}) => {
+  return (
+    <SvgContainer
+      strokeWidth="none"
+      stroke="none"
+      fill={fill}
+      {...restProps}
+    >
+      <path d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.27 20.1H3.65V9.24h3.62V20.1zM5.47 7.76h-.03c-1.22 0-2-.83-2-1.87 0-1.06.8-1.87 2.05-1.87 1.24 0 2 .8 2.02 1.87 0 1.04-.78 1.87-2.05 1.87zM20.34 20.1h-3.63v-5.8c0-1.45-.52-2.45-1.83-2.45-1 0-1.6.67-1.87 1.32-.1.23-.11.55-.11.88v6.05H9.28s.05-9.82 0-10.84h3.63v1.54A3.6 3.6 0 0116.17 9c2.39 0 4.18 1.56 4.18 4.89v6.21z" />
     </SvgContainer>
   )
 }
