@@ -49,6 +49,7 @@ jobs:
         run: yarn export
         env:
           SITE_URL: ${{ secrets.SITE_URL }}
+          SHARE_URL: ${{ secrets.SHARE_URL }}
           BASE_PATH: ${{ secrets.BASE_PATH }}
           MAILCHIMP_ADDRESS: ${{ secrets.MAILCHIMP_ADDRESS }}
 
