@@ -25,7 +25,7 @@ const nextConfig = {
     MAILCHIMP_ADDRESS: process.env.MAILCHIMP_ADDRESS || "",
     MAILCHIMP_TIMEOUT: 3500,
   },
-  basePath: process.env.BASE_PATH || "",
+  basePath: process.env.BASE_PATH === "/" ? "" : process.env.BASE_PATH,
   publicRuntimeConfig: {
     basePath: process.env.BASE_PATH === "/" ? "" : process.env.BASE_PATH,
     shareUrl: process.env.SHARE_URL,
