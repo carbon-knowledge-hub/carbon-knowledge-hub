@@ -11,16 +11,17 @@ import {
 import { Tag } from "@chakra-ui/tag"
 
 import { ButtonLink } from "@components/Link"
-import { ArrowRightIcon } from "@components/Icon"
 import SiteHeader from "@components/SiteHeader"
 import NewsletterSignup from "@components/NewsletterSignup"
 import FAQSection from "@components/FAQSection"
 import SiteFooter from "@components/SiteFooter"
 import EmailLink from "@components/EmailLink"
+import SEO from "@components/SEO"
 
 export default function IndexPage() {
   return (
     <>
+      <SEO />
       <SiteHeader />
 
       <Stack alignItems="center" spacing={[14, null, 20]} mb={[14, null, 20]}>
@@ -60,7 +61,7 @@ export default function IndexPage() {
                   lineHeight="tall"
                 >
                   {
-                    "Coming soon – new web platform to help companiesand governments navigate the carbon markets. BloombergNEF and B20 Indonesia are looking for companies to become Carbon Centre of Excellence partners by sharing their experiences of carbon trading."
+                    "Coming soon — new web platform to help companies and governments navigate the carbon markets. BloombergNEF and B20 Indonesia are looking for companies to become Carbon Centre of Excellence partners by sharing their experiences of carbon trading."
                   }
                 </Text>
                 <HStack spacing={3}>
