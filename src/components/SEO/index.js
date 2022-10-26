@@ -7,7 +7,7 @@ const siteUrl = publicRuntimeConfig.shareUrl
 export default function SEO({
   title,
   description = "Coming soon — new web platform to help companies and governments navigate the carbon markets. BloombergNEF and B20 Indonesia are looking for companies to become Carbon Centre of Excellence partners by sharing their experiences of carbon trading.",
-  cover = "cover-lg.jpg",
+  cover = "cover-lg.png",
   type = "website" /* website | article */,
 }) {
   const slugUrl = siteUrl
