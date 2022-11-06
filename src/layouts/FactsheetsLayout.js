@@ -1,11 +1,30 @@
-import { Stack, Container } from "@chakra-ui/layout"
+import { Container, Box, SimpleGrid } from "@chakra-ui/layout"
+
+import InPageNavigation from "@components/InPageNavigation"
 
 export default function FactsheetsLayout({ metaData, ...restProps }) {
   return (
-    <Stack alignItems="center">
-      <Container>
-        <Stack spacing={6} {...restProps} />
-      </Container>
-    </Stack>
+    <Container>
+      <SimpleGrid
+        columns={8}
+        gridGap={10}
+        alignItems="start"
+        gridAutoFlow="row"
+        pb={20}
+      >
+        {restProps.children}
+        <Box
+          as="aside"
+          bg="gray.100"
+          gridColumn={["1 / -1", null, "-3 / -1"]}
+          gridRow={[null, null, "2"]}
+          h={["auto", null, 0]}
+          position="sticky"
+          top={10}
+        >
+          <InPageNavigation metaData={metaData} />
+        </Box>
+      </SimpleGrid>
+    </Container>
   )
 }

@@ -46,6 +46,21 @@ export default {
         borderColor: `${colorScheme}.200`,
       },
     }),
+    "level": ({ colorScheme = "gray", fontSize="sm" }) => ({
+      "container": {
+        borderRadius: "full",
+        fontFamily: "mono",
+        fontSize: fontSize,
+        lineHeight: "short",
+        fontWeight: 600,
+        textTransform: "uppercase",
+        letterSpacing: "0.0625rem",
+        color: `${colorScheme}.500`,
+        border: "0.0625rem solid",
+        borderColor: `${colorScheme}.500`,
+        verticalAlign: "middle",
+      },
+    }),
   },
   "sizes": {
     "sm": {

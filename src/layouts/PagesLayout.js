@@ -1,11 +1,17 @@
-import { Stack, Container } from "@chakra-ui/layout"
+import { Container, SimpleGrid } from "@chakra-ui/layout"
 
 export default function PagesLayout({ metaData, ...restProps }) {
   return (
-    <Stack alignItems="center">
-      <Container>
-        <Stack spacing={6} {...restProps} />
-      </Container>
-    </Stack>
+    <Container>
+      <SimpleGrid
+        columns={8}
+        gridGap={10}
+        alignItems="start"
+        gridAutoFlow="row"
+        pb={20}
+      >
+        {restProps.children}
+      </SimpleGrid>
+    </Container>
   )
 }

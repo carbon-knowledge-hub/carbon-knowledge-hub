@@ -41,7 +41,7 @@ export default {
   "baseStyle": {
     "lineHeight": "1.2",
     "borderRadius": "sm",
-    "fontWeight": "semibold",
+    "fontWeight": "600",
     "transitionProperty": "common",
     "transitionDuration": "normal",
     "_disabled": {

@@ -5,10 +5,14 @@ import { imageTypes } from "../../../images.config"
 export default function Image({
   src = "cover.jpg",
   type = "default",
-  ratio = 3 / 2,
+  ratio,
   alt = "",
   sizes,
   breakpoints,
+  subFolder = "",
+  width = "100%",
+  height = "auto",
+  objectFit = "cover",
   ...restProps
 }) {
   const theme = useTheme()
@@ -32,7 +36,9 @@ export default function Image({
       ...acc,
       {
         bp,
-        src: `/images/${name}-${cur}.${suffix}`,
+        src: `/images${
+          subFolder ? `/${subFolder}/` : "/"
+        }${name}-${cur}.${suffix}`,
         ending: cur,
       },
     ]
@@ -40,7 +46,26 @@ export default function Image({
 
   const sources = images.slice(1).sort((a, b) => b.bp - a.bp)
 
-  return (
+  return !ratio ? (
+    <Box {...restProps}>
+      <Box as="picture">
+        {sources.length
+          ? sources.map(({ bp, src }, i) => {
+              return (
+                <source key={bp} media={`(min-width: ${bp}px)`} srcSet={src} />
+              )
+            })
+          : null}
+        <Box
+          as="img"
+          src={images[0].src}
+          alt={alt}
+          style={{ width, height }}
+          objectFit={objectFit}
+        />
+      </Box>
+    </Box>
+  ) : (
     <AspectRatio ratio={ratio} {...restProps}>
       <Box as="picture">
         {sources.length
@@ -50,10 +75,12 @@ export default function Image({
               )
             })
           : null}
-        <img
+        <Box
+          as="img"
           src={images[0].src}
           alt={alt}
-          style={{ width: "100%", height: "auto" }}
+          style={{ width: "100%", height: "100%" }}
+          objectFit={objectFit}
         />
       </Box>
     </AspectRatio>

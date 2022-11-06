@@ -5,7 +5,8 @@ export default {
     "bannerTitle": { fontSize: "5xl" },
     "featuredTitle": { fontSize: "3xl" },
     "featureTitle": { fontSize: "2xl" },
-    "factsheetTitle": { fontSize: "3xl" },
+    "pageTitle": { fontSize: ["2xl", null, "3xl"] },
+    "factsheetTitle": { fontSize: ["2xl", null, "3xl"] },
   },
   "sizes": {
     "4xl": { "fontSize": ["6xl", null, "7xl"], "lineHeight": 1 },
