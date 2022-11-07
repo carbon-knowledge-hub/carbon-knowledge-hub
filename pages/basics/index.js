@@ -17,7 +17,7 @@ export default function BasicsPage() {
   const basics = useBasicsStore((state) => state.basics)
   return (
     <>
-      <SEO title="Factsheets" />
+      <SEO title="Basics" />
       <Stack spacing={[10, null, 20]} pb={20}>
         <Stack w="100%" spacing={10} pt={10}>
           <Container>

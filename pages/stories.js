@@ -17,7 +17,7 @@ import { ButtonLink } from "@components/Link"
 import Image from "@components/Image"
 import PartnersList from "@components/PartnersList"
 import SEO from "@components/SEO"
-import { PageHeader, PageTitle, PageDescription } from "@components/PageHeader"
+import { PageHeader, PageTitle } from "@components/PageHeader"
 
 const StoryCard = ({
   partner_name,
