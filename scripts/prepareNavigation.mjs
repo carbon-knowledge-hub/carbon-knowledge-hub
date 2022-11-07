@@ -1,6 +1,5 @@
 import { readdir, writeFile, readFile } from "fs/promises"
-
-import { extractMetadata } from "./extractMetadata.mjs"
+import fm from "front-matter"
 
 async function getDirectory(p = "./pages/docs", name = "docs") {
   const pagesDirectory = await readdir("./pages")
@@ -28,9 +27,9 @@ async function getDirRoutes(dirContent, dirName, processMetadata) {
       .map(getSlug(`/${dirName}`))
       .map(({ slug, ...restProps }) =>
         readFile(`./pages/${dirName}/${slug}.mdx`, "utf8").then((content) => {
-          const metadata = extractMetadata(content, slug)
+          const metadata = fm(content)?.attributes || {}
           if (processMetadata) return processMetadata(metadata, restProps, slug)
-          else return { ...metadata, ...restProps }
+          else return { ...metadata, slug, ...restProps }
         })
       )
   )

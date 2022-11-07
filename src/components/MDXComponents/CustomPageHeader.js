@@ -25,7 +25,7 @@ export default function CustomPageHeader({ metaData, children }) {
           >
             <Box gridColumn="span 5">
               <BreadCrumbs isInverted>
-                <BreadCrumb href={`/${metaData?.layout}`} isInverted>
+                <BreadCrumb href={`/${metaData?.layout?.toLowerCase()}`} isInverted>
                   {metaData?.layout}
                 </BreadCrumb>
                 <BreadCrumb>{metaData?.title}</BreadCrumb>

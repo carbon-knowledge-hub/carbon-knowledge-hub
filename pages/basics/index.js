@@ -33,7 +33,7 @@ export default function BasicsPage() {
                 alignItems="center"
                 gridColumn={["1 / -1", null, "1 / -1"]}
               >
-                <Box gridColumn="span 5">
+                <Box gridColumn="span 5" pt={1}>
                   <BreadCrumbs>
                     <BreadCrumb>{"Basics"}</BreadCrumb>
                   </BreadCrumbs>
@@ -56,7 +56,7 @@ export default function BasicsPage() {
         <Container>
           <Stack spacing={[10, null, 20]}>
             {basics.map((d, i) => {
-              return <BasicCard d={d} i={i} key={d.slug} />
+              return <BasicCard d={d} i={i} key={d.href} />
             })}
           </Stack>
         </Container>
