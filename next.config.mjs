@@ -1,6 +1,8 @@
 import withMDXPlugin from "@next/mdx"
 import recmaNextjsStaticProps from "recma-nextjs-static-props"
 import { readFile, writeFile } from "fs/promises"
+import remarkFrontmatter from "remark-frontmatter"
+import remarkMdxFrontmatter from "remark-mdx-frontmatter"
 
 import recmaAddMetadata from "./scripts/recmaAddMetadata.mjs"
 import recmaAddTOC from "./scripts/recmaAddTOC.mjs"
@@ -32,6 +34,10 @@ const withMDX = withMDXPlugin({
   extension: /\.(md|mdx)$/,
   options: {
     providerImportSource: "@mdx-js/react",
+    remarkPlugins: [
+      remarkFrontmatter,
+      [remarkMdxFrontmatter, { name: "metaData" }],
+    ],
     rehypePlugins: [
       rehypeReplaceDictionaryWords,
       [

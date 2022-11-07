@@ -2,7 +2,7 @@ import { useRef } from "react"
 import { useRouter } from "next/router"
 import { useTheme } from "@chakra-ui/system"
 import { Box, Stack, HStack, Text, Container, Divider } from "@chakra-ui/layout"
-import { Button, IconButton } from "@chakra-ui/button"
+import { Button } from "@chakra-ui/button"
 import {
   Drawer,
   DrawerBody,

@@ -4,7 +4,7 @@ import {
   Text,
   Stack,
   SimpleGrid,
-  HStack,
+  // HStack,
 } from "@chakra-ui/layout"
 import { Tag } from "@chakra-ui/tag"
 
@@ -23,14 +23,14 @@ function getAreaTemplate(isEven) {
 
 export default function BasicCard({ d, i }) {
   const areaTemplate = getAreaTemplate(i % 2)
-  const basicsTags = d.tags || []
+  // const basicsTags = d.tags || []
   return (
     <LinkBox
       as={SimpleGrid}
       columns={2}
       gridTemplateAreas={areaTemplate}
       gridGap={[5, null, 10]}
-      alignItems="center"
+      alignItems="flex-start"
     >
       <Box gridArea="image">
         <Image
