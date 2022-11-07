@@ -31,7 +31,7 @@ export default function FactsheetListing() {
                 py={[20, null, 14]}
                 bg="white"
                 boxShadow="md"
-                borderRadius="sm"
+                borderRadius="md"
                 position="relative"
                 transition="box-shadow 0.25s"
                 _hover={{

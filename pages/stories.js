@@ -30,7 +30,21 @@ const StoryCard = ({
   const isLocalPdf =
     !story_url.includes("https://") && story_url.includes(".pdf")
   return (
-    <Box pt={5} pb={12} bg="white" boxShadow="md">
+    <Box
+      pt={5}
+      pb={12}
+      bg="white"
+      boxShadow="md"
+      borderRadius="md"
+      position="relative"
+      transition="box-shadow 0.25s"
+      _hover={{
+        boxShadow: "lg",
+      }}
+      _active={{
+        boxShadow: "sm",
+      }}
+    >
       <Stack w="100%" h="100%" spacing={10}>
         <Box alignSelf="flex-end" px={5} maxW="12rem">
           <Image
@@ -76,7 +90,10 @@ export default function StoriesPage({ stories }) {
   const uniqPartners = uniqBy(stories, (o) => o.partner_logo)
   return (
     <>
-      <SEO title="Stories" description="Interviews, thought pieces, articles and reports by other companies and organizations already involved in carbon markets." />
+      <SEO
+        title="Stories"
+        description="Interviews, thought pieces, articles and reports by other companies and organizations already involved in carbon markets."
+      />
       <Stack spacing={[5, null, 10]}>
         <PageHeader bc={[{ label: "Stories" }]}>
           <PageTitle>{"Stories"}</PageTitle>
