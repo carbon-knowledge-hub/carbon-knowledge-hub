@@ -48,8 +48,14 @@ export const navigation = [
     category: "about",
   },
   {
-    label: "Newsletter",
-    href: "/newsletter",
+    label: "Media",
+    href: "/media",
+    level: 2,
+    category: "media",
+  },
+  {
+    label: "FAQ",
+    href: "/faq",
     level: 2,
     category: "about",
   },
@@ -59,4 +65,11 @@ export const navigation = [
     level: 2,
     category: "about",
   },
+  // {
+  //   label: "Newsletter",
+  //   href: "/newsletter",
+  //   level: 2,
+  //   category: "about",
+  // },
+  
 ]

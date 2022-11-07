@@ -1,4 +1,3 @@
-
 // Set image sizes here
 // The "ending" is used to add a suffix to the image
 // and to reference it in the imageTypes "sizes" array
@@ -16,6 +15,9 @@ const imageTypes = {
   },
   exampleCover: {
     sizes: ["sm", "md"],
+  },
+  partnerLogo: {
+    sizes: ["sm"],
   },
   sector: {
     sizes: ["sm", "md", null, "sm"],

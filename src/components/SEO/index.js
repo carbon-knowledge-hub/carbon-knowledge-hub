@@ -6,8 +6,8 @@ const siteUrl = publicRuntimeConfig.shareUrl
 
 export default function SEO({
   title,
-  description = "Coming soon — new web platform to help companies and governments navigate the carbon markets. BloombergNEF and B20 Indonesia are looking for companies to become Carbon Centre of Excellence partners by sharing their experiences of carbon trading.",
-  cover = "cover-lg.png",
+  description = "The Carbon Knowledge Hub gives the knowhow and insights to navigate the carbon markets. It is a collaboration between the Indonesian Chamber of Commerce and Industry (KADIN) and BloombergNEF, and part of the Carbon Centre of Excellence — one of Indonesia's B20 Legacy Programs.",
+  cover = "cover-lg.jpg",
   type = "website" /* website | article */,
 }) {
   const slugUrl = siteUrl
@@ -16,15 +16,17 @@ export default function SEO({
     ? `Carbon Knowledge Hub | ${title}`
     : "Carbon Knowledge Hub"
 
+  const desc = description || "The Carbon Knowledge Hub gives the knowhow and insights to navigate the carbon markets. It is a collaboration between the Indonesian Chamber of Commerce and Industry (KADIN) and BloombergNEF, and part of the Carbon Centre of Excellence — one of Indonesia's B20 Legacy Programs."
+
   return (
     <Head>
       <title>{combinedTitle}</title>
-      <meta name="description" content={description} />
+      <meta name="description" content={desc} />
 
       <meta name="og:type" content={type} />
       <meta name="og:url" content={slugUrl} />
       <meta name="og:title" content={combinedTitle} />
-      <meta name="og:description" content={description} />
+      <meta name="og:description" content={desc} />
       {cover && <meta name="og:image" content={coverImg} />}
 
       {cover && <meta name="image" property="og:image" content={coverImg} />}
@@ -32,7 +34,7 @@ export default function SEO({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={slugUrl} />
       <meta name="twitter:title" content={combinedTitle} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:description" content={desc} />
       {cover && <meta name="twitter:image" content={coverImg} />}
 
       <link rel="shortcut icon" href="/favicon.png" />

@@ -75,8 +75,9 @@ const NewsletterSection = () => {
           name="email"
           isRequired
           onChange={handleChange}
-          borderColor="gray.400"
+          borderColor="brand.200"
           borderRadius="sm"
+          _placeholder={{ "color": "brand.200", "fontFamily": "body" }}
         />
         <Button
           type="submit"

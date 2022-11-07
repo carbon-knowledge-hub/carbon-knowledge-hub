@@ -10,6 +10,9 @@ export default {
   },
   styles: {
     global: {
+      html: {
+        scrollBehavior: "smooth",
+      },
       body: {
         fontFamily: "body",
         bg: "white",
