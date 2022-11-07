@@ -80,7 +80,7 @@ export default function StoriesPage({ stories }) {
       <Stack spacing={[5, null, 10]}>
         <PageHeader bc={[{ label: "Stories" }]}>
           <PageTitle>{"Stories"}</PageTitle>
-          <PageDescription>{"Something goes here."}</PageDescription>
+          {/* <PageDescription>{"Something goes here."}</PageDescription> */}
           <PartnersList
             partners={uniqPartners}
             columns={[2, 3, 4, null, 5]}
