@@ -51,7 +51,7 @@ export default function BasicsPage() {
               </Stack>
             </SimpleGrid>
           </Container>
-          <Divider borderColor="gray.300" />
+          <Divider borderColor="gray.200" />
         </Stack>
         <Container>
           <Stack spacing={[10, null, 20]}>
