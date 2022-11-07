@@ -1,10 +1,12 @@
 import { Container, Box, SimpleGrid } from "@chakra-ui/layout"
 
 import InPageNavigation from "@components/InPageNavigation"
+import SEO from "@components/SEO"
 
 export default function BasicsLayout({ metaData, ...restProps }) {
   return (
     <Container>
+      <SEO title={metaData.title} description={metaData.description} />
       <SimpleGrid
         columns={8}
         gridGap={10}
