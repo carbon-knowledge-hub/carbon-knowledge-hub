@@ -17,7 +17,7 @@ export default function BasicsPage() {
   const basics = useBasicsStore((state) => state.basics)
   return (
     <>
-      <SEO title="Basics" />
+      <SEO title="Basics" description="Carbon trading 101 - what is carbon pricing, tax versus market, cap-and-trade scheme versus baseline-and-credit scheme, types of participant, goals and impact, and current trends" />
       <Stack spacing={[10, null, 20]} pb={20}>
         <Stack w="100%" spacing={10} pt={10}>
           <Container>
