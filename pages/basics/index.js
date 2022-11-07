@@ -54,7 +54,7 @@ export default function BasicsPage() {
           <Divider borderColor="gray.200" />
         </Stack>
         <Container>
-          <Stack spacing={[10, null, 20]}>
+          <Stack spacing={[10, null, 32]}>
             {basics.map((d, i) => {
               return <BasicCard d={d} i={i} key={d.href} />
             })}

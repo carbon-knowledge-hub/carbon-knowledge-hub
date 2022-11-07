@@ -19,7 +19,7 @@ export default function FactsheetsCount() {
   return (
     <Box gridColumn={["span 8", null, "span 2"]} minH={["none", null, 8]}>
       <HStack spacing={3}>
-        <Text color="gray.500" flex="1">
+        <Text flex="1" fontWeight={500}>
           {`${factsheets.filter((d) => d.isVisible).length} factsheet${
             factsheets.length != 1 ? "s" : ""
           }`}

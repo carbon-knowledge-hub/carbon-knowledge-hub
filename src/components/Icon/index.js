@@ -321,6 +321,23 @@ export const FilterIcon = ({
   )
 }
 
+export const DownloadIcon = ({
+  strokeWidth = 2,
+  stroke = "currentcolor",
+  ...restProps
+}) => {
+  return (
+    <SvgContainer
+      strokeWidth={strokeWidth}
+      stroke={stroke}
+      fill="none"
+      {...restProps}
+    >
+      <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 002-2v-4m-4-6l-5 5-5-5m5 3.8V2.5" />
+    </SvgContainer>
+  )
+}
+
 export const TwitterIcon = ({
   strokeWidth = 2,
   fill = "currentcolor",

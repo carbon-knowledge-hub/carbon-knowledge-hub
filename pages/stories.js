@@ -12,7 +12,7 @@ import { readFile } from "fs/promises"
 import { join } from "path"
 import uniqBy from "lodash/uniqBy"
 
-import { ChevronRightIcon } from "@components/Icon"
+import { DownloadIcon } from "@components/Icon"
 import { ButtonLink } from "@components/Link"
 import Image from "@components/Image"
 import PartnersList from "@components/PartnersList"
@@ -31,7 +31,7 @@ const StoryCard = ({
     !story_url.includes("https://") && story_url.includes(".pdf")
   return (
     <Box
-      pt={5}
+      pt={6}
       pb={12}
       bg="white"
       boxShadow="md"
@@ -54,16 +54,20 @@ const StoryCard = ({
             type="partnerLogo"
           />
         </Box>
-        <Stack spacing={3} px={5}>
+        <Stack spacing={10} px={5}>
           <Text variant="metaText" color="red.500">
             {partner_name}
           </Text>
-          <Heading>{story_title}</Heading>
-          <Text>{story_description}</Text>
+          <Stack spacing={5}>
+            <Heading>{story_title}</Heading>
+            <Text>{story_description}</Text>
+          </Stack>
           <ButtonLink
             href={isLocalPdf ? `/pdf/stories/${story_url}` : story_url}
             alignSelf="flex-start"
-            rightIcon={<ChevronRightIcon />}
+            leftIcon={<DownloadIcon size="1.25rem" />}
+            variant="subtle"
+            colorScheme="brand"
             target="_blank"
           >
             {"Download as pdf"}

@@ -9,6 +9,7 @@ function getColorVariant(variant = "solid", colorScheme = "brand") {
       ? [200, 300, 400]
       : [500, 600, 700],
     outline: [50, 100],
+    subtle: [50, 100],
   }
   const colorMapping = {
     ghost: isGray
@@ -18,6 +19,11 @@ function getColorVariant(variant = "solid", colorScheme = "brand") {
       : `${colorScheme}.500`,
     solid: isGray ? `gray.800` : isTransparent ? "currentcolor" : `white`,
     outline: isGray
+      ? `gray.800`
+      : isTransparent
+      ? "currentcolor"
+      : `${colorScheme}.500`,
+      subtle: isGray
       ? `gray.800`
       : isTransparent
       ? "currentcolor"
@@ -40,7 +46,7 @@ export default {
   "defaultProps": { "variant": "solid", "size": "md", "colorScheme": "brand" },
   "baseStyle": {
     "lineHeight": "1.2",
-    "borderRadius": "sm",
+    "borderRadius": "md",
     "fontWeight": "600",
     "transitionProperty": "common",
     "transitionDuration": "normal",
@@ -100,6 +106,20 @@ export default {
           outlineOffset: "0.125rem",
         },
         "_active": { "bg": colorConfig.bg[2] },
+      }
+    },
+    "subtle": ({ colorScheme }) => {
+      const colorConfig = getColorVariant("subtle", colorScheme)
+      return {
+        "color": colorConfig.color,
+        "bg": colorConfig.bg[0],
+        "_hover": { "bg": colorConfig.bg[1] },
+        _focusVisible: {
+          outline: "0.125rem solid",
+          outlineColor: colorConfig.outline,
+          outlineOffset: "0.125rem",
+        },
+        "_active": { "bg": colorConfig.bg[1] },
       }
     },
     "link": {

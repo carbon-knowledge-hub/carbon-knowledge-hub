@@ -76,7 +76,6 @@ const NewsletterSection = () => {
           isRequired
           onChange={handleChange}
           borderColor="brand.200"
-          borderRadius="sm"
           _placeholder={{ "color": "brand.200", "fontFamily": "body" }}
         />
         <Button

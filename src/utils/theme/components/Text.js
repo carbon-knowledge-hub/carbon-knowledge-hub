@@ -24,7 +24,7 @@ export default {
       fontFamily: "mono",
       fontSize: "sm",
       lineHeight: "short",
-      fontWeight: "500",
+      fontWeight: "600",
       textTransform: "uppercase",
       letterSpacing: "0.0625rem",
     },

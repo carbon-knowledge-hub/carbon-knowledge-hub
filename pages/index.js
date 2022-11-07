@@ -29,7 +29,7 @@ export default function IndexPage({ stories }) {
   return (
     <>
       <SEO />
-      <Stack alignItems="center" spacing={[14, null, 20]} mb={[14, null, 20]}>
+      <Stack alignItems="center" spacing={[14, null, 28]} mb={[14, null, 28]}>
         <SimpleGrid
           columns={[1, null, null, 2]}
           gridGap={[5, null, 10]}
@@ -118,7 +118,7 @@ export default function IndexPage({ stories }) {
           </Box>
         </SimpleGrid>
         <Container>
-          <Stack spacing={[10, null, 20]}>
+          <Stack spacing={[10, null, 28]}>
             <Stack spacing={5}>
               <Heading as="h2" fontSize={["xl", null, "2xl"]}>
                 {"Get started"}
@@ -203,7 +203,8 @@ export default function IndexPage({ stories }) {
               href="/partners"
               alignSelf="center"
               size="lg"
-              colorScheme="gray"
+              colorScheme="brand"
+              variant="subtle"
               rightIcon={<ArrowRightIcon />}
             >
               {"Read more"}
