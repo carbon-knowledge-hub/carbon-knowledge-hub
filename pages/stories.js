@@ -16,6 +16,7 @@ import { ChevronRightIcon } from "@components/Icon"
 import { ButtonLink } from "@components/Link"
 import Image from "@components/Image"
 import PartnersList from "@components/PartnersList"
+import SEO from "@components/SEO"
 import { PageHeader, PageTitle, PageDescription } from "@components/PageHeader"
 
 const StoryCard = ({
@@ -72,43 +73,46 @@ function CustomComponent() {
 CustomComponent.displayName = "Custom component"
 
 export default function StoriesPage({ stories }) {
-  const uniqPartners = uniqBy(stories, o => o.partner_logo)
+  const uniqPartners = uniqBy(stories, (o) => o.partner_logo)
   return (
-    <Stack spacing={[5, null, 10]}>
-      <PageHeader bc={[{ label: "Stories" }]}>
-        <PageTitle>{"Stories"}</PageTitle>
-        <PageDescription>{"Something goes here."}</PageDescription>
-        <PartnersList
-          partners={uniqPartners}
-          columns={[2, 3, 4, null, 5]}
-          spacingY={10}
-          spacingX={[10, null, 12, null, 20]}
-          pt={10}
-        />
-      </PageHeader>
+    <>
+      <SEO title="Stories" />
+      <Stack spacing={[5, null, 10]}>
+        <PageHeader bc={[{ label: "Stories" }]}>
+          <PageTitle>{"Stories"}</PageTitle>
+          <PageDescription>{"Something goes here."}</PageDescription>
+          <PartnersList
+            partners={uniqPartners}
+            columns={[2, 3, 4, null, 5]}
+            spacingY={10}
+            spacingX={[10, null, 12, null, 20]}
+            pt={10}
+          />
+        </PageHeader>
 
-      <Box w="100%" bg="gray.50">
-        <Divider borderColor="gray.200" />
-        <Container py={10}>
-          <SimpleGrid columns={8}>
-            <Stack spacing={6} gridColumn={["1 / -1", null, "2 / -2"]}>
-              <Text color="gray.500">{`${stories.length} ${
-                stories.length === 1 ? "story" : "stories"
-              }`}</Text>
-              <SimpleGrid columns={[1, null, 2]} gridGap={10}>
-                {stories.map((story) => {
-                  const key = story.story_title
-                    .toLowerCase()
-                    .split(" ")
-                    .join("-")
-                  return <StoryCard key={key} {...story} />
-                })}
-              </SimpleGrid>
-            </Stack>
-          </SimpleGrid>
-        </Container>
-      </Box>
-    </Stack>
+        <Box w="100%" bg="gray.50">
+          <Divider borderColor="gray.200" />
+          <Container py={10}>
+            <SimpleGrid columns={8}>
+              <Stack spacing={6} gridColumn={["1 / -1", null, "2 / -2"]}>
+                <Text color="gray.500">{`${stories.length} ${
+                  stories.length === 1 ? "story" : "stories"
+                }`}</Text>
+                <SimpleGrid columns={[1, null, 2]} gridGap={10}>
+                  {stories.map((story) => {
+                    const key = story.story_title
+                      .toLowerCase()
+                      .split(" ")
+                      .join("-")
+                    return <StoryCard key={key} {...story} />
+                  })}
+                </SimpleGrid>
+              </Stack>
+            </SimpleGrid>
+          </Container>
+        </Box>
+      </Stack>
+    </>
   )
 }
 

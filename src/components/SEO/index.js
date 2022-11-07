@@ -6,7 +6,7 @@ const siteUrl = publicRuntimeConfig.shareUrl
 
 export default function SEO({
   title,
-  description = "Carbon Knowledge Hub",
+  description = "",
   cover = "cover-lg.jpg",
   type = "website" /* website | article */,
 }) {

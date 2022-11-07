@@ -21,12 +21,14 @@ import { useFactsheetStore, useBasicsStore } from "@utils/store"
 import { csvParse } from "d3-dsv"
 import { readFile } from "fs/promises"
 import { join } from "path"
+import SEO from "@components/SEO"
 
 export default function IndexPage({ stories }) {
   const factsheets = useFactsheetStore((state) => state.factsheets)
   const basics = useBasicsStore((state) => state.basics)
   return (
     <>
+      <SEO />
       <Stack alignItems="center" spacing={[14, null, 20]} mb={[14, null, 20]}>
         <SimpleGrid
           columns={[1, null, null, 2]}
