@@ -21,9 +21,9 @@ const linkedinRoot = "http://linkedin.com/sharing/share-offsite"
 
 const shareUrl = "https://b20-carbon-knowledge-hub.org/"
 
-const twitterShareText  = encodeURIComponent("Coming soon - new web platform to help companies and governments navigate \#carbon trading, by @BloombergNEF and @B20 Find out how to get involved and raise your profile as a key carbon market player")
+const twitterShareText  = encodeURIComponent("New \#Carbon Knowledge Hub by @BloombergNEF @B20 and @KADIN_Indonesia provides transparency and credibility to the carbon markets with primers, factsheets and stories from experts. Find out how to get involved")
 const emailSubject = "B20/BNEF Carbon Centre of Excellence"
-const emailText = "I would like to find out more about becoming a partner to the Carbon Centre of Excellence. Please contact me to set up a discussion."
+const emailText = "I would like to find out more about getting involved in the Carbon Centre of Excellence. Please contact me to kick off a discussion."
 
 const twitterShareUrl = `${twitterRoot}?url=${shareUrl}&text=${twitterShareText}&original_referer=${shareUrl}`
 const linkedinShareUrl = `${linkedinRoot}?url=${shareUrl}`
