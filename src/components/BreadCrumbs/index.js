@@ -6,7 +6,7 @@ import { ButtonLink } from "@components/Link"
 export function BreadCrumb({ href, children, isInverted }) {
   return href ? (
     <ButtonLink
-      href="/"
+      href={href}
       size="sm"
       variant="ghost"
       colorScheme={isInverted ? "whiteAlpha" : "gray"}
