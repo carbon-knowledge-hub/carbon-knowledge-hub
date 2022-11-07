@@ -17,8 +17,7 @@ import SEO from "@components/SEO"
 export default function FactsheetsPage() {
   return (
     <>
-      <SEO title="Factsheets" description="Concise explanations of topics key to the voluntary and compliance carbon markets such as import tariffs, Article 6, offset quality, contracting methods and public acceptance. 
-Stories: interviews, thought pieces, articles and reports by other companies and organizations already involved in carbon markets." />
+      <SEO title="Factsheets" description="Concise explanations of topics key to the voluntary and compliance carbon markets such as import tariffs, Article 6, offset quality, contracting methods and public acceptance." />
       <Stack spacing={0}>
         <Box w="100%" py={10}>
           <Container>

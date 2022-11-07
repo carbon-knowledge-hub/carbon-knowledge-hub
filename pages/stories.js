@@ -76,7 +76,7 @@ export default function StoriesPage({ stories }) {
   const uniqPartners = uniqBy(stories, (o) => o.partner_logo)
   return (
     <>
-      <SEO title="Stories" />
+      <SEO title="Stories" description="Interviews, thought pieces, articles and reports by other companies and organizations already involved in carbon markets." />
       <Stack spacing={[5, null, 10]}>
         <PageHeader bc={[{ label: "Stories" }]}>
           <PageTitle>{"Stories"}</PageTitle>
