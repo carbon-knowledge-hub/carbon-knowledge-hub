@@ -42,21 +42,19 @@ export default function IndexPage({ stories }) {
             pl={[4, 5, null, 10]}
             pr={[4, 5, null, 0]}
           >
-            <Stack spacing={8}>
-              <Stack spacing={3}>
+            <Stack spacing={10}>
+              <Stack spacing={5}>
                 <Text variant="metaText" color="red.500">
                   {"B20 Indonesia Legacy Program: Carbon Center of Excellence "}
                 </Text>
-                {/* <Heading fontSize="2xl">{"Carbon Knowledge Hub"}</Heading> */}
-                <Text
+                <Box
                 fontSize={["xl", null, null, null, "2xl"]}
                 fontWeight={500}
                 lineHeight="tall"
               >
-                {
-                  "The Carbon Knowledge Hub gives the knowhow and insights to navigate the carbon markets. It is a collaboration between the Indonesian Chamber of Commerce and Industry (KADIN) and BloombergNEF, and part of the Carbon Centre of Excellence – one of Indonesia’s B20 Legacy Programs."
-                }
-              </Text>
+                <Heading as="h1" display="inline" fontSize="inherit" fontWeight="inherit" lineHeight="inherit">{"The Carbon Knowledge Hub"}</Heading>
+                <Text display="inline" fontSize="inherit" fontWeight="inherit" lineHeight="inherit">{" gives the knowhow and insights to navigate the carbon markets. It is a collaboration between the Indonesian Chamber of Commerce and Industry (KADIN) and BloombergNEF, and part of the Carbon Centre of Excellence – one of Indonesia’s B20 Legacy Programs."}</Text>
+              </Box>
               </Stack>
               
               <Stack spacing={5}>
