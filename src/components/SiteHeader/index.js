@@ -15,7 +15,7 @@ import {
 import { useDisclosure } from "@chakra-ui/hooks"
 
 import { Link, ButtonLink } from "@components/Link"
-import { NavigationIcon, SearchIcon } from "@components/Icon"
+import { NavigationIcon } from "@components/Icon"
 import { navigation } from "@utils/navigation"
 import CKHLogo from "@components/Logo/CKHLogo"
 
@@ -237,10 +237,10 @@ export default function SiteHeader() {
               </Box>
             </HStack>
           </Link>
-          <HStack spacing={6}>
+          <HStack spacing={[0, null, null, null, 6]}>
             <HStack
               as="nav"
-              spacing={6}
+              spacing={[0, null, null, null, 6]}
               display={["none", null, null, null, "flex"]}
             >
               {navigation
