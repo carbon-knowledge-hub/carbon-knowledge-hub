@@ -36,6 +36,12 @@ export const navigation = [
     category: "resources",
   },
   {
+    label: "Media",
+    href: "/media",
+    level: 2,
+    category: "resources",
+  },
+  {
     label: "About",
     href: "/about",
     level: 2,
@@ -46,12 +52,6 @@ export const navigation = [
     href: "/partners",
     level: 1,
     category: "about",
-  },
-  {
-    label: "Media",
-    href: "/media",
-    level: 2,
-    category: "media",
   },
   {
     label: "FAQ",
