@@ -170,7 +170,8 @@ export async function getStaticProps(ctx) {
     mediaItems
       .filter((d) => d.url.includes("vimeo.com/"))
       .map(async (item) => {
-        return fetch(`https://vimeo.com/api/oembed.json?url=${item.url}`).then(
+        const u = encodeURI(item.url)
+        return fetch(`https://vimeo.com/api/oembed.json?url=${u}`).then(
           (res) => res.json()
         )
       })
