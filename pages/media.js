@@ -49,7 +49,7 @@ function VimeoPreview({ item }) {
     >
       <Stack spacing={3}>
         <AspectRatio ratio={16 / 9}>
-          <Box bg="green.500">
+          <Box bg="gray.100">
             <img
               src={item.thumbnail_url_with_play_button}
               width={item.thumbnail_width}
