@@ -10,7 +10,7 @@
     "clean": "rm -Rf out && rm -Rf .next",
     "prepareNavigation": "node ./scripts/prepareNavigation.mjs",
     "prepareImages": "node ./scripts/images.js",
-    "prepareStories": "rm -Rf ./public/pdf && mkdir ./public/pdf && cp -R ./stories ./public/pdf/stories && cp ./data/partners.csv ./public/partners.csv",
+    "prepareStories": "rm -Rf ./public/pdf && mkdir ./public/pdf && cp -R ./stories ./public/pdf/stories && cp ./data/partners.csv ./public/partners.csv && cp ./data/media.csv ./public/media.csv",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -27,6 +27,7 @@
     "d3-dsv": "^3.0.1",
     "d3-fetch": "^3.0.1",
     "d3-scale": "^4.0.2",
+    "dayjs": "^1.11.6",
     "email-validator": "^2.0.4",
     "framer-motion": "^7.4.0",
     "front-matter": "^4.0.2",

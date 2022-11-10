@@ -112,7 +112,7 @@ export default function StoriesPage({ stories }) {
         </PageHeader>
 
         <Box w="100%" bg="gray.50">
-          <Divider borderColor="gray.200" />
+          <Divider borderColor="gray.100" />
           <Container py={10}>
             <SimpleGrid columns={8}>
               <Stack spacing={6} gridColumn={["1 / -1", null, "2 / -2"]}>

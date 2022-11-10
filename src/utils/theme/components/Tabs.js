@@ -1,1 +1,39 @@
-export default {"defaultProps":{"size":"md","variant":"line","colorScheme":"action"},"parts":["root","tab","tablist","tabpanel","tabpanels","indicator"],"baseStyle":{"root":{"display":"block"},"tab":{"transitionProperty":"common","transitionDuration":"normal","_focusVisible":{"zIndex":1,"boxShadow":"outline"},"_disabled":{"cursor":"not-allowed","opacity":0.4}},"tablist":{"justifyContent":"flex-start","flexDirection":"row"},"tabpanel":{"p":4}},"variants":{"line":{"tablist":{"borderBottom":"2px solid","borderColor":"inherit"},"tab":{"borderBottom":"2px solid","borderColor":"transparent","marginBottom":"-2px","_selected":{"color":"action.600","borderColor":"currentColor"},"_active":{"bg":"gray.200"},"_disabled":{"_active":{"bg":"none"}}}},"enclosed":{"tab":{"borderTopRadius":"md","border":"1px solid","borderColor":"transparent","mb":"-1px","_selected":{"color":"action.600","borderColor":"inherit","borderBottomColor":"white"}},"tablist":{"mb":"-1px","borderBottom":"1px solid","borderColor":"inherit"}},"enclosed-colored":{"tab":{"border":"1px solid","borderColor":"inherit","bg":"gray.50","mb":"-1px","_notLast":{"marginEnd":"-1px"},"_selected":{"bg":"#fff","color":"action.600","borderColor":"inherit","borderTopColor":"currentColor","borderBottomColor":"transparent"}},"tablist":{"mb":"-1px","borderBottom":"1px solid","borderColor":"inherit"}},"soft-rounded":{"tab":{"borderRadius":"full","fontWeight":"semibold","color":"gray.600","_selected":{}}},"solid-rounded":{"tab":{"borderRadius":"full","fontWeight":"semibold","color":"gray.600","_selected":{"color":"#fff","bg":"action.600"}}},"unstyled":{}},"sizes":{"sm":{"tab":{"py":1,"px":4,"fontSize":"sm"}},"md":{"tab":{"fontSize":"md","py":2,"px":4}},"lg":{"tab":{"fontSize":"lg","py":3,"px":4}}}}
+export default {
+  "defaultProps": { "size": "md", "variant": "line", "colorScheme": "brand" },
+  "parts": ["root", "tab", "tablist", "tabpanel", "tabpanels", "indicator"],
+  "baseStyle": {
+    "root": { "display": "block" },
+    "tab": {
+      "transitionProperty": "common",
+      "transitionDuration": "normal",
+      "_focusVisible": { "zIndex": 1, "boxShadow": "outline" },
+      "_disabled": { "cursor": "not-allowed", "opacity": 0.4 },
+    },
+    "tablist": { "justifyContent": "flex-start", "flexDirection": "row" },
+    "tabpanel": { "p": 4 },
+  },
+  "variants": {
+    "line": {
+      "tablist": {
+        "borderBottom": "0.125rem solid",
+        "borderColor": "transparent",
+      },
+      "tab": {
+        "borderBottom": "0.125rem solid",
+        "borderColor": "transparent",
+        "marginBottom": "-0.125rem",
+        "fontWeight": 500,
+        "color": "gray.500",
+        "_selected": { "color": "brand.600", "borderColor": "currentColor" },
+        "_active": { "bg": "gray.200" },
+        "_disabled": { "_active": { "bg": "none" } },
+      },
+    },
+    "unstyled": {},
+  },
+  "sizes": {
+    "sm": { "tab": { "py": 3, "px": 4, "fontSize": "sm" } },
+    "md": { "tab": { "fontSize": "md", "py": 4, "px": 5 } },
+    "lg": { "tab": { "fontSize": "lg", "py": 5, "px": 5 } },
+  },
+}
