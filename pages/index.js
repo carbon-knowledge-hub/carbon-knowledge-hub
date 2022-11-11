@@ -45,7 +45,7 @@ export default function IndexPage({ stories }) {
             <Stack spacing={10}>
               <Stack spacing={5}>
                 <Text variant="metaText" color="red.500">
-                  {"B20 Indonesia Legacy Program: Carbon Center of Excellence "}
+                  {"B20 Indonesia Legacy Program: Carbon Centre of Excellence "}
                 </Text>
                 <Box
                 fontSize={["xl", null, null, null, "2xl"]}
@@ -236,7 +236,7 @@ export default function IndexPage({ stories }) {
             <Box gridColumn={["span 8", null, "5 / -1"]} order={[1, null, 2]}>
               <Stack spacing={10}>
                 <Heading as="h3" fontSize={["xl", null, "2xl"]}>
-                  {"About the Carbon Center of Excellence"}
+                  {"About the Carbon Centre of Excellence"}
                 </Heading>
                 <Text fontSize={["lg", null, "lg"]} color="gray.600">
                   {
