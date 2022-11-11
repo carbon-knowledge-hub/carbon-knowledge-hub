@@ -129,8 +129,8 @@ export default function MediaPage({ items }) {
             >
               <Container mx="auto">
                 <TabList>
-                  <Tab>{"Videos"}</Tab>
-                  <Tab>{"Podcasts"}</Tab>
+                  <Tab fontWeight={600}>{"Videos"}</Tab>
+                  <Tab fontWeight={600}>{"Podcasts"}</Tab>
                 </TabList>
               </Container>
             </Box>
