@@ -78,8 +78,15 @@ function VimeoPreview({ item }) {
   )
 }
 
+// function YoutubePreview({ item }) {
+//   const videoId = "q1126IZ61-s"
+//   const url = `https://img.youtube.com/vi/${videoId}/0.jpg`
+//   return null
+// }
+
 export default function MediaPage({ items }) {
   const videoItems = items.filter((d) => d.mediaCategory === "video-vimeo")
+  // const youtubeItems = items.filter((d) => d.mediaCategory === "video-youtube")
   const audioItems = items.filter((d) => d.mediaCategory === "audio-spotify")
   return (
     <>
@@ -141,6 +148,9 @@ export default function MediaPage({ items }) {
                     {videoItems.map((item, i) => {
                       return <VimeoPreview key={i} item={item} />
                     })}
+                    {/* {youtubeItems.map((item, i) => {
+                      return <YoutubePreview key={i} item={item} />
+                    })} */}
                   </SimpleGrid>
                 </TabPanel>
                 <TabPanel p={0}>
@@ -169,11 +179,11 @@ export async function getStaticProps(ctx) {
   const vimeoItems = await Promise.all(
     mediaItems
       .filter((d) => d.url.includes("vimeo.com/"))
-      .map(async (item) => {
+      .map(async (item, i) => {
         const u = encodeURI(item.url)
-        return fetch(`https://vimeo.com/api/oembed.json?url=${u}`).then(
-          (res) => res.json()
-        )
+        return fetch(`https://vimeo.com/api/oembed.json?url=${u}`)
+          .then((res) => res.json())
+          .catch(() => null)
       })
   )
 
@@ -183,9 +193,16 @@ export async function getStaticProps(ctx) {
       .map((d) => ({ ...d, mediaCategory: "audio-spotify" }))
   )
 
+  const youtubeItems = mediaItems
+    .filter((d) => d.url.includes("youtu.be/"))
+    .map((d) => ({ ...d, mediaCategory: "video-youtube" }))
+
   const items = [
-    ...vimeoItems.map((d) => ({ ...d, mediaCategory: "video-vimeo" })),
+    ...vimeoItems
+      .filter((d) => d)
+      .map((d) => ({ ...d, mediaCategory: "video-vimeo" })),
     ...spotifyItems,
+    ...youtubeItems,
   ]
 
   return {
