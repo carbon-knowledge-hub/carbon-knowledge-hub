@@ -116,7 +116,7 @@ export default function StoriesPage({ stories }) {
           <Container py={10}>
             <SimpleGrid columns={8}>
               <Stack spacing={6} gridColumn={["1 / -1", null, "2 / -2"]}>
-                <Text color="gray.500">{`${stories.length} ${
+                <Text fontWeight={600} color="gray.600">{`${stories.length} ${
                   stories.length === 1 ? "story" : "stories"
                 }`}</Text>
                 <SimpleGrid columns={[1, null, 2]} gridGap={10}>
