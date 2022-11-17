@@ -42,6 +42,60 @@ export default {
       },
       _active: { bg: "gray.100", textDecoration: "none" },
     },
+    card: {
+      fontWeight: 600,
+      fontSize: "lg",
+      color: "brand.500",
+      lineHeight: "shorter",
+      display: "flex",
+      alignItems: "center",
+      "svg": {
+        marginLeft: "0.5rem",
+        transition: "transform 0.25s ease",
+      },
+      backgroundImage:
+        "linear-gradient(transparent calc(100% - 0.125rem), currentcolor 0.125rem)",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "0% 100%",
+      transition: "background-size 0.25s ease",
+      _hover: {
+        backgroundSize: "calc(100% - 1.625rem) 100%",
+        textDecoration: "none",
+        "svg": { transform: "translateX(0.25rem)" },
+      },
+      _focusVisible: {
+        backgroundSize: "calc(100% - 1.625rem) 100%",
+        textDecoration: "none",
+        "svg": { transform: "translateX(0.25rem)" },
+      },
+    },
+    section: {
+      fontWeight: 600,
+      fontSize: "sm",
+      color: "gray.500",
+      lineHeight: "shorter",
+      display: "flex",
+      alignItems: "center",
+      "svg": {
+        marginLeft: "0.5rem",
+        transition: "transform 0.25s ease",
+      },
+      backgroundImage:
+        "linear-gradient(transparent calc(100% - 0.125rem), currentcolor 0.125rem)",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "0% 100%",
+      transition: "background-size 0.25s ease",
+      _hover: {
+        backgroundSize: "calc(100% - 1.625rem) 100%",
+        textDecoration: "none",
+        "svg": { transform: "translateX(0.25rem)" },
+      },
+      _focusVisible: {
+        backgroundSize: "calc(100% - 1.625rem) 100%",
+        textDecoration: "none",
+        "svg": { transform: "translateX(0.25rem)" },
+      },
+    },
   },
   "sizes": {},
 }
