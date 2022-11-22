@@ -81,34 +81,19 @@ export default function IndexPage({ stories }) {
                 <Stack spacing={0}>
                   <Divider borderColor="gray.200" />
                   <Box>
-                    <ButtonLink
-                      href="/basics"
-                      colorScheme="gray"
-                      variant="ghost"
-                      px={2}
-                      w="100%"
-                      color="red.500"
-                      h={20}
-                      justifyContent="space-between"
-                      rightIcon={<ArrowRightIcon />}
-                    >
+                    <Link href="/basics" variant="banner">
                       {"Carbon trading 101"}
-                    </ButtonLink>
+                      <ArrowRightIcon size="1.5rem" />
+                    </Link>
                   </Box>
                   <Divider borderColor="gray.200" />
-                  <ButtonLink
-                    href="/factsheets"
-                    colorScheme="gray"
-                    variant="ghost"
-                    px={2}
-                    w="100%"
-                    color="red.500"
-                    h={20}
-                    justifyContent="space-between"
-                    rightIcon={<ArrowRightIcon />}
-                  >
-                    {"The nitty gritty of carbon trading"}
-                  </ButtonLink>
+                  <Box>
+                  <Link href="/factsheets" variant="banner">
+                      {"The nitty gritty of carbon trading"}
+                      <ArrowRightIcon size="1.5rem" />
+                    </Link>
+                  </Box>
+
                   <Divider borderColor="gray.200" />
                 </Stack>
               </Stack>

@@ -51,7 +51,6 @@ function NavigationDrawer({ isInverted }) {
         <DrawerContent bg="#2D2D63" color="white">
           <DrawerCloseButton
             bg="whiteAlpha.300"
-            borderRadius="sm"
             w="2.5rem"
             h="2.5rem"
             _hover={{ bg: "whiteAlpha.200" }}
@@ -247,7 +246,7 @@ export default function SiteHeader() {
                 .filter((d) => d.level === 1)
                 .map((navItem) => {
                   return (
-                    <Link key={navItem.href} href={navItem.href}>
+                    <Link key={navItem.href} href={navItem.href} variant="navigationLink">
                       {navItem.label}
                     </Link>
                   )
