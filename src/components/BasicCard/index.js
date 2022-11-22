@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/layout"
 import { Tag } from "@chakra-ui/tag"
 
-import { ButtonLink, LinkOverlay, LinkBox } from "@components/Link"
+import { ButtonLink, Link, LinkOverlay, LinkBox } from "@components/Link"
 import Image from "@components/Image"
 import { ArrowRightIcon } from "@components/Icon"
 
@@ -57,19 +57,10 @@ export default function BasicCard({ d, i }) {
               {d.description}
             </Text>
           </Stack>
-          <ButtonLink
-            variant="ghost"
-            _hover={{ bg: "none" }}
-            _focus={{ bg: "none" }}
-            _active={{ bg: "none" }}
-            href={d.href}
-            alignSelf="flex-start"
-            size="lg"
-            px={0}
-            rightIcon={<ArrowRightIcon />}
-          >
+          <Link alignSelf="flex-start" href={d.href} variant="card">
             {"Continue reading"}
-          </ButtonLink>
+            <ArrowRightIcon size="1.5rem" />
+          </Link>
           {/* <HStack spacing={3}>
             {basicsTags.map((tag) => {
               const key = tag.toLowerCase().split(" ").join("-")

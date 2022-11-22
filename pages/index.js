@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/layout"
 import uniqBy from "lodash/uniqBy"
 
-import { ButtonLink } from "@components/Link"
+import { ButtonLink, Link } from "@components/Link"
 import EmailLink from "@components/EmailLink"
 import { ArrowRightIcon } from "@components/Icon"
 import BasicCard from "@components/BasicCard"
@@ -48,15 +48,32 @@ export default function IndexPage({ stories }) {
                   {"B20 Indonesia Legacy Program: Carbon Centre of Excellence "}
                 </Text>
                 <Box
-                fontSize={["xl", null, null, null, "2xl"]}
-                fontWeight={500}
-                lineHeight="tall"
-              >
-                <Heading as="h1" display="inline" fontSize="inherit" fontWeight="inherit" lineHeight="inherit">{"The Carbon Knowledge Hub"}</Heading>
-                <Text display="inline" fontSize="inherit" fontWeight="inherit" lineHeight="inherit">{" gives the knowhow and insights to navigate the carbon markets. It is a collaboration between the Indonesian Chamber of Commerce and Industry (KADIN) and BloombergNEF, and part of the Carbon Centre of Excellence – one of Indonesia’s B20 Legacy Programs."}</Text>
-              </Box>
+                  fontSize={["xl", null, null, null, "2xl"]}
+                  fontWeight={500}
+                  lineHeight="tall"
+                >
+                  <Heading
+                    as="h1"
+                    display="inline"
+                    fontSize="inherit"
+                    fontWeight="inherit"
+                    lineHeight="inherit"
+                  >
+                    {"The Carbon Knowledge Hub"}
+                  </Heading>
+                  <Text
+                    display="inline"
+                    fontSize="inherit"
+                    fontWeight="inherit"
+                    lineHeight="inherit"
+                  >
+                    {
+                      " gives the knowhow and insights to navigate the carbon markets. It is a collaboration between the Indonesian Chamber of Commerce and Industry (KADIN) and BloombergNEF, and part of the Carbon Centre of Excellence – one of Indonesia’s B20 Legacy Programs."
+                    }
+                  </Text>
+                </Box>
               </Stack>
-              
+
               <Stack spacing={5}>
                 <Text as="h3" variant="metaText" color="gray.600">
                   {"Start here"}
@@ -64,34 +81,19 @@ export default function IndexPage({ stories }) {
                 <Stack spacing={0}>
                   <Divider borderColor="gray.200" />
                   <Box>
-                    <ButtonLink
-                      href="/basics"
-                      colorScheme="gray"
-                      variant="ghost"
-                      px={2}
-                      w="100%"
-                      color="red.500"
-                      h={20}
-                      justifyContent="space-between"
-                      rightIcon={<ArrowRightIcon />}
-                    >
+                    <Link href="/basics" variant="banner">
                       {"Carbon trading 101"}
-                    </ButtonLink>
+                      <ArrowRightIcon size="1.5rem" />
+                    </Link>
                   </Box>
                   <Divider borderColor="gray.200" />
-                  <ButtonLink
-                    href="/factsheets"
-                    colorScheme="gray"
-                    variant="ghost"
-                    px={2}
-                    w="100%"
-                    color="red.500"
-                    h={20}
-                    justifyContent="space-between"
-                    rightIcon={<ArrowRightIcon />}
-                  >
-                    {"The nitty gritty of carbon trading"}
-                  </ButtonLink>
+                  <Box>
+                  <Link href="/factsheets" variant="banner">
+                      {"The nitty gritty of carbon trading"}
+                      <ArrowRightIcon size="1.5rem" />
+                    </Link>
+                  </Box>
+
                   <Divider borderColor="gray.200" />
                 </Stack>
               </Stack>
@@ -140,7 +142,7 @@ export default function IndexPage({ stories }) {
                 <Heading as="h2" fontSize={["xl", null, "2xl"]}>
                   {"Dive deeper"}
                 </Heading>
-                <ButtonLink
+                {/* <ButtonLink
                   href="/factsheets"
                   variant="ghost"
                   color="gray.500"
@@ -151,7 +153,16 @@ export default function IndexPage({ stories }) {
                   rightIcon={<ArrowRightIcon size="1.25rem" />}
                 >
                   {"All factsheets"}
-                </ButtonLink>
+                </ButtonLink> */}
+                <Link
+                  alignSelf="flex-start"
+                  href="/factsheets"
+                  variant="section"
+                  fontSize="sm"
+                >
+                  {"All factsheets"}
+                  <ArrowRightIcon size="1.25rem" />
+                </Link>
               </HStack>
               <SimpleGrid columns={[1, null, 2]} gridGap={[5, null, 10]}>
                 {factsheets.slice(0, 2).map((d) => {
