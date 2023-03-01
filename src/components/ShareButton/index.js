@@ -19,7 +19,7 @@ import {
 const twitterRoot = "http://twitter.com/intent/tweet"
 const linkedinRoot = "http://linkedin.com/sharing/share-offsite"
 
-const shareUrl = "https://b20-carbon-knowledge-hub.org/"
+const shareUrl = "https://www.b20-carbon-knowledge-hub.org/"
 
 const twitterShareText  = encodeURIComponent("New \#Carbon Knowledge Hub by @BloombergNEF @B20 and @KADIN_Indonesia provides transparency and credibility to the carbon markets with primers, factsheets and stories from experts. Find out how to get involved")
 const emailSubject = "B20/BNEF Carbon Centre of Excellence"
