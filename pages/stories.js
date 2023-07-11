@@ -176,7 +176,10 @@ export async function getStaticProps(ctx) {
   const stories = csvParse(storiesRaw)
     .filter((d) => d.story_title && d.story_url)
     .map((d) => {
-      return { ...d, partner_category: d.partner_category.split(";") }
+      return {
+        ...d,
+        partner_category: d.partner_category.split(";").map((d) => d.trim()),
+      }
     })
   const uniqCategories = uniqBy(
     stories.flatMap((d) => d.partner_category)
