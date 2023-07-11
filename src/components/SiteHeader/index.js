@@ -200,41 +200,13 @@ export default function SiteHeader() {
       <Container>
         <HStack spacing={6} justifyContent="space-between" h={20}>
           <Link href="/">
-            <HStack
-              spacing={4}
-              divider={
-                <Divider
-                  h={14}
-                  borderColor={isInverted ? "brand.400" : "gray.200"}
-                  display={["none", null, "block"]}
-                />
-              }
-            >
-              <Box flex="none">
-                <CKHLogo
-                  hexagonFill={
-                    isInverted ? colors.brand[800] : colors.brand[700]
-                  }
-                  hexagonOutline={isInverted ? "#FFF" : "none"}
-                  owlFill="#FFF"
-                  mainTextFill={isInverted ? "#FFF" : colors.brand[700]}
-                  subtitleText={colors.gray[500]}
-                />
-              </Box>
-              <Box
-                flex="none"
-                w="auto"
-                h={14}
-                display={["none", null, "block"]}
-              >
-                <Box ml={0} w="auto" h="100%">
-                  <img
-                    src={isInverted ? "/b20-logo-white.png" : "/b20-logo-color.png"}
-                    style={{ height: "100%", width: "auto" }}
-                  />
-                </Box>
-              </Box>
-            </HStack>
+            <CKHLogo
+              hexagonFill={isInverted ? colors.brand[800] : colors.brand[700]}
+              hexagonOutline={isInverted ? "#FFF" : "none"}
+              owlFill="#FFF"
+              mainTextFill={isInverted ? "#FFF" : colors.brand[700]}
+              subtitleText={colors.gray[500]}
+            />
           </Link>
           <HStack spacing={[0, null, null, null, 6]}>
             <HStack
@@ -246,7 +218,11 @@ export default function SiteHeader() {
                 .filter((d) => d.level === 1)
                 .map((navItem) => {
                   return (
-                    <Link key={navItem.href} href={navItem.href} variant="navigationLink">
+                    <Link
+                      key={navItem.href}
+                      href={navItem.href}
+                      variant="navigationLink"
+                    >
                       {navItem.label}
                     </Link>
                   )

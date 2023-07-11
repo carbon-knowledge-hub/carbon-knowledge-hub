@@ -8,6 +8,8 @@ import {
   HStack,
   Divider,
   Center,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/layout"
 import uniqBy from "lodash/uniqBy"
 
@@ -26,6 +28,17 @@ import SEO from "@components/SEO"
 export default function IndexPage({ stories }) {
   const factsheets = useFactsheetStore((state) => state.factsheets)
   const basics = useBasicsStore((state) => state.basics)
+
+  const managingPartners = [
+    { src: "B20-logo.png", name: "B20 Indonesia 2022" },
+    { src: "ASEAN-BAC-logo.png", name: "ASEAN BAC" },
+    {
+      src: "kadin-logo.png",
+      name: "Indonesian Chamber of Commerce and Industry",
+    },
+    { src: "bnef-logo.png", name: "BloombergNEF" },
+  ]
+
   return (
     <>
       <SEO />
@@ -88,7 +101,7 @@ export default function IndexPage({ stories }) {
                   </Box>
                   <Divider borderColor="gray.200" />
                   <Box>
-                  <Link href="/factsheets" variant="banner">
+                    <Link href="/factsheets" variant="banner">
                       {"The nitty gritty of carbon trading"}
                       <ArrowRightIcon size="1.5rem" />
                     </Link>
@@ -118,6 +131,35 @@ export default function IndexPage({ stories }) {
             </Text>
           </Box>
         </SimpleGrid>
+
+        <Container>
+          <Stack spacing={[10, null, 28]} alignItems="center">
+            <Heading as="h2" fontSize={["xl", null, "2xl"]}>
+              {"Managing partners"}
+            </Heading>
+            <Wrap
+              spacingX="7.5rem"
+              spacingY="2.5rem"
+              sx={{ ul: { justifyContent: "center" } }}
+            >
+              {managingPartners.map(({ name, src }) => {
+                return (
+                  <WrapItem key={name}>
+                    <Image
+                      src={src}
+                      width="auto"
+                      height="7.25rem"
+                      maxW="20rem"
+                      objectFit="contain"
+                      alt={name}
+                    />
+                  </WrapItem>
+                )
+              })}
+            </Wrap>
+          </Stack>
+        </Container>
+
         <Container>
           <Stack spacing={[10, null, 28]}>
             <Stack spacing={5}>

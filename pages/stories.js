@@ -1,12 +1,15 @@
+import { useState } from "react"
 import {
   Box,
   Heading,
   SimpleGrid,
   Stack,
+  HStack,
   Text,
   Container,
   Divider,
 } from "@chakra-ui/layout"
+import { Tabs, TabList, Tab } from "@chakra-ui/tabs"
 import { csvParse } from "d3-dsv"
 import { readFile } from "fs/promises"
 import { join } from "path"
@@ -73,25 +76,25 @@ const StoryCard = ({
             {"Download as pdf"}
           </ButtonLink>
         </Stack>
-        {/* <Divider borderColor="gray.300" /> */}
-        {/* <Stack px={5}>
-          <Text variant="metaText" fontSize="xs" color="gray.500">
-            {"Related factsheets"}
-          </Text>
-        </Stack> */}
       </Stack>
     </Box>
   )
 }
 
-function CustomComponent() {
-  return <Box>{"This"}</Box>
-}
+export default function StoriesPage({ stories, uniqPartners, categories }) {
+  const [filteredStories, setFilteredStories] = useState(stories)
+  const [currentCategory, setCurrentCategory] = useState("All")
 
-CustomComponent.displayName = "Custom component"
+  const handleChange = (categoryIndex) => {
+    const category = categories[categoryIndex]
+    setFilteredStories(
+      category === "All"
+        ? stories
+        : stories.filter((d) => d.partner_category.includes(category))
+    )
+    setCurrentCategory(category)
+  }
 
-export default function StoriesPage({ stories }) {
-  const uniqPartners = uniqBy(stories, (o) => o.partner_logo)
   return (
     <>
       <SEO
@@ -101,7 +104,6 @@ export default function StoriesPage({ stories }) {
       <Stack spacing={[5, null, 10]}>
         <PageHeader bc={[{ label: "Stories" }]}>
           <PageTitle>{"Stories"}</PageTitle>
-          {/* <PageDescription>{"Something goes here."}</PageDescription> */}
           <PartnersList
             partners={uniqPartners}
             columns={[2, 3, 4, null, 5]}
@@ -116,11 +118,40 @@ export default function StoriesPage({ stories }) {
           <Container py={10}>
             <SimpleGrid columns={8}>
               <Stack spacing={6} gridColumn={["1 / -1", null, "2 / -2"]}>
-                <Text fontWeight={600} color="gray.600">{`${stories.length} ${
-                  stories.length === 1 ? "story" : "stories"
-                }`}</Text>
+                <HStack spacing={10} justifyContent="space-between">
+                  {categories.length > 1 && (
+                    <Tabs
+                      variant="unstyled"
+                      value={currentCategory}
+                      onChange={handleChange}
+                    >
+                      <TabList gap={1}>
+                        {categories.map((category) => {
+                          return (
+                            <Tab
+                              key={category}
+                              h="2.5rem"
+                              borderRadius="md"
+                              _selected={{ bg: "brand.500", color: "white" }}
+                              _focusVisible={{
+                                outline: "0.125rem solid",
+                                outlineColor: "brand.500",
+                              }}
+                            >
+                              {category}
+                            </Tab>
+                          )
+                        })}
+                      </TabList>
+                    </Tabs>
+                  )}
+                  <Text fontWeight={600} color="gray.600">{`${stories.length} ${
+                    stories.length === 1 ? "story" : "stories"
+                  }`}</Text>
+                </HStack>
+
                 <SimpleGrid columns={[1, null, 2]} gridGap={10}>
-                  {stories.map((story) => {
+                  {filteredStories.map((story) => {
                     const key = story.story_title
                       .toLowerCase()
                       .split(" ")
@@ -142,10 +173,16 @@ export async function getStaticProps(ctx) {
     join(process.cwd(), "/public/partners.csv"),
     "utf8"
   )
-  const stories = csvParse(storiesRaw).filter(
-    (d) => d.story_title && d.story_url
-  )
+  const stories = csvParse(storiesRaw)
+    .filter((d) => d.story_title && d.story_url)
+    .map((d) => {
+      return { ...d, partner_category: d.partner_category.split(";") }
+    })
+  const uniqCategories = uniqBy(
+    stories.flatMap((d) => d.partner_category)
+  ).filter((d) => d)
+  const uniqPartners = uniqBy(stories, (o) => o.partner_logo)
   return {
-    props: { stories },
+    props: { stories, uniqPartners, categories: ["All", ...uniqCategories] },
   }
 }
