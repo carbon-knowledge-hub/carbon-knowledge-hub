@@ -361,10 +361,11 @@ export async function getStaticProps(ctx) {
 function UpdatesListing({ data }) {
   return (
     <SimpleGrid columns={[1, null, 2, 3]} gridGap={10}>
-      {data.map((d, i) => {
-        console.log(d)
-        return <UpdatesListingItem key={i} {...d} />
-      })}
+      {data
+        .filter((d) => d.title || d.story_title)
+        .map((d, i) => {
+          return <UpdatesListingItem key={i} {...d} />
+        })}
     </SimpleGrid>
   )
 }
@@ -376,7 +377,6 @@ function UpdatesListingItem({
   title,
   url,
   href,
-  ...rest
 }) {
   const contentType = story_title
     ? "Story"
@@ -390,8 +390,6 @@ function UpdatesListingItem({
 
   const finalHref =
     href || url || (story_url ? `/pdf/stories/${story_url}` : "")
-
-  console.log(contentType, href, url, finalHref)
 
   return (
     <Stack spacing={3}>
