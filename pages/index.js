@@ -1,3 +1,4 @@
+import { useMemo } from "react"
 import {
   Box,
   Heading,
@@ -12,10 +13,12 @@ import {
   WrapItem,
 } from "@chakra-ui/layout"
 import uniqBy from "lodash/uniqBy"
+import sortBy from "lodash/sortBy"
+import day from "dayjs"
 
 import { ButtonLink, Link } from "@components/Link"
 import EmailLink from "@components/EmailLink"
-import { ArrowRightIcon } from "@components/Icon"
+import { ArrowRightIcon, ExternalLinkIcon } from "@components/Icon"
 import BasicCard from "@components/BasicCard"
 import FactsheetCard from "@components/FactsheetCard"
 import Image from "@components/Image"
@@ -25,7 +28,7 @@ import { readFile } from "fs/promises"
 import { join } from "path"
 import SEO from "@components/SEO"
 
-export default function IndexPage({ stories }) {
+export default function IndexPage({ partners, stories, media }) {
   const factsheets = useFactsheetStore((state) => state.factsheets)
   const basics = useBasicsStore((state) => state.basics)
 
@@ -38,6 +41,19 @@ export default function IndexPage({ stories }) {
     },
     { src: "bnef-logo.png", name: "BloombergNEF" },
   ]
+
+  const latestUpdates = useMemo(() => {
+    const updates = [
+      ...stories.slice(0, 3),
+      ...media.slice(0, 3),
+      ...factsheets.slice(0, 3),
+      ...basics.slice(0, 3),
+    ].map((d) => {
+      console.log(day(d?.date || "").format("YYYY-MM-DD"))
+      return { ...d, date: day(d?.date || "").format("YYYY-MM-DD") }
+    })
+    return sortBy(updates, (o) => -parseInt(o.date.split("-").join("") || 0))
+  }, [stories.length, media.length, factsheets.length, basics.length])
 
   return (
     <>
@@ -131,6 +147,20 @@ export default function IndexPage({ stories }) {
             </Text>
           </Box>
         </SimpleGrid>
+
+        <Container>
+          <Stack spacing={[10, null, 28]}>
+            <Stack spacing={5}>
+              <Heading as="h2" fontSize={["xl", null, "2xl"]}>
+                {"Latest updates"}
+              </Heading>
+              <Text variant="lead">
+                {"See what's new on the Carbon Knowledge Hub"}
+              </Text>
+            </Stack>
+            <UpdatesListing data={latestUpdates} />
+          </Stack>
+        </Container>
 
         <Container>
           <Stack spacing={[10, null, 28]} alignItems="center">
@@ -237,7 +267,7 @@ export default function IndexPage({ stories }) {
               pt={10}
               gridColumn={["1 / -1", null, "2 / -2"]}
             >
-              {stories.map(({ partner_logo }, i) => {
+              {partners.map(({ partner_logo }, i) => {
                 return (
                   <Center key={partner_logo + i}>
                     <Image
@@ -312,7 +342,85 @@ export async function getStaticProps(ctx) {
     "utf8"
   )
   const stories = csvParse(storiesRaw)
+
+  const mediaRaw = await readFile(
+    join(process.cwd(), "/public/media.csv"),
+    "utf8"
+  )
+  const media = csvParse(mediaRaw)
+
   return {
-    props: { stories: uniqBy(stories, (o) => o.partner_logo) },
+    props: {
+      partners: uniqBy(stories, (o) => o.partner_logo),
+      stories,
+      media,
+    },
   }
+}
+
+function UpdatesListing({ data }) {
+  return (
+    <SimpleGrid columns={[1, null, 2, 3]} gridGap={10}>
+      {data.map((d, i) => {
+        console.log(d)
+        return <UpdatesListingItem key={i} {...d} />
+      })}
+    </SimpleGrid>
+  )
+}
+
+function UpdatesListingItem({
+  date,
+  story_title,
+  story_url,
+  title,
+  url,
+  href,
+  ...rest
+}) {
+  const contentType = story_title
+    ? "Story"
+    : url
+    ? "Media"
+    : href?.includes("/factsheets/")
+    ? "Factsheet"
+    : href?.includes("/basics/")
+    ? "Basics"
+    : ""
+
+  const finalHref =
+    href || url || (story_url ? `/pdf/stories/${story_url}` : "")
+
+  console.log(contentType, href, url, finalHref)
+
+  return (
+    <Stack spacing={3}>
+      <HStack fontSize="md" lineHeight="shorter" fontWeight={600} spacing={2}>
+        <Box color="gray.500"> {date || ""}</Box>
+        <Box color="red.500">{" | "}</Box>
+        <Box color="red.500">{contentType}</Box>
+      </HStack>
+      <Box fontSize="lg" fontWeight={600}>
+        <Link
+          href={finalHref}
+          variant="banner"
+          alignItems="flex-start"
+          px={0}
+          color="inherit"
+          h="auto"
+        >
+          {story_title ||
+            title ||
+            url
+              .split(".com")[0]
+              .split(".")
+              .slice(-1)[0]
+              .split("//")
+              .slice(-1)[0] ||
+            ""}
+          <ArrowRightIcon size="1.5rem" flex="none" />
+        </Link>
+      </Box>
+    </Stack>
+  )
 }
