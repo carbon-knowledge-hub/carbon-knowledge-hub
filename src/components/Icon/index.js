@@ -105,7 +105,7 @@ export const ArrowLeftIcon = ({
       fill="none"
       {...restProps}
     >
-      <path d="M19 12H6M12 5l-7 7 7 7"/>
+      <path d="M19 12H6M12 5l-7 7 7 7" />
     </SvgContainer>
   )
 }
@@ -295,7 +295,6 @@ export const MailIcon = ({
   )
 }
 
-
 export const FilterIcon = ({
   strokeWidth = 2,
   stroke = "currentcolor",
@@ -338,6 +337,24 @@ export const DownloadIcon = ({
   )
 }
 
+export const FileIcon = ({
+  strokeWidth = 2,
+  stroke = "currentcolor",
+  ...restProps
+}) => {
+  return (
+    <SvgContainer
+      strokeWidth={strokeWidth}
+      stroke={stroke}
+      fill="none"
+      {...restProps}
+    >
+      <path d="M13 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V9l-7-7z" />
+      <path d="M13 3v6h6" />
+    </SvgContainer>
+  )
+}
+
 export const TwitterIcon = ({
   strokeWidth = 2,
   fill = "currentcolor",
@@ -374,12 +391,12 @@ export const LightbulbIcon = ({
       fill="none"
       {...restProps}
     >
-        <path d="M1 12L3 12" />
-        <path d="M4.222 4.222L5.636 5.636" />
-        <path d="M12 1L12 3" />
-        <path d="M19.778 4.222L18.364 5.636" />
-        <path d="M23 12L21 12" />
-        <path d="M18 12a6 6 0 10-12 0 5.996 5.996 0 004 5.651V22h4v-4.349c2.329-.824 4-3.04 4-5.651z" />
+      <path d="M1 12L3 12" />
+      <path d="M4.222 4.222L5.636 5.636" />
+      <path d="M12 1L12 3" />
+      <path d="M19.778 4.222L18.364 5.636" />
+      <path d="M23 12L21 12" />
+      <path d="M18 12a6 6 0 10-12 0 5.996 5.996 0 004 5.651V22h4v-4.349c2.329-.824 4-3.04 4-5.651z" />
     </SvgContainer>
   )
 }

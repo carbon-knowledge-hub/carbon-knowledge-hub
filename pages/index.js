@@ -18,7 +18,7 @@ import day from "dayjs"
 
 import { ButtonLink, Link } from "@components/Link"
 import EmailLink from "@components/EmailLink"
-import { ArrowRightIcon, ExternalLinkIcon } from "@components/Icon"
+import { ArrowRightIcon, ExternalLinkIcon, FileIcon } from "@components/Icon"
 import BasicCard from "@components/BasicCard"
 import FactsheetCard from "@components/FactsheetCard"
 import Image from "@components/Image"
@@ -49,7 +49,6 @@ export default function IndexPage({ partners, stories, media }) {
       ...factsheets.slice(0, 3),
       ...basics.slice(0, 3),
     ].map((d) => {
-      console.log(day(d?.date || "").format("YYYY-MM-DD"))
       return { ...d, date: day(d?.date || "").format("YYYY-MM-DD") }
     })
     return sortBy(updates, (o) => -parseInt(o.date.split("-").join("") || 0))
@@ -148,7 +147,7 @@ export default function IndexPage({ partners, stories, media }) {
           </Box>
         </SimpleGrid>
 
-        <Container>
+        {/* <Container>
           <Stack spacing={[10, null, 28]}>
             <Stack spacing={5}>
               <Heading as="h2" fontSize={["xl", null, "2xl"]}>
@@ -160,7 +159,7 @@ export default function IndexPage({ partners, stories, media }) {
             </Stack>
             <UpdatesListing data={latestUpdates} />
           </Stack>
-        </Container>
+        </Container> */}
 
         <Container>
           <Stack spacing={[10, null, 28]} alignItems="center">
@@ -336,7 +335,7 @@ export default function IndexPage({ partners, stories, media }) {
   )
 }
 
-export async function getStaticProps(ctx) {
+export async function getStaticProps() {
   const storiesRaw = await readFile(
     join(process.cwd(), "/public/partners.csv"),
     "utf8"
@@ -391,6 +390,9 @@ function UpdatesListingItem({
   const finalHref =
     href || url || (story_url ? `/pdf/stories/${story_url}` : "")
 
+  const isExternal = finalHref.startsWith("http")
+  const isDownloadable = finalHref.toLowerCase().endsWith(".pdf")
+
   return (
     <Stack spacing={3}>
       <HStack fontSize="md" lineHeight="shorter" fontWeight={600} spacing={2}>
@@ -416,7 +418,13 @@ function UpdatesListingItem({
               .split("//")
               .slice(-1)[0] ||
             ""}
-          <ArrowRightIcon size="1.5rem" flex="none" />
+          {isExternal ? (
+            <ExternalLinkIcon size="1.5rem" flex="none" />
+          ) : isDownloadable ? (
+            <FileIcon size="1.5rem" flex="none" />
+          ) : (
+            <ArrowRightIcon size="1.5rem" flex="none" />
+          )}
         </Link>
       </Box>
     </Stack>
