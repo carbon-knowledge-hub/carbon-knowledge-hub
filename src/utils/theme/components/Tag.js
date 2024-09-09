@@ -46,7 +46,7 @@ export default {
         borderColor: `${colorScheme}.200`,
       },
     }),
-    "level": ({ colorScheme = "gray", fontSize="sm" }) => ({
+    "level": ({ colorScheme = "gray", fontSize = "sm" }) => ({
       "container": {
         borderRadius: "full",
         fontFamily: "mono",
@@ -59,6 +59,21 @@ export default {
         border: "0.0625rem solid",
         borderColor: `${colorScheme}.500`,
         verticalAlign: "middle",
+      },
+    }),
+    "date": ({ colorScheme = "gray", fontSize = "sm" }) => ({
+      "container": {
+        borderRadius: "none",
+        fontFamily: "mono",
+        fontSize: fontSize,
+        lineHeight: "short",
+        fontWeight: 600,
+        textTransform: "uppercase",
+        letterSpacing: "0.0625rem",
+        color: `${colorScheme}.500`,
+        border: "none",
+        verticalAlign: "middle",
+        px: 0,
       },
     }),
   },

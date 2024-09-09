@@ -1,5 +1,6 @@
 import { Box, Heading, Text, Stack, Wrap, WrapItem } from "@chakra-ui/layout"
 import { Tag, TagLabel } from "@chakra-ui/tag"
+import day from "dayjs"
 
 import { useFactsheetStore } from "@utils/store"
 import { LinkBox, LinkOverlay } from "@components/Link"
@@ -22,6 +23,7 @@ export default function FactsheetListing() {
             tags = [],
             marketType,
             organizationType,
+            date,
           }) => {
             if (!isVisible) return null
             return (
@@ -41,6 +43,18 @@ export default function FactsheetListing() {
                   boxShadow: "sm",
                 }}
               >
+                {/* {date && (
+                  <Tag
+                    position="absolute"
+                    top={4}
+                    left={[5, null, 10]}
+                    variant="date"
+                    colorScheme="gray"
+                    fontSize="xs"
+                  >
+                    {day(date).format("DD MMM YYYY")}
+                  </Tag>
+                )} */}
                 {level && (
                   <Tag
                     position="absolute"
