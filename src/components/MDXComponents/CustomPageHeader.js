@@ -7,7 +7,7 @@ import {
   HStack,
 } from "@chakra-ui/layout"
 import { Tag } from "@chakra-ui/tag"
-// import day from "dayjs"
+import day from "dayjs"
 
 import ShareButton from "@components/ShareButton"
 import { BreadCrumbs, BreadCrumb } from "@components/BreadCrumbs"
@@ -65,11 +65,11 @@ export default function CustomPageHeader({ metaData, children }) {
                     {metaData.level}
                   </Tag>
                 )}
-                {/* {metaData.date && (
+                {metaData.date && (
                   <Tag variant="date" color="brand.200">
                     {day(metaData.date).format("DD MMM YYYY")}
                   </Tag>
-                )} */}
+                )}
               </HStack>
             )}
           </Stack>

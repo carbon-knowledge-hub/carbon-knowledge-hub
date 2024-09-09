@@ -44,10 +44,10 @@ export default function IndexPage({ partners, stories, media }) {
 
   const latestUpdates = useMemo(() => {
     const updates = [
-      ...stories.slice(0, 3),
-      ...media.slice(0, 3),
-      ...factsheets.slice(0, 3),
-      ...basics.slice(0, 3),
+      ...stories.filter((d) => d.date && d.story_title).slice(0, 3),
+      ...media.filter((d) => d.date && d.title).slice(0, 3),
+      ...factsheets.filter((d) => d.date).slice(0, 3),
+      ...basics.filter((d) => d.date).slice(0, 3),
     ].map((d) => {
       const date = day(d?.date || "")
       return {
@@ -56,6 +56,7 @@ export default function IndexPage({ partners, stories, media }) {
         sortingDate: parseInt(date.format("YYYYMMDD") || 0),
       }
     })
+
     return sortBy(updates, (o) => -o.sortingDate)
   }, [stories.length, media.length, factsheets.length, basics.length])
 
@@ -152,7 +153,7 @@ export default function IndexPage({ partners, stories, media }) {
           </Box>
         </SimpleGrid>
 
-        {/* <Container>
+        <Container>
           <Stack spacing={[10, null, 28]}>
             <Stack spacing={5}>
               <Heading as="h2" fontSize={["xl", null, "2xl"]}>
@@ -164,7 +165,7 @@ export default function IndexPage({ partners, stories, media }) {
             </Stack>
             <UpdatesListing data={latestUpdates} />
           </Stack>
-        </Container> */}
+        </Container>
 
         <Container>
           <Stack spacing={[10, null, 28]} alignItems="center">
@@ -346,12 +347,6 @@ export async function getStaticProps() {
     "utf8"
   )
   const stories = csvParse(storiesRaw)
-
-  // const mediaRaw = await readFile(
-  //   join(process.cwd(), "/public/media.csv"),
-  //   "utf8"
-  // )
-  // const media = csvParse(mediaRaw)
 
   const media = await readFile(
     join(process.cwd(), "/public/media.json"),

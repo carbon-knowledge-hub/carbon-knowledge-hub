@@ -43,7 +43,7 @@ export default function FactsheetListing() {
                   boxShadow: "sm",
                 }}
               >
-                {/* {date && (
+                {date && (
                   <Tag
                     position="absolute"
                     top={4}
@@ -54,7 +54,7 @@ export default function FactsheetListing() {
                   >
                     {day(date).format("DD MMM YYYY")}
                   </Tag>
-                )} */}
+                )}
                 {level && (
                   <Tag
                     position="absolute"

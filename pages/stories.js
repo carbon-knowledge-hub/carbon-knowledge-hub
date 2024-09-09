@@ -14,6 +14,7 @@ import { csvParse } from "d3-dsv"
 import { readFile } from "fs/promises"
 import { join } from "path"
 import uniqBy from "lodash/uniqBy"
+import day from "dayjs"
 
 import { DownloadIcon } from "@components/Icon"
 import { ButtonLink } from "@components/Link"
@@ -29,6 +30,7 @@ const StoryCard = ({
   story_title,
   story_description,
   story_url,
+  date,
 }) => {
   const isLocalPdf =
     !story_url.includes("https://") && story_url.includes(".pdf")
@@ -57,11 +59,21 @@ const StoryCard = ({
             type="partnerLogo"
           />
         </Box>
-        <Stack spacing={10} px={5}>
-          <Text variant="metaText" color="red.500">
-            {partner_name}
-          </Text>
-          <Stack spacing={5}>
+        <Stack spacing={10} px={5} flex={1}>
+          <HStack spacing={3}>
+            <Text variant="metaText" color="red.500">
+              {partner_name}
+            </Text>
+            {date && (
+              <>
+                <Box h="1rem" w="0.125rem" bg="gray.200" />
+                <Text variant="metaText" color="gray.500">
+                  {day(date).format("DD MMM YYYY")}
+                </Text>
+              </>
+            )}
+          </HStack>
+          <Stack spacing={5} flex={1}>
             <Heading>{story_title}</Heading>
             <Text>{story_description}</Text>
           </Stack>
@@ -117,7 +129,7 @@ export default function StoriesPage({ stories, uniqPartners, categories }) {
           <Divider borderColor="gray.100" />
           <Container py={10}>
             <SimpleGrid columns={8}>
-              <Stack spacing={6} gridColumn={["1 / -1", null, "2 / -2"]}>
+              <Stack spacing={6} gridColumn={["1 / -1", null, null, "2 / -2"]}>
                 <HStack spacing={10} justifyContent="space-between">
                   {categories.length > 1 && (
                     <Tabs

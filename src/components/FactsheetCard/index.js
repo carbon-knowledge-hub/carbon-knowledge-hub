@@ -1,5 +1,6 @@
 import { Heading, Text, Stack, Wrap, WrapItem } from "@chakra-ui/layout"
 import { Tag, TagLabel } from "@chakra-ui/tag"
+import day from "dayjs"
 
 import { LinkOverlay, LinkBox } from "@components/Link"
 export default function FactsheetCard({ d }) {
@@ -20,6 +21,18 @@ export default function FactsheetCard({ d }) {
         boxShadow: "sm",
       }}
     >
+      {d.date && (
+        <Tag
+          position="absolute"
+          top={4}
+          left={[5, null, 10]}
+          variant="date"
+          colorScheme="gray"
+          fontSize="xs"
+        >
+          {day(d.date).format("DD MMM YYYY")}
+        </Tag>
+      )}
       {d.level && (
         <Tag
           position="absolute"
