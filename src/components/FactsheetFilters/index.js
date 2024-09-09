@@ -29,7 +29,6 @@ export default function FactsheetFilters({
       >
         <Accordion allowMultiple={allowMultiple} defaultIndex={defaultIndex}>
           {filters.map(({ id, label, options, value }) => {
-            console.log("V", value)
             return (
               <AccordionItem
                 key={id}
@@ -39,22 +38,20 @@ export default function FactsheetFilters({
                 _first={{ borderTopColor: "transparent" }}
               >
                 <Stack spacing={0}>
-                <h2>
-                  <AccordionButton
-                    px={0}
-                    _hover={{ "bg": "transparent" }}
-                    _focus={{ "bg": "transparent" }}
-                    _active={{ "bg": "transparent" }}
-                  >
-                    <Box flex="1" textAlign="left">
-                      <Text variant="metaText">{label}</Text>
-                    </Box>
-                    <AccordionIcon />
-                  </AccordionButton>
-                </h2>
-                <p>
+                  <h2>
+                    <AccordionButton
+                      px={0}
+                      _hover={{ "bg": "transparent" }}
+                      _focus={{ "bg": "transparent" }}
+                      _active={{ "bg": "transparent" }}
+                    >
+                      <Text variant="metaText" flex="1" textAlign="left">
+                        {label}
+                      </Text>
+                      <AccordionIcon />
+                    </AccordionButton>
+                  </h2>
                   <Text color="gray.600">{value}</Text>
-                </p>
                 </Stack>
                 <AccordionPanel px={1}>
                   <RadioGroup

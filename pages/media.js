@@ -10,7 +10,6 @@ import {
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/tabs"
 import { readFile } from "fs/promises"
 import { join } from "path"
-import { csvParse } from "d3-dsv"
 import day from "dayjs"
 
 import { BreadCrumbs, BreadCrumb } from "@components/BreadCrumbs"
@@ -170,11 +169,10 @@ export default function MediaPage({ items }) {
 }
 
 export async function getStaticProps(ctx) {
-  const mediaRaw = await readFile(
-    join(process.cwd(), "/public/media.csv"),
+  const mediaItems = await readFile(
+    join(process.cwd(), "/public/media.json"),
     "utf8"
-  )
-  const mediaItems = csvParse(mediaRaw)
+  ).then((res) => JSON.parse(res.trim()))
 
   const vimeoItems = await Promise.all(
     mediaItems

@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "develop": "npm run prepareStories && npm run prepareNavigation && npm run prepareImages && next",
+    "develop": "npm run prepareStories && npm run prepareMedia && npm run prepareNavigation && npm run prepareImages && next",
     "build": "next build",
-    "export": "npm run prepareStories && npm run prepareNavigation && npm run prepareImages && npm run build && next export",
+    "export": "npm run prepareStories && npm run prepareMedia && npm run prepareNavigation && npm run prepareImages && npm run build && next export",
     "clean": "rm -Rf out && rm -Rf .next",
     "prepareNavigation": "node ./scripts/prepareNavigation.mjs",
     "prepareImages": "node ./scripts/images.js",
     "prepareStories": "rm -Rf ./public/pdf && mkdir ./public/pdf && cp -R ./stories ./public/pdf/stories && cp ./data/partners.csv ./public/partners.csv && cp ./data/media.csv ./public/media.csv",
+    "prepareMedia": "node ./scripts/prepareMedia.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

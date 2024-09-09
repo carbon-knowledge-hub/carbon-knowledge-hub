@@ -49,9 +49,14 @@ export default function IndexPage({ partners, stories, media }) {
       ...factsheets.slice(0, 3),
       ...basics.slice(0, 3),
     ].map((d) => {
-      return { ...d, date: day(d?.date || "").format("YYYY-MM-DD") }
+      const date = day(d?.date || "")
+      return {
+        ...d,
+        date: date.format("DD MMM YYYY"),
+        sortingDate: parseInt(date.format("YYYYMMDD") || 0),
+      }
     })
-    return sortBy(updates, (o) => -parseInt(o.date.split("-").join("") || 0))
+    return sortBy(updates, (o) => -o.sortingDate)
   }, [stories.length, media.length, factsheets.length, basics.length])
 
   return (
@@ -342,11 +347,16 @@ export async function getStaticProps() {
   )
   const stories = csvParse(storiesRaw)
 
-  const mediaRaw = await readFile(
-    join(process.cwd(), "/public/media.csv"),
+  // const mediaRaw = await readFile(
+  //   join(process.cwd(), "/public/media.csv"),
+  //   "utf8"
+  // )
+  // const media = csvParse(mediaRaw)
+
+  const media = await readFile(
+    join(process.cwd(), "/public/media.json"),
     "utf8"
-  )
-  const media = csvParse(mediaRaw)
+  ).then((res) => JSON.parse(res.trim()))
 
   return {
     props: {
@@ -373,13 +383,14 @@ function UpdatesListingItem({
   date,
   story_title,
   story_url,
+  mediaCategory,
   title,
   url,
   href,
 }) {
   const contentType = story_title
     ? "Story"
-    : url
+    : mediaCategory
     ? "Media"
     : href?.includes("/factsheets/")
     ? "Factsheet"
