@@ -3,10 +3,24 @@ import fetch from "node-fetch"
 import { join } from "path"
 import { csvParse } from "d3-dsv"
 
-const mediaItems = await readFile(
+const mediaItemsRaw = await readFile(
   join(process.env.PWD, "data", "media.csv"),
   "utf8"
 ).then((d) => csvParse(d.trim()))
+
+const allUrls = mediaItemsRaw.map((d) => d.url)
+
+const previouslyPreparedMediaItems = await readFile(
+  join(process.env.PWD, "public", "media.json"),
+  "utf8"
+)
+  .then((d) => JSON.parse(d.trim()))
+  .catch(() => [])
+
+const mediaItems = mediaItemsRaw.filter((d) => {
+  const relevantItem = previouslyPreparedMediaItems.find((s) => s.url === d.url)
+  return !relevantItem
+})
 
 const vimeoItems = await Promise.all(
   mediaItems
@@ -67,7 +81,11 @@ const spotifyItems = await Promise.all(
     })
 )
 
-const finalMediaItems = [...vimeoItems, ...spotifyItems]
+const finalMediaItems = [
+  ...previouslyPreparedMediaItems.filter((d) => allUrls.includes(d.url)),
+  ...vimeoItems,
+  ...spotifyItems,
+]
 
 await writeFile(
   join(process.env.PWD, "public", "media.json"),
