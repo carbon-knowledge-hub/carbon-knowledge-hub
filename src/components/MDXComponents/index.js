@@ -186,4 +186,7 @@ export default {
       <Text variant="metaHeading" color="gray.500" mt={4} mb={-4} {...props} />
     )
   },
+  PartnersList: (props) => {
+    return null
+  },
 }
