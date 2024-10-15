@@ -1,9 +1,9 @@
 import {
-  Text,
+  // Text,
   Box,
   Container,
   SimpleGrid,
-  Stack,
+  // Stack,
   Divider,
 } from "@chakra-ui/react"
 import { MDXRemote } from "next-mdx-remote"
@@ -17,13 +17,13 @@ import {
   PageHeaderContent,
   PageHeaderBreadcrumbs,
   PageHeaderTitle,
-  PageHeaderDescription,
+  // PageHeaderDescription,
 } from "@/components/PageHeader"
 
 export default function DataTrackerPage({ source }) {
   const { frontmatter } = source
-  const title = source.frontmatter.title
-  const description = source.frontmatter.description
+  const { title } = frontmatter
+  // const description = source.frontmatter.description
   return (
     <>
       <SiteHeader />
@@ -48,8 +48,7 @@ export default function DataTrackerPage({ source }) {
             position="sticky"
             top={10}
             display={["none", null, null, "block"]}
-          >
-          </Box>
+          ></Box>
         </SimpleGrid>
       </Container>
     </>

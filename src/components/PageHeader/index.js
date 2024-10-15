@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react"
 
 import BBGrid from "@/components/BBGrid"
-import { BreadCrumbs, BreadCrumb } from "@/components/Breadcrumbs"
+// import { BreadCrumbs, BreadCrumb } from "@/components/Breadcrumbs"
 
 export function PageHeader({ bg = "white", color = "inherit", ...props }) {
   return (
@@ -102,26 +102,27 @@ export function PageHeaderContent(props) {
 }
 
 export function PageHeaderBreadcrumbs({ isInverted, items = [] }) {
-  return (
-    <Box>
-      <BreadCrumbs isInverted={isInverted}>
-        {items.map((item) => {
-          return (
-            <BreadCrumb
-              key={item.key || item.href || item.label}
-              isInverted={isInverted}
-              href={item.href}
-              whiteSpace="nowrap"
-              overflow="hidden"
-              textOverflow="ellipsis"
-            >
-              {item.label}
-            </BreadCrumb>
-          )
-        })}
-      </BreadCrumbs>
-    </Box>
-  )
+  return null
+  // return (
+  //   <Box>
+  //     <BreadCrumbs isInverted={isInverted}>
+  //       {items.map((item) => {
+  //         return (
+  //           <BreadCrumb
+  //             key={item.key || item.href || item.label}
+  //             isInverted={isInverted}
+  //             href={item.href}
+  //             whiteSpace="nowrap"
+  //             overflow="hidden"
+  //             textOverflow="ellipsis"
+  //           >
+  //             {item.label}
+  //           </BreadCrumb>
+  //         )
+  //       })}
+  //     </BreadCrumbs>
+  //   </Box>
+  // )
 }
 
 export function PageHeaderTitle(props) {
