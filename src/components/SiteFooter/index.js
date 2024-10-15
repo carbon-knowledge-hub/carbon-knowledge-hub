@@ -7,146 +7,68 @@ import {
   Text,
   Heading,
   Divider,
-} from "@chakra-ui/layout"
+} from "@chakra-ui/react"
 
-import EmailLink from "@components/EmailLink"
-import NewsletterSignup from "@components/NewsletterSignup"
-import { ButtonLink, Link } from "@components/Link"
-import { ArrowRightIcon } from "@components/Icon"
-import BNEFLogo from "@components/Logo/BNEFLogo"
-import { useFactsheetStore, useBasicsStore } from "@utils/store"
+import { ButtonLink, Link } from "@/components/Link"
+import NewsletterSignup from "@/components/NewsletterSignup"
+
+const extendedNavigationItems = [
+  { label: "Factsheets", href: "/factsheets" },
+  { label: "Data tracker", href: "/data-tracker" },
+  { label: "Stories", href: "/stories" },
+  { label: "Dictionary", href: "/dictionary" },
+  { label: "Media", href: "/media" },
+  { label: "Links", href: "/links" },
+  { label: "B20 recommendations", href: "/b20-recommendations" },
+  { label: "About", href: "/about" },
+  { label: "Partners", href: "/partners" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Contact", href: "/contact" },
+].map((d, i) => ({ ...d, key: i + 1 }))
 
 export default function SiteFooter() {
-  const factsheets = useFactsheetStore((state) => state.factsheets)
-  const basics = useBasicsStore((state) => state.basics)
   return (
     <>
-      <Box bg="brand.700" w="100%" position="relative">
-        <Container>
+      <Box bg="brand.1000" w="100%" position="relative">
+        <Container borderY="0.0625rem solid" borderColor="whiteAlpha.200">
           <SimpleGrid columns={8} gridGap={10}>
             <Stack
               gridColumn={[" 1 / -1", null, "2 / -2", null, " 3 / -3"]}
-              spacing={[5, null, 10]}
+              spacing={10}
               py={20}
             >
-              <Heading as="h2" fontSize={["xl", null, "2xl"]} color="white">
-                {"Stay up to date"}
-              </Heading>
-              <Text fontSize={["lg", null, "xl"]} color="brand.100">
-                {"Sign up to be alerted when the web platform goes live."}
-              </Text>
+              <Stack spacing={3}>
+                <Heading as="h2" variant="sectionHeading" color="white">
+                  {"Stay up to date"}
+                </Heading>
+                <Text variant="sectionSubheading" color="brand.100">
+                  {"Sign up to be alerted when the web platform goes live."}
+                </Text>
+              </Stack>
               <NewsletterSignup />
             </Stack>
           </SimpleGrid>
         </Container>
-        <Divider borderColor="brand.500" />
         <Stack
-          bg="brand.700"
+          bg="brand.1000"
           color="brand.100"
-          py={[10, null, 20]}
+          py={10}
           alignItems="center"
+          borderY="0.0625rem solid"
+          borderColor="whiteAlpha.200"
         >
           <Container>
-            <SimpleGrid columns={[1, null, 2, 4]} gridGap={10}>
-              <Stack spacing={5}>
-                <HStack spacing={3}>
-                  <Box
-                    textTransform="uppercase"
-                    fontFamily="mono"
-                    fontSize="sm"
-                  >
-                    {"Basics"}
-                  </Box>
-                </HStack>
-                {basics.slice(0, 2).map(({ title, href }) => {
-                  return (
-                    <Link key={href} href={href}>
-                      {title}
-                    </Link>
-                  )
-                })}
-                <ButtonLink
-                  href="/basics"
-                  rightIcon={<ArrowRightIcon size="1.25rem" />}
-                  alignSelf="flex-start"
-                  color="white"
-                  bg="transparent"
-                  _hover={{ "bg": "transparent", "color": "brand.200" }}
-                  _focus={{ "bg": "transparent", "color": "brand.200" }}
-                  _active={{ "bg": "transparent", "color": "brand.200" }}
-                  px="0"
-                >
-                  {"All basics"}
-                </ButtonLink>
-              </Stack>
-              <Stack spacing={5}>
-                <HStack spacing={3}>
-                  <Box
-                    textTransform="uppercase"
-                    fontFamily="mono"
-                    fontSize="sm"
-                  >
-                    {"Factsheets"}
-                  </Box>
-                </HStack>
-                {factsheets.slice(0, 2).map(({ title, href }) => {
-                  return (
-                    <Link key={href} href={href}>
-                      {title}
-                    </Link>
-                  )
-                })}
-                <ButtonLink
-                  href="/factsheets"
-                  rightIcon={<ArrowRightIcon size="1.25rem" />}
-                  alignSelf="flex-start"
-                  color="white"
-                  bg="transparent"
-                  _hover={{ "bg": "transparent", "color": "brand.200" }}
-                  _focus={{ "bg": "transparent", "color": "brand.200" }}
-                  _active={{ "bg": "transparent", "color": "brand.200" }}
-                  px="0"
-                >
-                  {"All factsheets"}
-                </ButtonLink>
-              </Stack>
-              <Stack spacing={5}>
-                <Box textTransform="uppercase" fontFamily="mono" fontSize="sm">
-                  {"Partners"}
-                </Box>
-
-                <Link href="/stories">{"Stories"}</Link>
-                <Link href="/partners">{"Partners"}</Link>
-                <EmailLink
-                  label="Become a partner"
-                  color="white"
-                  bg="transparent"
-                  _hover={{ "bg": "transparent", "color": "brand.200" }}
-                  _focus={{ "bg": "transparent", "color": "brand.200" }}
-                  _active={{ "bg": "transparent", "color": "brand.200" }}
-                  px="0"
-                />
-              </Stack>
-              <Stack spacing={5}>
-                <Box textTransform="uppercase" fontFamily="mono" fontSize="sm">
-                  {"More"}
-                </Box>
-                <Link href="/about">{"About"}</Link>
-                <Link href="/faq">{"FAQ"}</Link>
-                <EmailLink
-                  label="Get in touch"
-                  color="white"
-                  bg="transparent"
-                  _hover={{ "bg": "transparent", "color": "brand.200" }}
-                  _focus={{ "bg": "transparent", "color": "brand.200" }}
-                  _active={{ "bg": "transparent", "color": "brand.200" }}
-                  px="0"
-                />
-              </Stack>
+            <SimpleGrid columns={[1, null, 2, null, 4]} gridGap={10}>
+              {extendedNavigationItems.map(({ label, href }) => {
+                return (
+                  <Link key={href} href={href} variant="footerLink">
+                    {label}
+                  </Link>
+                )
+              })}
             </SimpleGrid>
           </Container>
         </Stack>
-        <Divider borderColor="brand.500" />
         <Container color="brand.100" fontSize="sm" py={5}>
           <Stack
             justifyContent="space-between"
@@ -171,9 +93,9 @@ export default function SiteFooter() {
                 </Link>
               </HStack>
             </Stack>
-            <Box flex="none">
+            {/* <Box flex="none">
               <BNEFLogo />
-            </Box>
+            </Box> */}
           </Stack>
         </Container>
       </Box>

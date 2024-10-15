@@ -1,1 +1,0 @@
-export default {"defaultProps":{"colorScheme":"action","size":"md"},"baseStyle":{"bg":"gray.100","borderRadius":"md","borderWidth":"1px","borderBottomWidth":"3px","fontSize":"0.8em","fontWeight":"bold","lineHeight":"normal","px":"0.4em","whiteSpace":"nowrap"},"variants":{},"sizes":{}}

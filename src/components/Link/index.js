@@ -1,41 +1,37 @@
+import { forwardRef } from "react"
 import {
   Link as ChakraLink,
   LinkBox as ChakraLinkBox,
   LinkOverlay as ChakraLinkOverlay,
-} from "@chakra-ui/layout"
-import { Button } from "@chakra-ui/button"
+  Button,
+} from "@chakra-ui/react"
 import NextLink from "next/link"
 
 export const LinkBox = ChakraLinkBox
+export const LinkOverlay = forwardRef((props, ref) => (
+  <ChakraLinkOverlay ref={ref} as={NextLink} scroll={true} {...props} />
+))
 
-export const LinkOverlay = ({ href, ...restProps }) => {
-  return (
-    <NextLink href={href} passHref>
-      <ChakraLinkOverlay
-        _focusVisible={{
-          borderRadius: "sm",
-          outline: "0.125rem solid",
-          outlineColor: "gray.300",
-          outlineOffset: "0.125rem",
-        }}
-        {...restProps}
-      />
-    </NextLink>
-  )
-}
+export const Link = forwardRef(
+  ({ children, leftIcon = null, rightIcon = null, ...restProps }, ref) => {
+    return (
+      <ChakraLink ref={ref} as={NextLink} scroll={true} {...restProps}>
+        {leftIcon}
+        {children}
+        {rightIcon}
+      </ChakraLink>
+    )
+  }
+)
 
-export const Link = ({ href, ...restProps }) => {
+export const ButtonLink = forwardRef((props, ref) => {
   return (
-    <NextLink href={href} passHref>
-      <ChakraLink {...restProps} />
-    </NextLink>
+    <Button
+      ref={ref}
+      as={NextLink}
+      scroll={true}
+      borderRadius="none"
+      {...props}
+    />
   )
-}
-
-export const ButtonLink = ({ href, ...restProps }) => {
-  return (
-    <NextLink href={href} passHref>
-      <Button as="a" {...restProps} />
-    </NextLink>
-  )
-}
+})

@@ -1,6 +1,9 @@
-import { AspectRatio, Box } from "@chakra-ui/layout"
-import { useTheme } from "@chakra-ui/system"
-import { imageTypes } from "../../../images.config"
+import { AspectRatio, Box, useTheme } from "@chakra-ui/react"
+
+// Set image sizes here
+// The "ending" is used to add a suffix to the image
+// and to reference it in the imageTypes "sizes" array
+import { imageTypes } from "./imageConfig"
 
 export default function Image({
   src = "cover.jpg",

@@ -1,21 +1,22 @@
-import { Text, Stack, HStack } from "@chakra-ui/layout"
-import { LightbulbIcon } from "@components/Icon"
+import { Text, Stack, HStack } from "@chakra-ui/react"
+import { ListIcon } from "@/components/Icon"
 
 export default function KeyMessage({ children }) {
   return (
     <Stack
-      bg="brand.50"
-      color="brand.700"
-      p={8}
+      bg="primary.50"
+      color="primary.700"
+      px={8}
+      pt={8}
+      pb={2}
       spacing={5}
-      maxW="48rem"
-      borderRadius="md"
+      maxW="64rem"
       borderWidth="0.125rem"
-      borderColor="brand.700"
+      borderColor="primary.300"
     >
       <HStack spacing={3} alignItems="center">
-        <LightbulbIcon />
-        <Text variant="metaText">{"Key message"}</Text>
+        <ListIcon />
+        <Text variant="metaHeading">{"Key message"}</Text>
       </HStack>
       {children}
     </Stack>

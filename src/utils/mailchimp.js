@@ -1,5 +1,5 @@
-import jsonp from "jsonp";
-import { validate } from "email-validator";
+import jsonp from "jsonp"
+import { validate } from "email-validator"
 
 /**
  * Make a jsonp request to user's mailchimp list

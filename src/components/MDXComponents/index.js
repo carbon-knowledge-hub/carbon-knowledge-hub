@@ -1,30 +1,15 @@
-import { Box, Center, Heading, Text, Stack } from "@chakra-ui/layout"
-import { createContext, useContext } from "react"
+import { Heading, Text, Box, Stack } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 
-import { Link } from "@components/Link"
-import PagesLayout from "@layouts/PagesLayout"
-import BasicsLayout from "@layouts/BasicsLayout"
-import FactsheetsLayout from "@layouts/FactsheetsLayout"
-import KeyMessage from "@components/KeyMessage"
-import Image from "@components/Image"
-import CustomPageHeader from "@components/MDXComponents/CustomPageHeader"
-import DefaultPageHeader from "@components/MDXComponents/DefaultPageHeader"
-import LinkItem from "@components/LinkItem"
-import FAQSection from "@components/FAQSection"
-import PartnersList from "@components/PartnersList"
-import {
-  Questions,
-  Question,
-  QuestionWrapper,
-  Answer,
-} from "@components/Question"
-
-const MetaDataContext = createContext({})
-
-const useMetaData = () => {
-  return useContext(MetaDataContext)
-}
+import { useDictionaryStore } from "@/utils/useDictionaryDrawer"
+import KeyMessage from "@/components/KeyMessage"
+import { Link } from "@/components/Link"
+import LinkItem from "@/components/LinkItem"
+import BubbleChart from "@/components/BubbleChart"
+import ChartWrapper from "@/components/ChartWrapper"
+import OffsetPrices2024Chart from "@/components/Charts/OffsetPrices2024Chart"
+import VoluntaryMarketForecastCharts from "@/components/Charts/VoluntaryMarketForecastCharts"
+import Image from "@/components/Image"
 
 function CustomLinkComponent(props) {
   const { pathname } = useRouter()
@@ -36,122 +21,54 @@ function CustomLinkComponent(props) {
   )
 }
 
-const components = {
-  h1: (props) => {
-    const metaData = useMetaData()
-    switch (metaData?.layout) {
-      case "factsheets":
-        return <CustomPageHeader metaData={metaData} {...props} />
-      case "basics":
-        return <CustomPageHeader metaData={metaData} {...props} />
-      default:
-        return <DefaultPageHeader metaData={metaData} {...props} />
-    }
-  },
-  h2: (props) => {
-    const { children, ...restProps } = props
-    const content = children.map
-      ? children.map((d) => d?.props?.children || d).join("")
-      : children || ""
-    const slug = content.split(" ").join("-").split(".").join("").toLowerCase()
-    return (
-      <Heading
-        as="h2"
-        w="100%"
-        maxW="container.sm"
-        fontSize="2xl"
-        pt="1rem"
-        position="relative"
-        gridColumn={["1 / -1", null, "2 / -3"]}
-        {...restProps}
-      >
-        <Center
-          as="a"
-          id={slug}
-          href={`#${slug}`}
-          position="absolute"
-          top="1rem"
-          right="100%"
-          w={["1rem", null, "2.375rem"]}
-          h={["2.375rem", null, "2.375rem"]}
-          fontSize={["md", null, "2xl"]}
-          color="gray.500"
-          opacity={0}
-          _hover={{ opacity: 1 }}
-          _focusVisible={{ opacity: 1 }}
-          aria-label={`${content} anchor`}
-        >
-          {"#"}
-        </Center>
-        {children}
-      </Heading>
-    )
-  },
-  h3: (props) => {
-    return (
-      <Heading
-        as="h3"
-        w="100%"
-        maxW="container.sm"
-        fontSize="xl"
-        pt="1rem"
-        gridColumn={["1 / -1", null, "2 / -3"]}
-        {...props}
-      />
-    )
-  },
-  h3: (props) => {
-    return (
-      <Heading
-        as="h3"
-        w="100%"
-        maxW="container.sm"
-        fontSize="xl"
-        pt="1rem"
-        gridColumn={["1 / -1", null, "2 / -3"]}
-        {...props}
-      />
-    )
+export default {
+  h1: (props) => <Heading as="h1" {...props} />,
+  h2: (props) => (
+    <Heading as="h2" variant="factsheetHeading2" pb={6} pt={6} {...props} />
+  ),
+  h3: (props) => (
+    <Heading as="h3" variant="factsheetHeading3" pb={6} pt={6} {...props} />
+  ),
+  h4: (props) => (
+    <Heading as="h4" variant="factsheetHeading4" pb={6} pt={6} {...props} />
+  ),
+  h5: (props) => (
+    <Heading as="h5" variant="factsheetHeading5" pb={6} pt={6} {...props} />
+  ),
+  h6: (props) => (
+    <Heading as="h6" variant="factsheetHeading6" pb={6} pt={6} {...props} />
+  ),
+  p: (props) => (
+    <Text
+      as="p"
+      fontWeight={500}
+      fontSize="xl"
+      lineHeight="taller"
+      pb={6}
+      {...props}
+    />
+  ),
+  Image,
+  img: (props) => {
+    return null
   },
   a: (props) => {
     if (!props.href) return <a {...props} />
     return <CustomLinkComponent {...props} />
   },
-  p: (props) => {
-    return (
-      <Text
-        as="p"
-        w="100%"
-        fontSize={["md", null, "lg"]}
-        lineHeight="tall"
-        maxW="container.sm"
-        gridColumn={["1 / -1", null, "2 / -3"]}
-        sx={{
-          ".dictionary-word": {
-            color: "brand.700",
-            bg: "brand.100",
-            fontWeight: "600",
-            p: "0.125rem",
-            borderRadius: "0.125rem",
-          },
-        }}
-        {...props}
-      />
-    )
-  },
   ul: (props) => {
     return (
       <Stack
         as="ul"
-        spacing={2}
+        spacing={6}
         w="100%"
-        maxW="container.sm"
         pl={6}
-        fontSize={["md", null, "lg"]}
+        pb={6}
+        fontSize="xl"
         lineHeight="tall"
         gridColumn={["1 / -1", null, "2 / -3"]}
         sx={{
-          li: { a: { color: "brand.500" } },
+          li: { a: { color: "brand.500", fontWeight: 700 } },
         }}
         {...props}
       />
@@ -172,107 +89,101 @@ const components = {
       />
     )
   },
-  blockquote: (props) => {
-    return (
-      <Box
-        as="blockquote"
-        fontWeight={700}
-        borderLeft="0.5rem solid"
-        borderColor="brand.500"
-        pl={5}
-        py={2}
-        w="100%"
-        maxW="container.sm"
-        gridColumn={["1 / -1", null, "2 / -3"]}
-        sx={{
-          "> p": { fontFamily: "heading", fontSize: "xl", lineHeight: "base" },
-        }}
-        {...props}
-      />
-    )
-  },
-  dl: (props) => {
-    return <Box as="dl" gridColumn={["1 / -1", null, "2 / -3"]} {...props} />
-  },
-  dt: (props) => {
-    return (
-      <Text
-        as="dt"
-        display="inline"
-        fontSize={["md", null, "lg"]}
-        fontWeight={600}
-        sx={{ "a": { color: "red.500" } }}
-        {...props}
-      />
-    )
-  },
-  dd: (props) => {
-    const { children, ...restProps } = props
-    return (
-      <Text
-        as="dd"
-        display="inline"
-        fontSize={["md", null, "lg"]}
-        color="gray.700"
-        {...restProps}
-      >
-        {" — "}
-        {children}
-      </Text>
-    )
-  },
-  wrapper: (props) => {
-    const { metaData, ...restProps } = props
-    const { layout } = metaData
-    switch (layout) {
-      case "factsheets":
-        return (
-          <MetaDataContext.Provider value={metaData}>
-            <FactsheetsLayout metaData={metaData} {...restProps} />
-          </MetaDataContext.Provider>
-        )
-      case "basics":
-        return (
-          <MetaDataContext.Provider value={metaData}>
-            <BasicsLayout metaData={metaData} {...restProps} />
-          </MetaDataContext.Provider>
-        )
-      default:
-        return (
-          <MetaDataContext.Provider value={metaData}>
-            <PagesLayout metaData={metaData} {...restProps} />
-          </MetaDataContext.Provider>
-        )
+  Dictionary: (props) => {
+    const onOpen = useDictionaryStore((state) => state.onOpen)
+    const terms = useDictionaryStore((state) => state.terms)
+    const handleClick = () => {
+      const definition = `${props.children}`.trim()
+      const relevantTerm = terms.find((s) => s.searchTerms.includes(definition))
+      onOpen(relevantTerm?.definition || "", relevantTerm?.description || "")
     }
+    return (
+      <Text
+        tabIndex={0}
+        as="span"
+        bg="brand.100"
+        color="brand.500"
+        fontWeight={600}
+        px={1}
+        cursor="pointer"
+        _hover={{ textDecoration: "underline" }}
+        _focusVisible={{
+          outline: "0.125rem solid",
+          outlineColor: "brand.500",
+          outlineOffset: "0.125rem",
+        }}
+        onClick={handleClick}
+        {...props}
+      />
+    )
   },
-  KeyMessage: (props) => (
-    <Box gridColumn={["1 / -1", null, "2 / -3"]}>
-      <KeyMessage {...props} />
-    </Box>
-  ),
-  Image: (props) => (
-    <Box gridColumn={["1 / -1", null, "2 / -3"]}>
-      <Image {...props} />
-    </Box>
-  ),
-  FAQSection: (props) => (
-    <Box gridColumn={["1 / -1", null, "2 / -3"]}>
-      <FAQSection {...props} />
-    </Box>
-  ),
-  Questions: (props) => (
-    <Box gridColumn={["1 / -1", null, "2 / -3"]}>
-      <Questions {...props} />
-    </Box>
-  ),
-  QuestionWrapper: (props) => <QuestionWrapper {...props} />,
-  Question: (props) => <Question {...props} />,
-  Answer: (props) => <Answer {...props} />,
-  PartnersList: (props) => (
-    <Box gridColumn={["1 / -1", null, "2 / -3"]}>
-      <PartnersList {...props} />
-    </Box>
-  ),
+  KeyMessage: (props) => {
+    return (
+      <Box gridColumn={["1 / -1", null, "2 / -2", "2 / -3"]} pb={10} pt={4}>
+        <KeyMessage {...props} />
+      </Box>
+    )
+  },
+  BubbleChart: () => {
+    return (
+      <Box pb={20} pt={10} gridColumn="1 / -1">
+        <BubbleChart />
+      </Box>
+    )
+  },
+  ComplianceMarketForecastChart: () => {
+    return (
+      <Box pb={20} pt={10} gridColumn="2 / -3">
+        <ChartWrapper
+          chartType="line"
+          src="compliance-market-forecast.txt"
+          ratio={2}
+          chartPadding={{ bottom: 32 }}
+        />
+      </Box>
+    )
+  },
+  GlobalValueChart: () => {
+    return (
+      <Box pb={20} pt={10} gridColumn="2 / -3">
+        <ChartWrapper
+          chartType="bar"
+          src="global-value.txt"
+          orientation="horizontal"
+          ratio={2}
+          chartPadding={{ bottom: 32 }}
+          onDataLoad={(_, dataset) =>
+            dataset.map((d) => ({
+              ...d,
+              y_unit: "Bn $",
+              y_val: d.y_val
+                ? `${
+                    Math.round((parseFloat(d.y_val) / 1000000000) * 100) / 100
+                  }`
+                : d.y_val,
+            }))
+          }
+        />
+      </Box>
+    )
+  },
+  OffsetPrices2024Chart: () => {
+    return (
+      <Box pb={20} pt={10} gridColumn="1 / -1">
+        <OffsetPrices2024Chart />
+      </Box>
+    )
+  },
+  VoluntaryMarketForecastChart: () => {
+    return (
+      <Box pb={20} pt={10} gridColumn="1 / -1">
+        <VoluntaryMarketForecastCharts />
+      </Box>
+    )
+  },
+  MetaHeading: (props) => {
+    return (
+      <Text variant="metaHeading" color="gray.500" mt={4} mb={-4} {...props} />
+    )
+  },
 }
-
-export default components

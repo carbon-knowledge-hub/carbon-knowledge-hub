@@ -1,1 +1,0 @@
-export default {"defaultProps":{"colorScheme":"action","size":"md"},"parts":["text","icon"],"baseStyle":{"text":{"color":"red.500","mt":2,"fontSize":"sm","lineHeight":"normal"},"icon":{"marginEnd":"0.5em","color":"red.500"}},"variants":{},"sizes":{}}

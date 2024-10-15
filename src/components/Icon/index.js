@@ -1,23 +1,43 @@
-import { Box } from "@chakra-ui/layout"
+import { Box } from "@chakra-ui/react"
 
-const SvgContainer = ({
-  size = "1.5rem",
-  children,
+export function Icon({
+  size = "1.25rem",
   viewBox = "0 0 24 24",
+  stroke = "currentcolor",
+  strokeWidth = 2,
+  strokeLinecap = "butt",
+  strokeLinejoin = "bevel",
+  children,
+  isAnimated,
+  className,
   ...restProps
-}) => {
+}) {
+  const size2 = [size].flat()
+  const strokeWidth2 = [strokeWidth].flat()
+  const fontSize = strokeWidth2.map((d) => (d ? d * 0.0625 + "rem" : d))
   return (
     <Box
-      as="svg"
       xmlns="http://www.w3.org/2000/svg"
-      height="24"
-      viewBox={viewBox}
-      width="24"
-      w={size}
-      h={size}
-      strokeLinecap="square"
-      strokeLinejoin="bevel"
+      as="svg"
+      w={size2}
+      h={size2}
       aria-hidden="true"
+      focusable="false"
+      viewBox={viewBox}
+      stroke={stroke}
+      strokeLinecap={strokeLinecap}
+      strokeLinejoin={strokeLinejoin}
+      fill="none"
+      sx={{
+        "circle, path, rect, text, line": {
+          fontSize,
+          vectorEffect: "non-scaling-stroke",
+          strokeWidth: "1em",
+        },
+      }}
+      className={`${className}${
+        isAnimated ? ` is-animated-${isAnimated}` : ""
+      }`}
       {...restProps}
     >
       {children}
@@ -25,378 +45,100 @@ const SvgContainer = ({
   )
 }
 
-export const ChevronRightIcon = ({
-  strokeWidth = 2,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
+export const ChevronLeftIcon = ({ viewBox = "0 0 24 24", ...restProps }) => (
+  <Icon viewBox={viewBox} {...restProps}>
+    <path d="M15 18l-6-6 6-6" />
+  </Icon>
+)
+
+export const ChevronRightIcon = ({ viewBox = "0 0 24 24", ...restProps }) => (
+  <Icon viewBox={viewBox} {...restProps}>
+    <path d="M9 18l6-6-6-6" />
+  </Icon>
+)
+
+export const ChevronDownIcon = ({ viewBox = "0 0 24 24", ...restProps }) => (
+  <Icon viewBox={viewBox} {...restProps}>
+    <path d="M6 9l6 6 6-6" />
+  </Icon>
+)
+
+export const ChevronUpIcon = ({ viewBox = "0 0 24 24", ...restProps }) => (
+  <Icon viewBox={viewBox} {...restProps}>
+    <path d="M18 15l-6-6-6 6" />
+  </Icon>
+)
+
+export const ArrowRightIcon = ({ viewBox = "0 0 24 24", ...restProps }) => (
+  <Icon viewBox={viewBox} {...restProps}>
+    <path d="M5 12h13m-6-7l7 7-7 7" />
+  </Icon>
+)
+
+export const ArrowLeftIcon = ({ viewBox = "0 0 24 24", ...restProps }) => (
+  <Icon viewBox={viewBox} {...restProps}>
+    <path d="M19 12H6M12 5l-7 7 7 7" />
+  </Icon>
+)
+
+export const SearchIcon = ({ viewBox = "0 0 24 24", ...restProps }) => {
   return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
-      <path d="M9 18l6-6-6-6" />
-    </SvgContainer>
+    <Icon viewBox={viewBox} {...restProps}>
+      <path d="M11 19a8 8 0 100-16 8 8 0 000 16zM21 21l-4.35-4.35" />
+    </Icon>
   )
 }
 
-export const ChevronLeftIcon = ({
-  strokeWidth = 2,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
+export const CloseIcon = ({ viewBox = "0 0 24 24", ...restProps }) => {
   return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
-      <path d="M15 18l-6-6 6-6" />
-    </SvgContainer>
+    <Icon viewBox={viewBox} {...restProps}>
+      <path d="M18,6L6,18M6,6L18,18" />
+    </Icon>
   )
 }
 
-export const ChevronDownIcon = ({
-  strokeWidth = 2,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
+export const ListIcon = ({ viewBox = "0 0 24 24", ...restProps }) => {
   return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
-      <path d="M6 9l6 6 6-6" />
-    </SvgContainer>
+    <Icon viewBox={viewBox} {...restProps}>
+      <path d="M10 4h12M10 12h12M10 20h12M6 2H2v4h4V2zM6 10H2v4h4v-4zM6 18H2v4h4v-4z" />
+    </Icon>
   )
 }
 
-export const ChevronUpIcon = ({
-  strokeWidth = 2,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
+export const ExternalLinkIcon = ({ viewBox = "0 0 24 24", ...restProps }) => {
   return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
-      <path d="M18 15l-6-6-6 6" />
-    </SvgContainer>
-  )
-}
-
-export const ArrowLeftIcon = ({
-  strokeWidth = 2,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
-  return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
-      <path d="M19 12H6M12 5l-7 7 7 7" />
-    </SvgContainer>
-  )
-}
-
-export const ArrowRightIcon = ({
-  strokeWidth = 2,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
-  return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
-      <path d="M5 12h13m-6-7l7 7-7 7" />
-    </SvgContainer>
-  )
-}
-
-export const CopyIcon = ({
-  strokeWidth = 2,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
-  return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
-      <g>
-        <rect width="13" height="13" x="9" y="9" rx="2" ry="2" />
-        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-      </g>
-    </SvgContainer>
-  )
-}
-
-export const CheckIcon = ({
-  strokeWidth = 2,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
-  return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
-      <path d="M20 6L9 17 4 12" />
-    </SvgContainer>
-  )
-}
-
-export const LinkIcon = ({
-  strokeWidth = 2,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
-  return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
-      <g>
-        <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" />
-        <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" />
-      </g>
-    </SvgContainer>
-  )
-}
-
-export const NavigationIcon = ({
-  strokeWidth = 2,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
-  return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
-      <line x1={3} x2={21} y1={7} y2={7} />
-      <line x1={3} x2={21} y1={12} y2={12} />
-      <line x1={3} x2={21} y1={17} y2={17} />
-    </SvgContainer>
-  )
-}
-
-export const ClipboardIcon = ({
-  strokeWidth = 2,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
-  return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
-      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
-      <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
-    </SvgContainer>
-  )
-}
-
-export const ExternalLinkIcon = ({
-  strokeWidth = 2,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
-  return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
+    <Icon viewBox={viewBox} {...restProps}>
       <path d="M18 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V8c0-1.1.9-2 2-2h5m5-3h6v6m-11 5L20.2 3.8" />
-    </SvgContainer>
+    </Icon>
   )
 }
 
-export const SearchIcon = ({
-  strokeWidth = 2,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
+export const DownloadIcon = ({ viewBox = "0 0 24 24", ...restProps }) => {
   return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
-      <circle cx="11" cy="11" r="8"></circle>
-      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-    </SvgContainer>
+    <Icon viewBox={viewBox} {...restProps}>
+      <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 002-2v-4m-4-6l-5 5-5-5m5 3.8V2.5" />
+    </Icon>
   )
 }
 
-export const ShareIcon = ({
-  strokeWidth = 2,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
+export const EnvelopeIcon = ({ viewBox = "0 0 24 24", ...restProps }) => {
   return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
-      <circle cx="18" cy="5" r="3" />
-      <circle cx="6" cy="12" r="3" />
-      <circle cx="18" cy="19" r="3" />
-      <path d="M8.59 13.51L15.42 17.49" />
-      <path d="M15.41 6.51L8.59 10.49" />
-    </SvgContainer>
-  )
-}
-
-export const MailIcon = ({
-  strokeWidth = 2,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
-  return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
+    <Icon viewBox={viewBox} {...restProps}>
+      <g>
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
       <path d="M22 6L12 13 2 6" />
-    </SvgContainer>
+      </g>
+    </Icon>
   )
 }
 
-export const FilterIcon = ({
-  strokeWidth = 2,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
+export const MenuIcon = ({ viewBox = "0 0 24 24", ...restProps }) => {
   return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
-      <path d="M4 21L4 14" />
-      <path d="M4 10L4 3" />
-      <path d="M12 21L12 12" />
-      <path d="M12 8L12 3" />
-      <path d="M20 21L20 16" />
-      <path d="M20 12L20 3" />
-      <path d="M1 14L7 14" />
-      <path d="M9 8L15 8" />
-      <path d="M17 16L23 16" />
-    </SvgContainer>
-  )
-}
-
-export const DownloadIcon = ({
-  strokeWidth = 2,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
-  return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
-      <path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 002-2v-4m-4-6l-5 5-5-5m5 3.8V2.5" />
-    </SvgContainer>
-  )
-}
-
-export const FileIcon = ({
-  strokeWidth = 2,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
-  return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
-      <path d="M13 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V9l-7-7z" />
-      <path d="M13 3v6h6" />
-    </SvgContainer>
-  )
-}
-
-export const TwitterIcon = ({
-  strokeWidth = 2,
-  fill = "currentcolor",
-  ...restProps
-}) => {
-  return (
-    <SvgContainer strokeWidth="none" stroke="none" fill={fill} {...restProps}>
-      <path d="M24 4.37a9.6 9.6 0 01-2.83.8 5.04 5.04 0 002.17-2.8c-.95.58-2 1-3.13 1.22A4.86 4.86 0 0016.61 2a4.99 4.99 0 00-4.79 6.2A13.87 13.87 0 011.67 2.92 5.12 5.12 0 003.2 9.67a4.82 4.82 0 01-2.23-.64v.07c0 2.44 1.7 4.48 3.95 4.95a4.84 4.84 0 01-2.22.08c.63 2.01 2.45 3.47 4.6 3.51a9.72 9.72 0 01-7.3 2.1A13.68 13.68 0 007.55 22c9.06 0 14-7.7 14-14.37v-.65c.96-.71 1.79-1.6 2.45-2.61z" />
-    </SvgContainer>
-  )
-}
-
-export const LinkedinIcon = ({
-  strokeWidth = 2,
-  fill = "currentcolor",
-  ...restProps
-}) => {
-  return (
-    <SvgContainer strokeWidth="none" stroke="none" fill={fill} {...restProps}>
-      <path d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.27 20.1H3.65V9.24h3.62V20.1zM5.47 7.76h-.03c-1.22 0-2-.83-2-1.87 0-1.06.8-1.87 2.05-1.87 1.24 0 2 .8 2.02 1.87 0 1.04-.78 1.87-2.05 1.87zM20.34 20.1h-3.63v-5.8c0-1.45-.52-2.45-1.83-2.45-1 0-1.6.67-1.87 1.32-.1.23-.11.55-.11.88v6.05H9.28s.05-9.82 0-10.84h3.63v1.54A3.6 3.6 0 0116.17 9c2.39 0 4.18 1.56 4.18 4.89v6.21z" />
-    </SvgContainer>
-  )
-}
-
-export const LightbulbIcon = ({
-  strokeWidth = 2,
-  stroke = "currentcolor",
-  ...restProps
-}) => {
-  return (
-    <SvgContainer
-      strokeWidth={strokeWidth}
-      stroke={stroke}
-      fill="none"
-      {...restProps}
-    >
-      <path d="M1 12L3 12" />
-      <path d="M4.222 4.222L5.636 5.636" />
-      <path d="M12 1L12 3" />
-      <path d="M19.778 4.222L18.364 5.636" />
-      <path d="M23 12L21 12" />
-      <path d="M18 12a6 6 0 10-12 0 5.996 5.996 0 004 5.651V22h4v-4.349c2.329-.824 4-3.04 4-5.651z" />
-    </SvgContainer>
+    <Icon viewBox={viewBox} {...restProps}>
+      {/* <line x1={2} x2={22} y1={8} y2={8} /> */}
+      {/* <line x1={4} x2={20} y1={12} y2={12} /> */}
+      {/* <line x1={2} x2={22} y1={16} y2={16} /> */}
+      <path d="M2,8L22,8M2,16L22,16" />
+    </Icon>
   )
 }
