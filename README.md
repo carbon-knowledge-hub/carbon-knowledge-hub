@@ -4,7 +4,7 @@ If you are just getting started with contributing content to the Carbon Knowledg
 
 ## Basics
 
-You can find the editable [basics files here](./pages/basics).
+You can find the editable [basics files here](./pages/basics)
 
 ## Factsheets
 
