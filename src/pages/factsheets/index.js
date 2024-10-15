@@ -8,10 +8,9 @@ import {
   RadioGroup,
   Radio,
 } from "@chakra-ui/react"
-import { useCallback, useState, useEffect } from "react"
+import { useCallback } from "react"
 import { useRouter, usePathname, useSearchParams } from "next/navigation"
 
-// import { Link } from "@/components/Link"
 import SiteHeader from "@/components/SiteHeader"
 import getPages from "@/utils/api/server/getPages"
 
@@ -49,17 +48,7 @@ export default function FactsheetsPage({ factsheets }) {
         <SimpleGrid columns={8} gridGap={10}>
           <Filters />
           <Stack spacing={10} gridColumn="3 / -1" py={10}>
-            <Stack spacing={10}>
-              {factsheets.map((factsheet) => {
-                return (
-                  <FactsheetCard
-                    key={factsheet.frontmatter.slug}
-                    href={factsheet.frontmatter.slug}
-                    frontmatter={factsheet.frontmatter}
-                  />
-                )
-              })}
-            </Stack>
+            <FactsheetsListing factsheets={factsheets} />
           </Stack>
         </SimpleGrid>
       </Container>
@@ -73,6 +62,46 @@ export async function getStaticProps() {
     fields: ["frontmatter"],
   })
   return { props: { factsheets } }
+}
+
+function FactsheetsListing({ factsheets }) {
+  const searchParams = useSearchParams()
+
+  const marketTypeValue = searchParams.get("marketType") || ""
+  const organizationTypeValue = searchParams.get("organizationType") || ""
+  const levelValue = searchParams.get("level") || ""
+
+  const filteredFactsheets = factsheets.filter(({ frontmatter }) => {
+    const d = frontmatter
+    let show = true
+    if (marketTypeValue && !d.marketType?.includes(marketTypeValue)) {
+      show = false
+    }
+    if (
+      organizationTypeValue &&
+      !d.organizationType?.includes(organizationTypeValue)
+    ) {
+      show = false
+    }
+    if (levelValue && d.level !== levelValue) {
+      show = false
+    }
+    return show
+  })
+
+  return (
+    <Stack spacing={10}>
+      {filteredFactsheets.map((factsheet) => {
+        return (
+          <FactsheetCard
+            key={factsheet.frontmatter.slug}
+            href={factsheet.frontmatter.slug}
+            frontmatter={factsheet.frontmatter}
+          />
+        )
+      })}
+    </Stack>
+  )
 }
 
 function Filters() {
@@ -114,10 +143,10 @@ function Filters() {
           <Radio w="100%" value="">
             {"All"}
           </Radio>
-          <Radio w="100%" value="compliance">
+          <Radio w="100%" value="Compliance markets">
             {"Compliance markets"}
           </Radio>
-          <Radio w="100%" value="voluntary">
+          <Radio w="100%" value="Voluntary markets">
             {"Voluntary markets"}
           </Radio>
         </RadioGroup>
@@ -139,8 +168,8 @@ function Filters() {
           <Radio w="100%" value="Low-carbon project developers">
             {"Low-carbon project developers"}
           </Radio>
-          <Radio w="100%" value="Corporate credid buyers">
-            {"Corporate credid buyers"}
+          <Radio w="100%" value="Corporate credit buyers">
+            {"Corporate credit buyers"}
           </Radio>
           <Radio w="100%" value="Policy makers">
             {"Policy makers"}

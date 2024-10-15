@@ -100,7 +100,7 @@ function NavigationOverlay() {
               borderColor="whiteAlpha.200"
             >
               <Stack spacing={6} py={6}>
-                <Text variant="metaHeadingSmall" color="whiteAlpha.600" px={2}>
+                <Text variant="metaHeadingSmall" color="whiteAlpha.600" px={1}>
                   {"Carbon Knowledge Hub"}
                 </Text>
                 <ButtonLink
@@ -110,8 +110,8 @@ function NavigationOverlay() {
                   colorScheme="whiteAlpha"
                   textAlign="left"
                   justifyContent="flex-start"
-                  px={4}
-                  mx={-2}
+                  px={6}
+                  mx={-5}
                   fontSize="lg"
                 >
                   {"Factsheets"}
@@ -123,8 +123,8 @@ function NavigationOverlay() {
                   colorScheme="whiteAlpha"
                   textAlign="left"
                   justifyContent="flex-start"
-                  px={4}
-                  mx={-2}
+                  px={6}
+                  mx={-5}
                   fontSize="lg"
                 >
                   {"B20 recommendations"}
@@ -136,8 +136,8 @@ function NavigationOverlay() {
                   colorScheme="whiteAlpha"
                   textAlign="left"
                   justifyContent="flex-start"
-                  px={4}
-                  mx={-2}
+                  px={6}
+                  mx={-5}
                   fontSize="lg"
                 >
                   {"Data tracker"}
@@ -158,7 +158,7 @@ function NavigationOverlay() {
               borderColor="whiteAlpha.200"
             >
               <Stack spacing={6} py={6}>
-                <Text variant="metaHeadingSmall" color="whiteAlpha.600" px={2}>
+                <Text variant="metaHeadingSmall" color="whiteAlpha.600" px={1}>
                   {"Resources"}
                 </Text>
                 <ButtonLink
@@ -168,8 +168,8 @@ function NavigationOverlay() {
                   colorScheme="whiteAlpha"
                   textAlign="left"
                   justifyContent="flex-start"
-                  px={4}
-                  mx={-2}
+                  px={6}
+                  mx={-5}
                   fontSize="lg"
                 >
                   {"Stories"}
@@ -181,8 +181,8 @@ function NavigationOverlay() {
                   colorScheme="whiteAlpha"
                   textAlign="left"
                   justifyContent="flex-start"
-                  px={4}
-                  mx={-2}
+                  px={6}
+                  mx={-5}
                   fontSize="lg"
                 >
                   {"Links"}
@@ -194,8 +194,8 @@ function NavigationOverlay() {
                   colorScheme="whiteAlpha"
                   textAlign="left"
                   justifyContent="flex-start"
-                  px={4}
-                  mx={-2}
+                  px={6}
+                  mx={-5}
                   fontSize="lg"
                 >
                   {"Media"}
@@ -207,8 +207,8 @@ function NavigationOverlay() {
                   colorScheme="whiteAlpha"
                   textAlign="left"
                   justifyContent="flex-start"
-                  px={4}
-                  mx={-2}
+                  px={6}
+                  mx={-5}
                   fontSize="lg"
                 >
                   {"Dictionary"}
@@ -223,7 +223,7 @@ function NavigationOverlay() {
               borderColor="whiteAlpha.200"
             >
               <Stack spacing={6} py={6}>
-                <Text variant="metaHeadingSmall" color="whiteAlpha.600" px={2}>
+                <Text variant="metaHeadingSmall" color="whiteAlpha.600" px={1}>
                   {"About"}
                 </Text>
                 <ButtonLink
@@ -233,8 +233,8 @@ function NavigationOverlay() {
                   colorScheme="whiteAlpha"
                   textAlign="left"
                   justifyContent="flex-start"
-                  px={4}
-                  mx={-2}
+                  px={6}
+                  mx={-5}
                   fontSize="lg"
                 >
                   {"About"}
@@ -246,8 +246,8 @@ function NavigationOverlay() {
                   colorScheme="whiteAlpha"
                   textAlign="left"
                   justifyContent="flex-start"
-                  px={4}
-                  mx={-2}
+                  px={6}
+                  mx={-5}
                   fontSize="lg"
                 >
                   {"Partners"}
@@ -259,8 +259,8 @@ function NavigationOverlay() {
                   colorScheme="whiteAlpha"
                   textAlign="left"
                   justifyContent="flex-start"
-                  px={4}
-                  mx={-2}
+                  px={6}
+                  mx={-5}
                   fontSize="lg"
                 >
                   {"Frequently asked questions"}
@@ -272,8 +272,8 @@ function NavigationOverlay() {
                   colorScheme="whiteAlpha"
                   textAlign="left"
                   justifyContent="flex-start"
-                  px={4}
-                  mx={-2}
+                  px={6}
+                  mx={-5}
                   fontSize="lg"
                 >
                   {"Contact"}
