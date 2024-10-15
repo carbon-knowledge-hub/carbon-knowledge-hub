@@ -46,6 +46,6 @@ export default function LinksPage({ source }) {
 }
 
 export async function getStaticProps() {
-  const source = await getPage({ slug: "links", pageType: "content" })
+  const source = await getPage({ slug: "links", pageType: "pages" })
   return { props: { source } }
 }

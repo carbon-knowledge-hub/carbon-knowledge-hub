@@ -65,6 +65,6 @@ export default function DataTrackerPage({ source }) {
 }
 
 export async function getStaticProps() {
-  const source = await getPage({ slug: "data-tracker", pageType: "content" })
+  const source = await getPage({ slug: "data-tracker", pageType: "pages" })
   return { props: { source } }
 }

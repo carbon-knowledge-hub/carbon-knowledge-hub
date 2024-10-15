@@ -82,6 +82,6 @@ export default function DictionaryPage({ source }) {
 }
 
 export async function getStaticProps() {
-  const source = await getPage({ slug: "dictionary", pageType: "content" })
+  const source = await getPage({ slug: "dictionary", pageType: "pages" })
   return { props: { source } }
 }
