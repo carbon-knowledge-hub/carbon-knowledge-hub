@@ -5,10 +5,65 @@ import {
   Text,
   Heading,
   Container,
+  HStack,
 } from "@chakra-ui/react"
 
 import BBGrid from "@/components/BBGrid"
+import { ButtonLink } from "@/components/Link"
+import { ArrowLeftIcon } from "@/components/Icon"
 // import { BreadCrumbs, BreadCrumb } from "@/components/Breadcrumbs"
+
+function BreadCrumb({ href, children, isInverted, ...restProps }) {
+  return href ? (
+    <ButtonLink
+      href={href}
+      size="md"
+      variant="ghost"
+      colorScheme={isInverted ? "whiteAlpha" : "gray"}
+      px={2}
+      textTransform="capitalize"
+      flex="none"
+      {...restProps}
+    >
+      {children}
+    </ButtonLink>
+  ) : (
+    <Box px={2} color="currentcolor" {...restProps}>
+      {children}
+    </Box>
+  )
+}
+
+function BreadCrumbs({ children, isInverted }) {
+  return (
+    <HStack
+      spacing={2}
+      fontWeight={600}
+      color={isInverted ? "brand.100" : "gray.500"}
+      fontSize="md"
+      ml={-2}
+      divider={
+        <Box border={0} p={0}>
+          {"/"}
+        </Box>
+      }
+    >
+      <ButtonLink
+        href="/"
+        size="md"
+        variant="ghost"
+        colorScheme={isInverted ? "whiteAlpha" : "gray"}
+        leftIcon={<ArrowLeftIcon size={5} />}
+        px={2}
+        textTransform="capitalize"
+        flex="none"
+      >
+        {"Home"}
+      </ButtonLink>
+      {children}
+    </HStack>
+  )
+}
 
 export function PageHeader({ bg = "white", color = "inherit", ...props }) {
   return (
@@ -102,27 +157,26 @@ export function PageHeaderContent(props) {
 }
 
 export function PageHeaderBreadcrumbs({ isInverted, items = [] }) {
-  return null
-  // return (
-  //   <Box>
-  //     <BreadCrumbs isInverted={isInverted}>
-  //       {items.map((item) => {
-  //         return (
-  //           <BreadCrumb
-  //             key={item.key || item.href || item.label}
-  //             isInverted={isInverted}
-  //             href={item.href}
-  //             whiteSpace="nowrap"
-  //             overflow="hidden"
-  //             textOverflow="ellipsis"
-  //           >
-  //             {item.label}
-  //           </BreadCrumb>
-  //         )
-  //       })}
-  //     </BreadCrumbs>
-  //   </Box>
-  // )
+  return (
+    <Box>
+      <BreadCrumbs isInverted={isInverted}>
+        {items.map((item, i) => {
+          return (
+            <BreadCrumb
+              key={item.key || item.href || item.label || i}
+              isInverted={isInverted}
+              href={item.href}
+              whiteSpace="nowrap"
+              overflow="hidden"
+              textOverflow="ellipsis"
+            >
+              {item.label || ""}
+            </BreadCrumb>
+          )
+        })}
+      </BreadCrumbs>
+    </Box>
+  )
 }
 
 export function PageHeaderTitle(props) {

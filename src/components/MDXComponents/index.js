@@ -152,17 +152,6 @@ export default {
           orientation="horizontal"
           ratio={2}
           chartPadding={{ bottom: 32 }}
-          onDataLoad={(_, dataset) =>
-            dataset.map((d) => ({
-              ...d,
-              y_unit: "Bn $",
-              y_val: d.y_val
-                ? `${
-                    Math.round((parseFloat(d.y_val) / 1000000000) * 100) / 100
-                  }`
-                : d.y_val,
-            }))
-          }
         />
       </Box>
     )
