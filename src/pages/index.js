@@ -133,7 +133,7 @@ function AboutBanner() {
       <Box
         gridColumn="1 / -1"
         gridRow="1 / span 2"
-        bgImage="url(/images/cover-lg.jpg)"
+        bgImage="url(/images/cover-3-lg.jpg)"
         bgPosition="center"
         bgSize="cover"
         bgRepeat="no-repeat"
@@ -350,7 +350,6 @@ function DiveDeeper({ factsheets }) {
         />
         <SimpleGrid columns={[1, null, 2]} gridColumn="span 8" gridGap={10}>
           {factsheets.slice(0, 2).map((factsheet) => {
-            console.log("Factsheet", factsheets)
             return (
               <FactsheetCard
                 key={factsheet.frontmatter.slug}

@@ -1,8 +1,16 @@
-import { Text, Stack, HStack, Box, Heading, Tag, TagLabel } from "@chakra-ui/react"
+import {
+  Text,
+  Stack,
+  HStack,
+  Box,
+  Heading,
+  Tag,
+  TagLabel,
+} from "@chakra-ui/react"
 
 import day from "dayjs"
-import { ButtonLink, Link, LinkBox, LinkOverlay } from "@/components/Link"
-import { DownloadIcon } from "@/components/Icon"
+import { LinkBox, LinkOverlay } from "@/components/Link"
+// import { DownloadIcon } from "@/components/Icon"
 
 export default function FactsheetCard({
   href,
@@ -10,7 +18,7 @@ export default function FactsheetCard({
   frontmatter,
   ...restProps
 }) {
-  console.log("Frontmatter", frontmatter)
+  // console.log("Frontmatter", frontmatter)
   return (
     <LinkBox
       href={href}
@@ -51,10 +59,15 @@ export default function FactsheetCard({
           <Text variant="body">{frontmatter?.description}</Text>
         </Stack>
         <HStack>
-          {frontmatter?.marketType.map((tag) => {
+          {frontmatter?.marketType?.map((tag) => {
             return (
               <Box key={tag}>
-                <Tag colorScheme="gray" size="lg" borderRadius="none" fontWeight={600}>
+                <Tag
+                  colorScheme="gray"
+                  size="lg"
+                  borderRadius="none"
+                  fontWeight={600}
+                >
                   <TagLabel>{tag}</TagLabel>
                 </Tag>
               </Box>

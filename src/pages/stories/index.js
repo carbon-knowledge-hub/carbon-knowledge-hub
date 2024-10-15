@@ -12,8 +12,6 @@ import {
 import StoryCard from "@/components/StoryCard"
 
 export default function StoriesPage({ stories }) {
-  console.log("DATA: ", stories)
-
   return (
     <>
       <SiteHeader />

@@ -1,11 +1,11 @@
-import { theme } from "@chakra-ui/react"
+// import { theme } from "@chakra-ui/react"
 // import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system"
 
 import textStyles from "./textStyles"
 
-console.groupCollapsed("Theme")
-console.log(theme)
-console.groupEnd()
+// console.groupCollapsed("Theme")
+// console.log(theme)
+// console.groupEnd()
 
 // const featuredItemHelpers = createMultiStyleConfigHelpers([
 //   "featuredItem",
