@@ -15,6 +15,9 @@ import {
 } from "@/components/PageHeader"
 
 export default function DataTrackerPage({ source }) {
+  const { frontmatter } = source
+  const title = source.frontmatter.title
+  const description = source.frontmatter.description
   return (
     <>
       <SiteHeader />
@@ -25,9 +28,9 @@ export default function DataTrackerPage({ source }) {
             isInverted
             items={[{ label: "Data tracker" }]}
           />
-          <PageHeaderTitle>{"Data tracker"}</PageHeaderTitle>
+          <PageHeaderTitle>{title}</PageHeaderTitle>
           <PageHeaderDescription>
-            {"Short description of the data tracker page"}
+            {description}
           </PageHeaderDescription>
           <PageHeaderMetadata>
             {/* <HStack spacing={3}>
