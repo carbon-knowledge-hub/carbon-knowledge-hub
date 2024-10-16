@@ -277,7 +277,7 @@ export default function BubbleChart({ ratio = 2 }) {
                   </g>
                 )
               })}
-              <g transform={`translate(${xScale(80)} 0)`}>
+              <g transform={`translate(${xScale(95)} 0)`}>
                 <line y1={0} y2={height - 24} stroke="#000" strokeWidth={2} />
                 <text
                   stroke="#FFF"
@@ -289,7 +289,7 @@ export default function BubbleChart({ ratio = 2 }) {
                   fontSize={14}
                   fontWeight={600}
                 >
-                  {"Price threshold"}
+                  {" 2030 price needed for 2C pathway"}
                 </text>
               </g>
             </g>
