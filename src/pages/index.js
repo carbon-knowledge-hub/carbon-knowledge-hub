@@ -185,17 +185,17 @@ function GetStarted() {
         imgSrc="/images/carbon-pricing-at-a-glance.svg"
       />
       <GetStartedItem
-        title="Carbon pricing"
+        title="How carbon trading works"
         imgSrc="/images/carbon-pricing.svg"
       />
       <GetStartedItem
-        title="Goals and impact"
+        title="Goals and impact of carbon pricing"
         imgSrc="/images/goals-and-impact.svg"
       />
-      <GetStartedItem title="Participants" imgSrc="/images/participants.svg" />
+      <GetStartedItem title="Participants and their role in carbon trading" imgSrc="/images/participants.svg" />
 
       <GetStartedItem
-        title="Current status"
+        title="Current state of carbon trading"
         imgSrc="/images/current-status.svg"
       />
     </SimpleGrid>

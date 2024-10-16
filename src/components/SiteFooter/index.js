@@ -42,7 +42,7 @@ export default function SiteFooter() {
                   {"Stay up to date"}
                 </Heading>
                 <Text variant="sectionSubheading" color="brand.100">
-                  {"Sign up to be alerted when the web platform goes live."}
+                  {"Sign up to be alerted when there are new Carbon Knowledge Hub releases."}
                 </Text>
               </Stack>
               <NewsletterSignup />
