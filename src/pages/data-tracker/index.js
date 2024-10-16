@@ -30,7 +30,7 @@ export default function DataTrackerPage({ source }) {
             {"Short description of the data tracker page"}
           </PageHeaderDescription>
           <PageHeaderMetadata>
-            <HStack spacing={3}>
+            {/* <HStack spacing={3}>
               <Text
                 fontSize="0.875rem"
                 fontWeight={600}
@@ -39,7 +39,7 @@ export default function DataTrackerPage({ source }) {
               >
                 {"Updated on 09 Oct 2024"}
               </Text>
-            </HStack>
+            </HStack> */}
           </PageHeaderMetadata>
         </PageHeaderContent>
       </PageHeader>
@@ -50,7 +50,7 @@ export default function DataTrackerPage({ source }) {
           pb={20}
           sx={{
             "h1, h2, h3, h4, h5, h6, p": {
-              gridColumn: "2 / -3",
+              gridColumn: ["1 / -1", null, "2 / -2", "3/ -3"],
             },
             // "> div": {
             //   gridColumn: "1 / -1",

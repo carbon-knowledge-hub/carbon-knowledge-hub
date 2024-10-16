@@ -133,7 +133,7 @@ export default {
   },
   ComplianceMarketForecastChart: () => {
     return (
-      <Box pb={20} pt={10} gridColumn="2 / -3">
+      <Box pb={20} pt={10} gridColumn={["1 / -1", null, "2 / -2"]}>
         <ChartWrapper
           chartType="line"
           src="compliance-market-forecast.txt"
@@ -145,7 +145,7 @@ export default {
   },
   GlobalValueChart: () => {
     return (
-      <Box pb={20} pt={10} gridColumn="2 / -3">
+      <Box pb={20} pt={10} gridColumn={["1 / -1", null, "2 / -2"]}>
         <ChartWrapper
           chartType="bar"
           src="global-value.txt"
