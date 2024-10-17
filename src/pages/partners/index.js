@@ -9,6 +9,7 @@ import {
 import { MDXRemote } from "next-mdx-remote"
 
 import getPage from "@/utils/api/server/getPage"
+import getContent from "@/utils/api/server/getContent"
 import components from "@/components/MDXComponents"
 import SiteHeader from "@/components/SiteHeader"
 import {
@@ -20,10 +21,11 @@ import {
   PageHeaderDescription,
 } from "@/components/PageHeader"
 
-export default function DataTrackerPage({ source }) {
+export default function DataTrackerPage({ source, allPartners }) {
   const { frontmatter } = source
   const title = source.frontmatter.title
   const description = source.frontmatter.description
+  console.log(allPartners)
   return (
     <>
       <SiteHeader />
@@ -61,5 +63,6 @@ export async function getStaticProps() {
     slug: "partners",
     pageType: "pages",
   })
-  return { props: { source } }
+  const allPartners = await getContent("partners.txt", "json")
+  return { props: { source, allPartners } }
 }
