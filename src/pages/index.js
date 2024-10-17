@@ -201,13 +201,10 @@ function GetStarted() {
         imgSrc="/images/participants.svg"
         href="/factsheets/participants"
       />
-<<<<<<< HEAD
-=======
       <GetStartedItem
         title="Participants and their role in carbon trading"
         imgSrc="/images/participants.svg"
       />
->>>>>>> refs/remotes/origin/develop
 
       <GetStartedItem
         title="Current state of carbon trading"
@@ -421,5 +418,10 @@ export async function getStaticProps() {
     fields: ["frontmatter"],
   })
   const partners = await getContent("partners.txt", "json")
-  return { props: { factsheets, partners } }
+  return {
+    props: {
+      factsheets,
+      partners: partners.filter((d) => d.type !== "managing"),
+    },
+  }
 }
