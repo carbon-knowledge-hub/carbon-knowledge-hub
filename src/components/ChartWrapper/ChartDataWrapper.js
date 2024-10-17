@@ -5,7 +5,7 @@ import LineChart from "./LineChart"
 import ScatterPlot from "./ScatterPlot"
 import { useChartStore } from "./store"
 import ChartFallback from "./ChartFallback"
-// import Legend from "./Legend"
+import Legend from "./Legend"
 
 import fetchDataset from "@/utils/api/client/fetchDataset"
 
@@ -29,6 +29,7 @@ export default function ChartDataWrapper({
   ratio,
   onDataLoad,
   yAxisLabel,
+  showLegend,
 }) {
   const data = useChartStore((state) => state.data)
   const setInitialData = useChartStore((state) => state.setInitialData)
@@ -90,7 +91,7 @@ export default function ChartDataWrapper({
             ratio={ratio}
             yAxisLabel={yAxisLabel}
           />
-          {/* <Legend /> */}
+          {showLegend && <Legend />}
         </div>
       )
     case "line":
@@ -101,7 +102,7 @@ export default function ChartDataWrapper({
             ratio={ratio}
             yAxisLabel={yAxisLabel}
           />
-          {/* <Legend /> */}
+          {showLegend && <Legend />}
         </div>
       )
     case "scatter":
@@ -113,7 +114,7 @@ export default function ChartDataWrapper({
             ratio={ratio}
             yAxisLabel={yAxisLabel}
           />
-          {/* <Legend /> */}
+          {showLegend && <Legend />}
         </div>
       )
     default:
