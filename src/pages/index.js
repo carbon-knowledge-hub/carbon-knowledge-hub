@@ -8,8 +8,9 @@ import {
   Container,
   Divider,
 } from "@chakra-ui/react"
-import getPages from "@/utils/api/server/getPages"
 
+import getPages from "@/utils/api/server/getPages"
+import getContent from "@/utils/api/server/getContent"
 import { ArrowRightIcon } from "@/components/Icon"
 import BBGrid from "@/components/BBGrid"
 import { Link, LinkBox, LinkOverlay } from "@/components/Link"
@@ -19,7 +20,7 @@ import SectionHeader from "@/components/SectionHeader"
 import FactsheetCard from "@/components/FactsheetCard"
 import SiteHeader from "@/components/SiteHeader"
 
-export default function IndexPage({ factsheets }) {
+export default function IndexPage({ factsheets, partners }) {
   return (
     <>
       <SiteHeader />
@@ -43,7 +44,7 @@ export default function IndexPage({ factsheets }) {
             <UpdatesList />
             <GetStarted />
             <DiveDeeper factsheets={factsheets} />
-            <PartnersSection />
+            <PartnersSection partners={partners} />
           </Stack>
         </Stack>
       </Container>
@@ -200,6 +201,13 @@ function GetStarted() {
         imgSrc="/images/participants.svg"
         href="/factsheets/participants"
       />
+<<<<<<< HEAD
+=======
+      <GetStartedItem
+        title="Participants and their role in carbon trading"
+        imgSrc="/images/participants.svg"
+      />
+>>>>>>> refs/remotes/origin/develop
 
       <GetStartedItem
         title="Current state of carbon trading"
@@ -372,10 +380,16 @@ function DiveDeeper({ factsheets }) {
   )
 }
 
-function PartnersSection() {
+function PartnersSection({ partners }) {
   return (
     <Box mx={-10}>
-      <SimpleGrid as="section" columns={8} gridGap={10} px={10} py={20}>
+      <SimpleGrid
+        as="section"
+        columns={[2, 4, 6, 8]}
+        gridGap={10}
+        px={10}
+        py={20}
+      >
         <SectionHeader
           title="Carbon Centre of Excellence Partners"
           description="Partners to the Carbon Centre of Excellence support the development of carbon markets worldwide, as a mechanism to drive decarbonization."
@@ -383,6 +397,20 @@ function PartnersSection() {
           hrefLabel="Read more"
           gridColumn="span 8"
         />
+        {partners.map((partner, i) => {
+          const srcArray = partner.logo.split(".")
+          const ext = srcArray.slice(-1)[0]
+          return (
+            <Link href="/partners" key={i}>
+              <img
+                alt={partner.name}
+                src={`/images/partners/${srcArray
+                  .slice(0, -1)
+                  .join(".")}-md.${ext}`}
+              />
+            </Link>
+          )
+        })}
       </SimpleGrid>
     </Box>
   )
@@ -392,5 +420,6 @@ export async function getStaticProps() {
   const factsheets = await getPages({
     fields: ["frontmatter"],
   })
-  return { props: { factsheets } }
+  const partners = await getContent("partners.txt", "json")
+  return { props: { factsheets, partners } }
 }
