@@ -139,6 +139,7 @@ export default {
           src="compliance-market-forecast.txt"
           ratio={2}
           chartPadding={{ bottom: 32 }}
+          showLegend
         />
       </Box>
     )
@@ -152,6 +153,7 @@ export default {
           orientation="horizontal"
           ratio={2}
           chartPadding={{ bottom: 32 }}
+          showLegend
         />
       </Box>
     )

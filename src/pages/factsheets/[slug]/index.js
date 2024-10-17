@@ -33,6 +33,7 @@ export default function FactsheetPage({ source, dictionary }) {
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined
+    console.log(dictionary)
     setTerms(dictionary)
   }, [setTerms])
 
@@ -174,7 +175,7 @@ export async function getStaticProps({ params }) {
   const source = await getPage({ slug, pageType: "factsheets" })
   const dictionary = await getPage({
     slug: "dictionary",
-    pageType: "content",
+    pageType: "pages",
     fields: ["frontmatter"],
   })
   return { props: { source, dictionary: dictionary?.frontmatter?.terms || [] } }

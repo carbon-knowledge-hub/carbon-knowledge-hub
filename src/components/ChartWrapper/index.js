@@ -24,6 +24,7 @@ export default function ChartWrapper({
   ratio = 16 / 9,
   onDataLoad,
   yAxisLabel = "",
+  showLegend,
 }) {
   const isClient = useIsClient()
   const customColors = useCustomColors(colors)
@@ -46,6 +47,7 @@ export default function ChartWrapper({
               ratio={ratio}
               onDataLoad={onDataLoad}
               yAxisLabel={yAxisLabel}
+              showLegend={showLegend}
             />
           )}
         </ChartStoreProvider>
