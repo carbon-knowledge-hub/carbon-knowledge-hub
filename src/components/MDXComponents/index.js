@@ -53,7 +53,18 @@ export default {
     return null
   },
   a: (props) => {
-    if (!props.href) return <a {...props} />
+    if (!props.href)
+      return (
+        <a
+          fontSize="xl"
+          color="blue.500"
+          textDecoration="underline"
+          _hover={{ color: "blue.600" }}
+          _focus={{ color: "blue.600" }}
+          _active={{ color: "blue.600" }}
+          {...props}
+        />
+      )
     return <CustomLinkComponent {...props} />
   },
   ul: (props) => {
