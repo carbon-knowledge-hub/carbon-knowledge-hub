@@ -2,7 +2,8 @@ import { Box, Container, SimpleGrid, Divider } from "@chakra-ui/react"
 // import { MDXRemote } from "next-mdx-remote"
 
 // import getPage from "@/utils/api/server/getPage"
-import components from "@/components/MDXComponents"
+import getContent from "@/utils/api/server/getContent"
+// import components from "@/components/MDXComponents"
 import SiteHeader from "@/components/SiteHeader"
 import {
   PageHeader,
@@ -14,10 +15,12 @@ import {
 
 export default function DataTrackerPage({
   source = { frontmatter: { title: "Media" } },
+  allMedia,
 }) {
   const { frontmatter } = source
-  const title = source.frontmatter.title
+  const title = frontmatter.title
   // const description = source.frontmatter.description
+  console.log(allMedia)
   return (
     <>
       <SiteHeader />
@@ -49,10 +52,11 @@ export default function DataTrackerPage({
   )
 }
 
-// export async function getStaticProps() {
-//   const source = await getPage({
-//     slug: "partners",
-//     pageType: "pages",
-//   })
-//   return { props: { source } }
-// }
+export async function getStaticProps() {
+  // const source = await getPage({
+  //   slug: "partners",
+  //   pageType: "pages",
+  // })
+  const allMedia = await getContent("media.txt", "json")
+  return { props: { allMedia } }
+}
