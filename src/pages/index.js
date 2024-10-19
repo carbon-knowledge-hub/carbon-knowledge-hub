@@ -237,6 +237,7 @@ function GetStartedItem({
       gridRowGap={5}
       pt={[5, null, null, 10]}
       pb={10}
+      overflow="hidden"
       sx={{
         "&:nth-child(even)": {
           gridTemplateAreas: ["'img' 'content'", null, null, "'img content'"],
