@@ -48,7 +48,6 @@ export default function BubbleChart({ ratio = 2 }) {
       return { data: [], domains: { x: [], y: [], size: [] } }
 
     const noFilters = !regionFilter && !programFilter && !economyFilter
-
     const parsed = noFilters
       ? dataRaw
       : dataRaw.filter((d) => {
@@ -76,7 +75,6 @@ export default function BubbleChart({ ratio = 2 }) {
     }
     return { data: parsed, domains }
   }, [JSON.stringify(dataRaw), regionFilter, programFilter, economyFilter])
-
   const padding = {
     top: 48,
     left: 48,
