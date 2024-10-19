@@ -140,7 +140,7 @@ export default function FactsheetPage({ source, dictionary }) {
             <Box gridColumn={["1 / -1", null, "2 / -2", "2 / -3"]}>
               <MDXRemote {...source} components={components} />
             </Box>
-            <Box
+            {/* <Box
               gridColumn="7/-1"
               as="aside"
               h={["auto", null, 0]}
@@ -151,7 +151,7 @@ export default function FactsheetPage({ source, dictionary }) {
               <Stack>
                 <Text variant="metaHeading">{"On this page"}</Text>
               </Stack>
-            </Box>
+            </Box> */}
           </SimpleGrid>
         </Container>
       </Stack>
