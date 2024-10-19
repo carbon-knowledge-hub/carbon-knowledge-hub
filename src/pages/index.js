@@ -334,10 +334,10 @@ function GetStartedItem({
             </Text>
           )
         })}
-        <Heading fontSize="2rem">
+        <Heading variant="storyTitle">
           <LinkOverlay href={href}>{title}</LinkOverlay>
         </Heading>
-        <Text fontSize="xl" lineHeight="tall" color="whiteAlpha.700">
+        <Text variant="body" color="whiteAlpha.700">
           {description}
         </Text>
         <LinkOverlay href={href} display="flex" alignItems="center">

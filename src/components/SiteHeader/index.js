@@ -112,7 +112,7 @@ function NavigationOverlay() {
                   justifyContent="flex-start"
                   px={6}
                   mx={-5}
-                  fontSize="lg"
+                  fontSize="xl"
                 >
                   {"Factsheets"}
                 </ButtonLink>
@@ -125,7 +125,7 @@ function NavigationOverlay() {
                   justifyContent="flex-start"
                   px={6}
                   mx={-5}
-                  fontSize="lg"
+                  fontSize="xl"
                 >
                   {"B20 recommendations"}
                 </ButtonLink>
@@ -138,7 +138,7 @@ function NavigationOverlay() {
                   justifyContent="flex-start"
                   px={6}
                   mx={-5}
-                  fontSize="lg"
+                  fontSize="xl"
                 >
                   {"Data tracker"}
                 </ButtonLink>
@@ -170,7 +170,7 @@ function NavigationOverlay() {
                   justifyContent="flex-start"
                   px={6}
                   mx={-5}
-                  fontSize="lg"
+                  fontSize="xl"
                 >
                   {"Stories"}
                 </ButtonLink>
@@ -183,7 +183,7 @@ function NavigationOverlay() {
                   justifyContent="flex-start"
                   px={6}
                   mx={-5}
-                  fontSize="lg"
+                  fontSize="xl"
                 >
                   {"Links"}
                 </ButtonLink>
@@ -196,7 +196,7 @@ function NavigationOverlay() {
                   justifyContent="flex-start"
                   px={6}
                   mx={-5}
-                  fontSize="lg"
+                  fontSize="xl"
                 >
                   {"Media"}
                 </ButtonLink>
@@ -209,7 +209,7 @@ function NavigationOverlay() {
                   justifyContent="flex-start"
                   px={6}
                   mx={-5}
-                  fontSize="lg"
+                  fontSize="xl"
                 >
                   {"Dictionary"}
                 </ButtonLink>
@@ -235,7 +235,7 @@ function NavigationOverlay() {
                   justifyContent="flex-start"
                   px={6}
                   mx={-5}
-                  fontSize="lg"
+                  fontSize="xl"
                 >
                   {"About"}
                 </ButtonLink>
@@ -248,7 +248,7 @@ function NavigationOverlay() {
                   justifyContent="flex-start"
                   px={6}
                   mx={-5}
-                  fontSize="lg"
+                  fontSize="xl"
                 >
                   {"Partners"}
                 </ButtonLink>
@@ -261,7 +261,7 @@ function NavigationOverlay() {
                   justifyContent="flex-start"
                   px={6}
                   mx={-5}
-                  fontSize="lg"
+                  fontSize="xl"
                 >
                   {"Frequently asked questions"}
                 </ButtonLink>
@@ -274,7 +274,7 @@ function NavigationOverlay() {
                   justifyContent="flex-start"
                   px={6}
                   mx={-5}
-                  fontSize="lg"
+                  fontSize="xl"
                 >
                   {"Contact"}
                 </ButtonLink>

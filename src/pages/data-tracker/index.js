@@ -20,7 +20,7 @@ export default function DataTrackerPage({ source }) {
   const description = source.frontmatter.description
   return (
     <>
-      <SiteHeader />
+      <SiteHeader bg="brand.1000" color="white" />
       <PageHeader bg="brand.1000" color="white">
         <PageHeaderGrid bg="brand.1000" color="brand.900" />
         <PageHeaderContent gridColumn={["1 / -1", null, "2 / -2", null, "2 / -3"]}>

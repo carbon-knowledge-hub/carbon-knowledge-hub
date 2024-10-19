@@ -36,7 +36,7 @@ export default function StoryCard({ children, frontmatter, ...restProps }) {
             </HStack>
             <Stack spacing={3}>
             <Heading variant="storyTitle">{frontmatter.title}</Heading>
-            <Text variant="bodySmall">{frontmatter.description}</Text>
+            <Text variant="body">{frontmatter.description}</Text>
             </Stack>
           </Stack>
         </Stack>
