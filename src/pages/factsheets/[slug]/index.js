@@ -68,10 +68,12 @@ export default function FactsheetPage({ source, dictionary }) {
                   {level}
                 </Tag>
               )}
+              {date && (
+                <Text fontWeight={600} fontSize="0.875rem">
+                  {"|"}
+                </Text>
+              )}
 
-              <Text fontWeight={600} fontSize="0.875rem">
-                {"|"}
-              </Text>
               {date && (
                 <Text
                   fontSize="0.875rem"

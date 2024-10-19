@@ -17,13 +17,13 @@ import {
   PageHeaderContent,
   PageHeaderBreadcrumbs,
   PageHeaderTitle,
-  // PageHeaderDescription,
+  PageHeaderDescription,
 } from "@/components/PageHeader"
 
 export default function DataTrackerPage({ source }) {
   const { frontmatter } = source
   const { title } = frontmatter
-  // const description = source.frontmatter.description
+  const description = source.frontmatter.description
   return (
     <>
       <SiteHeader />
@@ -32,7 +32,7 @@ export default function DataTrackerPage({ source }) {
         <PageHeaderContent gridColumn={["1 / -1", null, "2 / -2"]}>
           <PageHeaderBreadcrumbs items={[{ label: "Contact" }]} />
           <PageHeaderTitle>{title}</PageHeaderTitle>
-          {/* <PageHeaderDescription>{description}</PageHeaderDescription> */}
+          <PageHeaderDescription>{description}</PageHeaderDescription>
         </PageHeaderContent>
       </PageHeader>
       <Divider borderColor="gray.300" />

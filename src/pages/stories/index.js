@@ -1,5 +1,6 @@
 import { Divider, SimpleGrid, Container } from "@chakra-ui/react"
 
+import { Link } from "@/components/Link"
 import getPages from "@/utils/api/server/getPages"
 import getContent from "@/utils/api/server/getContent"
 import SiteHeader from "@/components/SiteHeader"
@@ -13,7 +14,6 @@ import {
 import StoryCard from "@/components/StoryCard"
 
 export default function StoriesPage({ stories, partners }) {
-  console.log(partners)
   return (
     <>
       <SiteHeader />
@@ -25,10 +25,34 @@ export default function StoriesPage({ stories, partners }) {
         </PageHeaderContent>
       </PageHeader>
       <Divider borderColor="gray.300" />
+      <Container>
+        <SimpleGrid
+          as="section"
+          columns={[2, 4, 6, 8]}
+          gridGap={10}
+          px={10}
+          py={20}
+        >
+          {partners.map((partner, i) => {
+            const srcArray = partner.logo.split(".")
+            const ext = srcArray.slice(-1)[0]
+            return (
+              <Link href="/partners" key={i}>
+                <img
+                  alt={partner.name}
+                  src={`/images/partners/${srcArray
+                    .slice(0, -1)
+                    .join(".")}-md.${ext}`}
+                />
+              </Link>
+            )
+          })}
+        </SimpleGrid>
+      </Container>
       <Container py={10}>
         <SimpleGrid spacing={10} columns={[1, null, 2, null, 3]}>
-          {stories.map(({ frontmatter }) => {
-            return <StoryCard frontmatter={frontmatter} />
+          {stories.map(({ frontmatter }, i) => {
+            return <StoryCard key={i} frontmatter={frontmatter} />
           })}
         </SimpleGrid>
       </Container>
@@ -42,5 +66,20 @@ export async function getStaticProps() {
     fields: ["frontmatter"],
   })
   const partners = await getContent("partners.txt", "json")
-  return { props: { stories, partners } }
+  const storiesWithLogos = stories.map((d) => {
+    const relevantPartner = partners.find(
+      (s) => s.name === d.frontmatter.partner
+    )
+    const logo = relevantPartner?.logo || ""
+    const logoBase = logo.split(".").slice(0, -1).join(".")
+    const logoExtension = logo.split(".").slice(-1)[0]
+    d.frontmatter.partnerLogo = logo ? `${logoBase}-sm.${logoExtension}` : ""
+    return { frontmatter: d.frontmatter }
+  })
+  return {
+    props: {
+      stories: storiesWithLogos,
+      partners: partners.filter((d) => d.type !== "managing"),
+    },
+  }
 }

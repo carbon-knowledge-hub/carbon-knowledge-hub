@@ -41,9 +41,7 @@ export default {
   p: (props) => (
     <Text
       as="p"
-      fontWeight={500}
-      fontSize="xl"
-      lineHeight="taller"
+      variant="bodyLarge"
       pb={6}
       {...props}
     />
@@ -53,7 +51,18 @@ export default {
     return null
   },
   a: (props) => {
-    if (!props.href) return <a {...props} />
+    if (!props.href)
+      return (
+        <a
+          fontSize="xl"
+          color="blue.500"
+          textDecoration="underline"
+          _hover={{ color: "blue.600" }}
+          _focus={{ color: "blue.600" }}
+          _active={{ color: "blue.600" }}
+          {...props}
+        />
+      )
     return <CustomLinkComponent {...props} />
   },
   ul: (props) => {
@@ -64,8 +73,8 @@ export default {
         w="100%"
         pl={6}
         pb={6}
-        fontSize="xl"
-        lineHeight="tall"
+        fontSize={["xl", null, "2xl"]}
+        lineHeight="taller"
         gridColumn={["1 / -1", null, "2 / -3"]}
         sx={{
           li: { a: { color: "brand.500", fontWeight: 700 } },
@@ -82,8 +91,8 @@ export default {
         w="100%"
         maxW="container.sm"
         pl={6}
-        fontSize="lg"
-        lineHeight="tall"
+        fontSize={["xl", null, "2xl"]}
+        lineHeight="taller"
         gridColumn={["1 / -1", null, "2 / -3"]}
         {...props}
       />

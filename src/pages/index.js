@@ -19,6 +19,7 @@ import UpdatesList from "@/components/UpdatesList"
 import SectionHeader from "@/components/SectionHeader"
 import FactsheetCard from "@/components/FactsheetCard"
 import SiteHeader from "@/components/SiteHeader"
+import PartnersSection from "@/components/PartnersSection"
 
 export default function IndexPage({ factsheets, partners }) {
   return (
@@ -236,6 +237,7 @@ function GetStartedItem({
       gridRowGap={5}
       pt={[5, null, null, 10]}
       pb={10}
+      overflow="hidden"
       sx={{
         "&:nth-child(even)": {
           gridTemplateAreas: ["'img' 'content'", null, null, "'img content'"],
@@ -333,10 +335,10 @@ function GetStartedItem({
             </Text>
           )
         })}
-        <Heading fontSize="2rem">
+        <Heading variant="storyTitle">
           <LinkOverlay href={href}>{title}</LinkOverlay>
         </Heading>
-        <Text fontSize="xl" lineHeight="tall" color="whiteAlpha.700">
+        <Text variant="body" color="whiteAlpha.700">
           {description}
         </Text>
         <LinkOverlay href={href} display="flex" alignItems="center">
@@ -372,42 +374,6 @@ function DiveDeeper({ factsheets }) {
             )
           })}
         </SimpleGrid>
-      </SimpleGrid>
-    </Box>
-  )
-}
-
-function PartnersSection({ partners }) {
-  return (
-    <Box mx={-10}>
-      <SimpleGrid
-        as="section"
-        columns={[2, 4, 6, 8]}
-        gridGap={10}
-        px={10}
-        py={20}
-      >
-        <SectionHeader
-          title="Carbon Centre of Excellence Partners"
-          description="Partners to the Carbon Centre of Excellence support the development of carbon markets worldwide, as a mechanism to drive decarbonization."
-          href="/partners"
-          hrefLabel="Read more"
-          gridColumn="span 8"
-        />
-        {partners.map((partner, i) => {
-          const srcArray = partner.logo.split(".")
-          const ext = srcArray.slice(-1)[0]
-          return (
-            <Link href="/partners" key={i}>
-              <img
-                alt={partner.name}
-                src={`/images/partners/${srcArray
-                  .slice(0, -1)
-                  .join(".")}-md.${ext}`}
-              />
-            </Link>
-          )
-        })}
       </SimpleGrid>
     </Box>
   )

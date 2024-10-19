@@ -20,10 +20,10 @@ export default function DataTrackerPage({ source }) {
   const description = source.frontmatter.description
   return (
     <>
-      <SiteHeader />
+      <SiteHeader bg="brand.1000" color="white" />
       <PageHeader bg="brand.1000" color="white">
         <PageHeaderGrid bg="brand.1000" color="brand.900" />
-        <PageHeaderContent gridColumn={["1 / -1", null, "2 / -2"]}>
+        <PageHeaderContent gridColumn={["1 / -1", null, "2 / -2", null, "2 / -3"]}>
           <PageHeaderBreadcrumbs
             isInverted
             items={[{ label: "Data tracker" }]}
@@ -53,7 +53,7 @@ export default function DataTrackerPage({ source }) {
           pb={20}
           sx={{
             "h1, h2, h3, h4, h5, h6, p": {
-              gridColumn: ["1 / -1", null, "2 / -2", "3/ -3"],
+              gridColumn: ["1 / -1", null, "2 / -2", null, "2 / -3"]
             },
             // "> div": {
             //   gridColumn: "1 / -1",
