@@ -10,8 +10,8 @@ export default {
     letterSpacing: "0.01em",
   },
   bodyLarge: {
-    fontSize: ["lg", null, "xl"],
-    lineHeight: "tall",
+    fontSize: ["xl", null, "2xl"],
+    lineHeight: "taller",
     letterSpacing: "0.01em",
   },
   sectionHeading: {
@@ -38,7 +38,7 @@ export default {
     letterSpacing: "-0.015em",
   },
   pageDescription: {
-    fontSize: ["1.25rem", null, "1.5rem"],
+    fontSize: ["1.5rem", null, "1.75rem"],
     lineHeight: "tall",
     letterSpacing: "0.01em",
   },
@@ -48,17 +48,17 @@ export default {
     letterSpacing: "-0.015em",
   },
   factsheetHeading2: {
-    fontSize: "1.75rem",
+    fontSize: ["1.75rem", null, "2rem"],
     lineHeight: "shorter",
     letterSpacing: "-0.015em",
   },
   factsheetHeading3: {
-    fontSize: "1.5rem",
+    fontSize: ["1.5rem", null, "1.75rem"],
     lineHeight: "shorter",
     letterSpacing: "-0.015em",
   },
   factsheetHeading4: {
-    fontSize: "1.25rem",
+    fontSize: ["1.25rem", null, "1.5rem"],
     lineHeight: "shorter",
     letterSpacing: "-0.015em",
   },
