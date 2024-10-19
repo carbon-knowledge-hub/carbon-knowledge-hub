@@ -1,6 +1,7 @@
-import { Box, Stack, Divider, SimpleGrid, Container } from "@chakra-ui/react"
+import { Divider, SimpleGrid, Container } from "@chakra-ui/react"
 
 import getPages from "@/utils/api/server/getPages"
+import getContent from "@/utils/api/server/getContent"
 import SiteHeader from "@/components/SiteHeader"
 import {
   PageHeader,
@@ -11,7 +12,8 @@ import {
 } from "@/components/PageHeader"
 import StoryCard from "@/components/StoryCard"
 
-export default function StoriesPage({ stories }) {
+export default function StoriesPage({ stories, partners }) {
+  console.log(partners)
   return (
     <>
       <SiteHeader />
@@ -39,5 +41,6 @@ export async function getStaticProps() {
     pageType: "stories",
     fields: ["frontmatter"],
   })
-  return { props: { stories } }
+  const partners = await getContent("partners.txt", "json")
+  return { props: { stories, partners } }
 }
