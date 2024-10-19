@@ -18,6 +18,10 @@ export function getProcessor(chartType) {
     case "scatter":
       return processScatterPlot
     default:
-      return () => ({ data: [], domain: { x: [0, 0], y: [0, 0], r: [0, 0] } })
+      return () => ({
+        data: [],
+        source: "",
+        domain: { x: [0, 0], y: [0, 0], r: [0, 0] },
+      })
   }
 }

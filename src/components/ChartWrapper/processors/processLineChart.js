@@ -23,6 +23,7 @@ function getLineDataValue(key, d) {
     unit: d.unit || d.y_unit || "",
     y_unit: d.y_unit || "",
     valueType,
+    source: d.source || "",
   }
 }
 
@@ -35,13 +36,17 @@ export function processLineChart(data, colors) {
   const hasYMin = Object.keys(data[0]).includes("y_min")
   const hasYMax = Object.keys(data[0]).includes("y_max")
 
+  const source = []
+
   const groupedByGroup = grouped.map(([groupName, groupValues], key) => {
     let unit = ""
     const data = _sortBy(
       groupValues
         .map((d, key) => {
           if (!unit) unit = d.unit?.trim() || d.y_unit?.trim()
-          return getLineDataValue(key, d)
+          const lineData = getLineDataValue(key, d)
+          source.push(lineData.source)
+          return lineData
         })
         .filter((d) => !!d.x_val),
       (o) => parseFloat(o.x_val.split("-").join(""))
@@ -77,6 +82,7 @@ export function processLineChart(data, colors) {
   const finalData = {
     data: groupedByGroup,
     groups: groupedByGroup.map((d) => d.group),
+    source: source.filter((d) => !!d)[0] || "",
     domain: {
       allXValues,
       allYValues,

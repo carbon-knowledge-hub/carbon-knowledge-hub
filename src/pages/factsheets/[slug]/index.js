@@ -9,6 +9,7 @@ import {
   Tag,
 } from "@chakra-ui/react"
 import { MDXRemote } from "next-mdx-remote"
+import { micromark } from "micromark"
 
 import getPages from "@/utils/api/server/getPages"
 import getPage from "@/utils/api/server/getPage"
@@ -33,7 +34,6 @@ export default function FactsheetPage({ source, dictionary }) {
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined
-    console.log(dictionary)
     setTerms(dictionary)
   }, [setTerms])
 
@@ -180,5 +180,10 @@ export async function getStaticProps({ params }) {
     pageType: "pages",
     fields: ["frontmatter"],
   })
-  return { props: { source, dictionary: dictionary?.frontmatter?.terms || [] } }
+
+  const terms = (dictionary?.frontmatter?.terms || []).map((d) => {
+    return { ...d, description: micromark(d.description) }
+  })
+
+  return { props: { source, dictionary: terms } }
 }

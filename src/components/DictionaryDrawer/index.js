@@ -8,7 +8,6 @@ import {
   DrawerCloseButton,
   Heading,
   Text,
-  HStack,
   Stack,
 } from "@chakra-ui/react"
 
@@ -28,13 +27,32 @@ export default function DictionaryDrawer() {
       <DrawerContent>
         <DrawerCloseButton />
         <DrawerBody>
-          <Stack py={[5, null, 10]} justifyContent="space-between" direction={["column", null, "row"]}>
+          <Stack
+            py={[5, null, 10]}
+            justifyContent="space-between"
+            direction={["column", null, "row"]}
+          >
             <Stack spacing={3} maxW="48rem">
               {" "}
               <Heading variant="dictionaryDrawerTerm">{definition}</Heading>
-              <Text variant="bodySmall">{description}</Text>
+              <Text
+                as="div"
+                variant="bodySmall"
+                dangerouslySetInnerHTML={{ __html: description }}
+                sx={{
+                  "a": {
+                    color: "brand.500",
+                    fontWeight: 600,
+                    _hover: { textDecoration: "underline" },
+                    _focusVisible: {
+                      textDecoration: "underline",
+                      outline: "0.125rem solid",
+                      outlineColor: "brand.500",
+                    },
+                  },
+                }}
+              />
             </Stack>
-
             <Link
               href={`/dictionary#term-${definition.split(" ").join("-")}`}
               onClick={onClose}

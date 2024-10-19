@@ -41,9 +41,9 @@ export default function BubbleChart({ ratio = 2 }) {
   const [programFilter, setProgramFilter] = useState("")
   const [economyFilter, setEconomyFilter] = useState("")
 
-  const noFilters = !regionFilter && !programFilter && !economyFilter
+  // const noFilters = !regionFilter && !programFilter && !economyFilter
 
-  const { data, domains } = useMemo(() => {
+  const { data, domains, source } = useMemo(() => {
     if (!dataRaw?.length)
       return { data: [], domains: { x: [], y: [], size: [] } }
 
@@ -73,7 +73,10 @@ export default function BubbleChart({ ratio = 2 }) {
       //   ],
       size: [0, d3Max(dataRaw, (o) => o.economy_total_emissions)],
     }
-    return { data: parsed, domains }
+
+    const source = parsed.map((d) => d.source).filter((d) => !!d)[0]
+
+    return { data: parsed, domains, source }
   }, [JSON.stringify(dataRaw), regionFilter, programFilter, economyFilter])
   const padding = {
     top: 48,
@@ -328,6 +331,8 @@ export default function BubbleChart({ ratio = 2 }) {
         </svg>
         <TooltipOverlay width={width} height={height} />
       </div>
+
+      <div style={{ paddingTop: "1.5rem" }}>{source}</div>
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { useIsClient } from "usehooks-ts"
 import useCustomColors from "./useCustomColors"
 import { ChartStoreProvider } from "./store"
 import ChartDataWrapper from "./ChartDataWrapper"
+import ChartCaption from "./ChartCaption"
 
 /**
  * Chart Wrapper
@@ -50,10 +51,8 @@ export default function ChartWrapper({
               showLegend={showLegend}
             />
           )}
+          <ChartCaption caption={caption} />
         </ChartStoreProvider>
-        {caption && (
-          <figcaption className="chart__caption">{caption}</figcaption>
-        )}
       </figure>
     </section>
   )

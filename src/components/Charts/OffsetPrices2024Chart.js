@@ -6,10 +6,14 @@ import fetchDataset from "@/utils/api/client/fetchDataset"
 
 export default function OffsetPrices2024Chart() {
   const [data, setData] = useState([])
+  const [source, setSource] = useState("")
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined
-    fetchDataset("/data/charts/offset-prices-2024.txt").then((d) => setData(d))
+    fetchDataset("/data/charts/offset-prices-2024.txt").then((d) => {
+      setSource(d.map((dd) => dd.source).filter((dd) => !!dd)[0] || "")
+      setData(d)
+    })
   }, [])
 
   const scale = useMemo(() => scaleLinear().domain([0, 45]).range([0, 100]), [])
@@ -179,6 +183,7 @@ export default function OffsetPrices2024Chart() {
           </SimpleGrid>
         )
       })}
+      <Box>{source}</Box>
     </Stack>
   )
 }

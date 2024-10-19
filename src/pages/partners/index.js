@@ -1,11 +1,4 @@
-import {
-  Text,
-  Box,
-  Container,
-  SimpleGrid,
-  Stack,
-  Divider,
-} from "@chakra-ui/react"
+import { Box, Container, SimpleGrid, Divider } from "@chakra-ui/react"
 import { MDXRemote } from "next-mdx-remote"
 
 import getPage from "@/utils/api/server/getPage"
@@ -18,14 +11,12 @@ import {
   PageHeaderContent,
   PageHeaderBreadcrumbs,
   PageHeaderTitle,
-  PageHeaderDescription,
 } from "@/components/PageHeader"
 
 export default function DataTrackerPage({ source, allPartners }) {
-  const { frontmatter } = source
+  // const { frontmatter } = source
   const title = source.frontmatter.title
-  const description = source.frontmatter.description
-  console.log(allPartners)
+  // const description = source.frontmatter.description
   return (
     <>
       <SiteHeader />
@@ -50,8 +41,7 @@ export default function DataTrackerPage({ source, allPartners }) {
             position="sticky"
             top={10}
             display={["none", null, null, "block"]}
-          >
-          </Box>
+          ></Box>
         </SimpleGrid>
       </Container>
     </>

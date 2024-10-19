@@ -53,6 +53,7 @@ export default function BarChart({
 }) {
   const data = useChartStore((state) => state.data)
   const domain = useChartStore((state) => state.domain)
+  const source = useChartStore((state) => state.source)
 
   const padding = {
     top: orientation === "horizontal" ? 20 : 20,

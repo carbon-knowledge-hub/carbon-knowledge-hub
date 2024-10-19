@@ -28,13 +28,15 @@ const storeCreator = (set) => ({
   y_unit: "",
   x_unit: "",
 
+  source: "",
+
   data: [],
   setInitialData: (chartType, dataset, colors) => {
     if (!dataset) return
     const unit = dataset.map((d) => d.unit || "").filter((d) => d)[0]
     const y_unit = dataset.map((d) => d.y_unit || "").filter((d) => d)[0]
     const x_unit = dataset.map((d) => d.x_unit || "").filter((d) => d)[0]
-    const { data, domain } = getProcessor(chartType)(dataset, colors)
+    const { data, domain, source } = getProcessor(chartType)(dataset, colors)
     const legend = uniqBy(
       data.flatMap((d) => {
         return d.group
@@ -56,6 +58,7 @@ const storeCreator = (set) => ({
         (allGroupNames[0]?.name === "no-group" || !allGroupNames[0]?.name)
           ? []
           : legend,
+      source,
     })
   },
 
