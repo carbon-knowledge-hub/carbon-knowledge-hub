@@ -51,8 +51,8 @@ export default function StoriesPage({ stories, partners }) {
       </Container>
       <Container py={10}>
         <SimpleGrid spacing={10} columns={[1, null, 2, null, 3]}>
-          {stories.map(({ frontmatter }) => {
-            return <StoryCard frontmatter={frontmatter} />
+          {stories.map(({ frontmatter }, i) => {
+            return <StoryCard key={i} frontmatter={frontmatter} />
           })}
         </SimpleGrid>
       </Container>
@@ -66,7 +66,20 @@ export async function getStaticProps() {
     fields: ["frontmatter"],
   })
   const partners = await getContent("partners.txt", "json")
+  const storiesWithLogos = stories.map((d) => {
+    const relevantPartner = partners.find(
+      (s) => s.name === d.frontmatter.partner
+    )
+    const logo = relevantPartner?.logo || ""
+    const logoBase = logo.split(".").slice(0, -1).join(".")
+    const logoExtension = logo.split(".").slice(-1)[0]
+    d.frontmatter.partnerLogo = logo ? `${logoBase}-sm.${logoExtension}` : ""
+    return { frontmatter: d.frontmatter }
+  })
   return {
-    props: { stories, partners: partners.filter((d) => d.type !== "managing") },
+    props: {
+      stories: storiesWithLogos,
+      partners: partners.filter((d) => d.type !== "managing"),
+    },
   }
 }

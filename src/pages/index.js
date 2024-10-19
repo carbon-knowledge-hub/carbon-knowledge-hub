@@ -379,8 +379,6 @@ function DiveDeeper({ factsheets }) {
   )
 }
 
-
-
 export async function getStaticProps() {
   const factsheets = await getPages({
     fields: ["frontmatter"],
