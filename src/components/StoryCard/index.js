@@ -25,11 +25,11 @@ export default function StoryCard({ children, frontmatter, ...restProps }) {
                 <Text variant="metaHeadingSmall">{frontmatter.partner}</Text>
               )}
 
-              <Text fontWeight={400} color="gray.600" variant="metaHeadingSmall">
+              <Text fontWeight={600} color="gray.600" variant="metaHeadingSmall">
                 {"|"}
               </Text>
               {frontmatter.date && (
-                <Text variant="metaHeadingSmall" fontWeight={400} color="gray.600">
+                <Text variant="metaHeadingSmall" fontWeight={600} color="gray.600">
                   {day(frontmatter.date).format("DD MMM YYYY")}
                 </Text>
               )}
