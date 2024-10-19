@@ -32,7 +32,7 @@ export default function DataTrackerPage({ source }) {
         <PageHeaderContent gridColumn={["1 / -1", null, "2 / -2"]}>
           <PageHeaderBreadcrumbs items={[{ label: "Frequently Asked Questions" }]} />
           <PageHeaderTitle>{title}</PageHeaderTitle>
-          {/* <PageHeaderDescription>{description}</PageHeaderDescription> */}
+          <PageHeaderDescription>{description}</PageHeaderDescription>
         </PageHeaderContent>
       </PageHeader>
       <Divider borderColor="gray.300" />
