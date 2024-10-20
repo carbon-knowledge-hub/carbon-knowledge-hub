@@ -42,16 +42,7 @@ export default function FactsheetsPage({ factsheets }) {
         </PageHeaderContent>
       </PageHeader>
       <Divider borderColor="gray.300" />
-      <Container py={10}>{"factsheet count and tags bar"}</Container>
-      <Divider borderColor="gray.300" />
-      <Container>
-        <SimpleGrid columns={8} gridGap={10}>
-          <Filters />
-          <Stack spacing={10} gridColumn="3 / -1" py={10}>
-            <FactsheetsListing factsheets={factsheets} />
-          </Stack>
-        </SimpleGrid>
-      </Container>
+      <FactsheetsListing factsheets={factsheets} />
     </>
   )
 }
@@ -89,19 +80,48 @@ function FactsheetsListing({ factsheets }) {
     return show
   })
 
+  const count = filteredFactsheets.length
+
   return (
-    <Stack spacing={10}>
-      {filteredFactsheets.map((factsheet) => {
-        return (
-          <FactsheetCard
-            key={factsheet.frontmatter.slug}
-            href={factsheet.frontmatter.slug}
-            frontmatter={factsheet.frontmatter}
-          />
-        )
-      })}
-    </Stack>
+    <>
+      <Container py={10}>{`Showing ${count} factsheet${
+        count === 1 ? "" : "s"
+      }`}</Container>
+      <Divider borderColor="gray.300" />
+      <Container>
+        <SimpleGrid columns={8} gridGap={10}>
+          <Filters />
+          <Stack spacing={10} gridColumn="3 / -1" py={10}>
+            <Stack spacing={10}>
+              {filteredFactsheets.map((factsheet) => {
+                return (
+                  <FactsheetCard
+                    key={factsheet.frontmatter.slug}
+                    href={factsheet.frontmatter.slug}
+                    frontmatter={factsheet.frontmatter}
+                  />
+                )
+              })}
+            </Stack>
+          </Stack>
+        </SimpleGrid>
+      </Container>
+    </>
   )
+
+  // return (
+  //   <Stack spacing={10}>
+  //     {filteredFactsheets.map((factsheet) => {
+  //       return (
+  //         <FactsheetCard
+  //           key={factsheet.frontmatter.slug}
+  //           href={factsheet.frontmatter.slug}
+  //           frontmatter={factsheet.frontmatter}
+  //         />
+  //       )
+  //     })}
+  //   </Stack>
+  // )
 }
 
 function Filters() {
@@ -128,6 +148,7 @@ function Filters() {
       gridColumn="1 / span 2"
       borderRight="solid 0.0625rem"
       borderColor="gray.300"
+      pr={5}
     >
       <Stack py={5}>
         <Text variant="metaHeadingSmall">{"Market type"}</Text>

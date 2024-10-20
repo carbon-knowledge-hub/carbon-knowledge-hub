@@ -8,6 +8,8 @@ import {
   Container,
   Divider,
 } from "@chakra-ui/react"
+import day from "dayjs"
+import _sortBy from "lodash/sortBy"
 
 import getPages from "@/utils/api/server/getPages"
 import getContent from "@/utils/api/server/getContent"
@@ -21,7 +23,7 @@ import FactsheetCard from "@/components/FactsheetCard"
 import SiteHeader from "@/components/SiteHeader"
 import PartnersSection from "@/components/PartnersSection"
 
-export default function IndexPage({ factsheets, partners }) {
+export default function IndexPage({ factsheets, partners, latestUpdates }) {
   return (
     <>
       <SiteHeader />
@@ -42,7 +44,7 @@ export default function IndexPage({ factsheets, partners }) {
           <LogoBanner />
           <Stack spacing={24}>
             <AboutBanner />
-            <UpdatesList />
+            <UpdatesList updates={latestUpdates} />
             <GetStarted />
             <DiveDeeper factsheets={factsheets} />
             <PartnersSection partners={partners} />
@@ -381,13 +383,32 @@ function DiveDeeper({ factsheets }) {
 
 export async function getStaticProps() {
   const factsheets = await getPages({
+    pageType: "factsheets",
     fields: ["frontmatter"],
   })
   const partners = await getContent("partners.txt", "json")
+
+  const media = await getContent("media.txt", "json")
+
+  const stories = await getPages({
+    pageType: "stories",
+    fields: ["frontmatter"],
+  })
+
+  const latestUpdates = _sortBy(
+    [
+      ...factsheets.map((d) => d.frontmatter),
+      ...media,
+      ...stories.map((d) => d.frontmatter),
+    ],
+    (o) => -(parseInt(day(o.date || "").format("YYYYMMDD")) || 0)
+  ).slice(0, 12)
+
   return {
     props: {
       factsheets,
       partners: partners.filter((d) => d.type !== "managing"),
+      latestUpdates,
     },
   }
 }
