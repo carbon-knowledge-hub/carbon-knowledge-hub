@@ -1,6 +1,7 @@
-import { Heading, Text, Box, Stack } from "@chakra-ui/react"
+import { Heading, Text, Box, Stack, SimpleGrid } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 
+import { usePartnersContext } from "@/utils/usePartnersContext"
 import { useDictionaryStore } from "@/utils/useDictionaryDrawer"
 import KeyMessage from "@/components/KeyMessage"
 import { Link } from "@/components/Link"
@@ -24,28 +25,21 @@ function CustomLinkComponent(props) {
 export default {
   h1: (props) => <Heading as="h1" variant="factsheetTitle" pb={6} pt={6} {...props} {...props} />,
   h2: (props) => (
-    <Heading as="h2" variant="factsheetHeading2" pb={6} pt={6} {...props} />
+    <Heading as="h2" pt={4} variant="factsheetHeading2" {...props} />
   ),
   h3: (props) => (
-    <Heading as="h3" variant="factsheetHeading3" pb={6} pt={6} {...props} />
+    <Heading as="h3" pt={4} variant="factsheetHeading3" {...props} />
   ),
   h4: (props) => (
-    <Heading as="h4" variant="factsheetHeading4" pb={6} pt={6} {...props} />
+    <Heading as="h4" pt={4} variant="factsheetHeading4" {...props} />
   ),
   h5: (props) => (
-    <Heading as="h5" variant="factsheetHeading5" pb={6} pt={6} {...props} />
+    <Heading as="h5" pt={4} variant="factsheetHeading5" {...props} />
   ),
   h6: (props) => (
-    <Heading as="h6" variant="factsheetHeading6" pb={6} pt={6} {...props} />
+    <Heading as="h6" pt={4} variant="factsheetHeading6" {...props} />
   ),
-  p: (props) => (
-    <Text
-      as="p"
-      variant="bodyLarge"
-      pb={6}
-      {...props}
-    />
-  ),
+  p: (props) => <Text as="p" variant="bodyLarge" {...props} />,
   Image,
   img: (props) => {
     return null
@@ -72,7 +66,6 @@ export default {
         spacing={6}
         w="100%"
         pl={6}
-        pb={6}
         fontSize={["xl", null, "2xl"]}
         lineHeight="taller"
         letterSpacing= "0.01em"
@@ -133,21 +126,21 @@ export default {
   },
   KeyMessage: (props) => {
     return (
-      <Box gridColumn={["1 / -1", null, "2 / -2", "2 / -3"]} pb={10} pt={4}>
+      <Box gridColumn={["1 / -1", null, "2 / -2", "2 / -3"]}>
         <KeyMessage {...props} />
       </Box>
     )
   },
   BubbleChart: () => {
     return (
-      <Box pb={20} pt={10} gridColumn="1 / -1">
+      <Box gridColumn="1 / -1">
         <BubbleChart />
       </Box>
     )
   },
   ComplianceMarketForecastChart: () => {
     return (
-      <Box pb={20} pt={10} gridColumn={["1 / -1", null, "2 / -2"]}>
+      <Box gridColumn={["1 / -1", null, "2 / -2"]}>
         <ChartWrapper
           chartType="line"
           src="compliance-market-forecast.txt"
@@ -160,7 +153,7 @@ export default {
   },
   GlobalValueChart: () => {
     return (
-      <Box pb={20} pt={10} gridColumn={["1 / -1", null, "2 / -2"]}>
+      <Box gridColumn={["1 / -1", null, "2 / -2"]}>
         <ChartWrapper
           chartType="bar"
           src="global-value.txt"
@@ -174,24 +167,42 @@ export default {
   },
   OffsetPrices2024Chart: () => {
     return (
-      <Box pb={20} pt={10} gridColumn="1 / -1">
+      <Box gridColumn="1 / -1">
         <OffsetPrices2024Chart />
       </Box>
     )
   },
   VoluntaryMarketForecastChart: () => {
     return (
-      <Box pb={20} pt={10} gridColumn="1 / -1">
+      <Box gridColumn="1 / -1">
         <VoluntaryMarketForecastCharts />
       </Box>
     )
   },
   MetaHeading: (props) => {
-    return (
-      <Text variant="metaHeading" color="gray.500" mt={4} mb={-4} {...props} />
-    )
+    return <Text variant="metaHeading" color="gray.500" mb={-4} {...props} />
   },
-  PartnersList: (props) => {
+  PartnersList: () => {
     return null
+  },
+  PartnersSection: (props) => {
+    const partners = usePartnersContext(props.type || "")
+    return (
+      <SimpleGrid as="section" columns={[2, 4, null, null, 5]} gridGap={10}>
+        {partners.map((partner, i) => {
+          const srcArray = partner.logo.split(".")
+          const ext = srcArray.slice(-1)[0]
+          return (
+            <img
+              key={`${partner.name} - ${i}`}
+              alt={partner.name}
+              src={`/images/partners/${srcArray
+                .slice(0, -1)
+                .join(".")}-md.${ext}`}
+            />
+          )
+        })}
+      </SimpleGrid>
+    )
   },
 }

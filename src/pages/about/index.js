@@ -38,9 +38,9 @@ export default function DataTrackerPage({ source }) {
       <Divider borderColor="gray.300" />
       <Container py={20}>
         <SimpleGrid columns={8} gridGap={10}>
-          <Box gridColumn={["1 / -1", null, "2 / -2", "2 / -3"]}>
+          <Stack spacing={10} gridColumn={["1 / -1", null, "2 / -2", "2 / -3"]}>
             <MDXRemote {...source} components={components} />
-          </Box>
+          </Stack>
           <Box
             gridColumn="7/-1"
             as="aside"

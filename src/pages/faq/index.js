@@ -30,7 +30,9 @@ export default function DataTrackerPage({ source }) {
       <PageHeader>
         <PageHeaderGrid bg="rgba(255,255,255,1)" color="gray.200" />
         <PageHeaderContent gridColumn={["1 / -1", null, "2 / -2"]}>
-          <PageHeaderBreadcrumbs items={[{ label: "Frequently Asked Questions" }]} />
+          <PageHeaderBreadcrumbs
+            items={[{ label: "Frequently Asked Questions" }]}
+          />
           <PageHeaderTitle>{title}</PageHeaderTitle>
           <PageHeaderDescription>{description}</PageHeaderDescription>
         </PageHeaderContent>
@@ -38,9 +40,9 @@ export default function DataTrackerPage({ source }) {
       <Divider borderColor="gray.300" />
       <Container py={20}>
         <SimpleGrid columns={8} gridGap={10}>
-          <Box gridColumn={["1 / -1", null, "2 / -2", "2 / -3"]}>
+          <Stack spacing={10} gridColumn={["1 / -1", null, "2 / -2", "2 / -3"]}>
             <MDXRemote {...source} components={components} />
-          </Box>
+          </Stack>
           <Box
             gridColumn="7/-1"
             as="aside"
@@ -48,8 +50,7 @@ export default function DataTrackerPage({ source }) {
             position="sticky"
             top={10}
             display={["none", null, null, "block"]}
-          >
-          </Box>
+          ></Box>
         </SimpleGrid>
       </Container>
     </>

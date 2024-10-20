@@ -1,4 +1,4 @@
-import { Box, Container, SimpleGrid, Divider } from "@chakra-ui/react"
+import { Box, Stack, Container, SimpleGrid, Divider } from "@chakra-ui/react"
 import { MDXRemote } from "next-mdx-remote"
 
 import getPage from "@/utils/api/server/getPage"
@@ -13,7 +13,9 @@ import {
   PageHeaderTitle,
 } from "@/components/PageHeader"
 
-export default function DataTrackerPage({ source, allPartners }) {
+import { PartnersProvider } from "@/utils/usePartnersContext"
+
+export default function DataTrackerPage({ source, partners }) {
   // const { frontmatter } = source
   const title = source.frontmatter.title
   // const description = source.frontmatter.description
@@ -29,21 +31,26 @@ export default function DataTrackerPage({ source, allPartners }) {
         </PageHeaderContent>
       </PageHeader>
       <Divider borderColor="gray.300" />
-      <Container py={20}>
-        <SimpleGrid columns={8} gridGap={10}>
-          <Box gridColumn={["1 / -1", null, "2 / -2", "2 / -3"]}>
-            <MDXRemote {...source} components={components} />
-          </Box>
-          <Box
-            gridColumn="7/-1"
-            as="aside"
-            h={["auto", null, 0]}
-            position="sticky"
-            top={10}
-            display={["none", null, null, "block"]}
-          ></Box>
-        </SimpleGrid>
-      </Container>
+      <PartnersProvider value={{ partners }}>
+        <Container py={20}>
+          <SimpleGrid columns={8} gridGap={10}>
+            <Stack
+              spacing={10}
+              gridColumn={["1 / -1", null, "2 / -2", "2 / -3"]}
+            >
+              <MDXRemote {...source} components={components} />
+            </Stack>
+            <Box
+              gridColumn="7/-1"
+              as="aside"
+              h={["auto", null, 0]}
+              position="sticky"
+              top={10}
+              display={["none", null, null, "block"]}
+            ></Box>
+          </SimpleGrid>
+        </Container>
+      </PartnersProvider>
     </>
   )
 }
@@ -53,6 +60,6 @@ export async function getStaticProps() {
     slug: "partners",
     pageType: "pages",
   })
-  const allPartners = await getContent("partners.txt", "json")
-  return { props: { source, allPartners } }
+  const partners = await getContent("partners.txt", "json")
+  return { props: { source, partners } }
 }

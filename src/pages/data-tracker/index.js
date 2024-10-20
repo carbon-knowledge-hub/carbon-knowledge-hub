@@ -23,15 +23,15 @@ export default function DataTrackerPage({ source }) {
       <SiteHeader bg="brand.1000" color="white" />
       <PageHeader bg="brand.1000" color="white">
         <PageHeaderGrid bg="brand.1000" color="brand.900" />
-        <PageHeaderContent gridColumn={["1 / -1", null, "2 / -2", null, "2 / -3"]}>
+        <PageHeaderContent
+          gridColumn={["1 / -1", null, "2 / -2", null, "2 / -3"]}
+        >
           <PageHeaderBreadcrumbs
             isInverted
             items={[{ label: "Data tracker" }]}
           />
           <PageHeaderTitle>{title}</PageHeaderTitle>
-          <PageHeaderDescription>
-            {description}
-          </PageHeaderDescription>
+          <PageHeaderDescription>{description}</PageHeaderDescription>
           <PageHeaderMetadata>
             {/* <HStack spacing={3}>
               <Text
@@ -49,11 +49,11 @@ export default function DataTrackerPage({ source }) {
       <Container py={10}>
         <SimpleGrid
           columns={8}
-          gridGap={0}
+          gridGap={10}
           pb={20}
           sx={{
             "h1, h2, h3, h4, h5, h6, p": {
-              gridColumn: ["1 / -1", null, "2 / -2", null, "2 / -3"]
+              gridColumn: ["1 / -1", null, "2 / -2", null, "2 / -3"],
             },
             // "> div": {
             //   gridColumn: "1 / -1",
