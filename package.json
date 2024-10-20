@@ -8,7 +8,7 @@
     "develop": "npm run prepareImages && next dev",
     "developLegacy": "npm run prepareStories && npm run prepareMedia && npm run prepareNavigation && npm run prepareImages && next",
     "build": "npm run prepareImages && next build",
-    "export": "npm run prepareStories && npm run prepareMedia && npm run prepareNavigation && npm run prepareImages && npm run build && next export",
+    "export": "npm run build",
     "clean": "rm -Rf out && rm -Rf .next",
     "prepareNavigation": "node ./scripts/prepareNavigation.mjs",
     "prepareImages": "node ./scripts/prepareImages.js",
