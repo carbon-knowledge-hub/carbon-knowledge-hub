@@ -26,6 +26,7 @@ import {
   PageHeaderTitle,
   PageHeaderDescription,
 } from "@/components/PageHeader"
+import SEO from "@/components/SEO"
 
 function SpotifyPreview({ item }) {
   const rootUrl = "https://open.spotify.com/embed/"
@@ -94,11 +95,16 @@ export default function MediaPage({
 }) {
   const { frontmatter } = source
   const title = frontmatter.title
+  const description = frontmatter.description
   console.log(allMedia)
   const videoItems = allMedia.filter((d) => d.mediaCategory === "video-vimeo")
   const audioItems = allMedia.filter((d) => d.mediaCategory === "audio-spotify")
   return (
     <>
+      <SEO
+        title={frontmatter.title}
+        description={frontmatter.description || ""}
+      />
       <SiteHeader />
       <PageHeader>
         <PageHeaderGrid bg="rgba(255,255,255,1)" color="gray.200" />
@@ -122,8 +128,12 @@ export default function MediaPage({
                 position="relative"
               >
                 <TabList borderBottom="none">
-                  <Tab fontWeight={600} fontSize="xl">{"Videos"}</Tab>
-                  <Tab fontWeight={600} fontSize="xl">{"Podcasts"}</Tab>
+                  <Tab fontWeight={600} fontSize="xl">
+                    {"Videos"}
+                  </Tab>
+                  <Tab fontWeight={600} fontSize="xl">
+                    {"Podcasts"}
+                  </Tab>
                 </TabList>
               </Box>
               <TabPanels pt={10}>

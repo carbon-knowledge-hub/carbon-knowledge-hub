@@ -14,11 +14,12 @@ import {
   PageHeaderTitle,
   PageHeaderDescription,
 } from "@/components/PageHeader"
+import SEO from "@/components/SEO"
 
 export default function DictionaryPage({ source }) {
-  // const { frontmatter } = source
-  const title = source.frontmatter.title
-  // const description = source.frontmatter.description
+  const { frontmatter } = source
+  const title = frontmatter.title
+  const description = frontmatter.description
   // const setTerms = useDictionaryStore((state) => state.setTerms)
 
   // useEffect(() => {
@@ -29,17 +30,17 @@ export default function DictionaryPage({ source }) {
 
   return (
     <>
+      <SEO
+        title={frontmatter.title}
+        description={frontmatter.description || ""}
+      />
       <SiteHeader />
       <PageHeader>
         <PageHeaderGrid bg="rgba(255,255,255,1)" color="gray.200" />
         <PageHeaderContent gridColumn={["1 / -1", null, "2 / -2"]}>
           <PageHeaderBreadcrumbs items={[{ label: "Dictionary" }]} />
           <PageHeaderTitle>{title}</PageHeaderTitle>
-          <PageHeaderDescription>
-            {
-              "This page explains commonly used words, phrases and acronyms relating to carbon pricing and markets. To suggest new entries, please email co2excel@bloomberg.net."
-            }
-          </PageHeaderDescription>
+          <PageHeaderDescription>{description}</PageHeaderDescription>
         </PageHeaderContent>
       </PageHeader>
       <Divider borderColor="gray.300" />

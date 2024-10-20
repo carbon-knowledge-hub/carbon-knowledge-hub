@@ -19,6 +19,7 @@ import {
   PageHeaderTitle,
   PageHeaderDescription,
 } from "@/components/PageHeader"
+import SEO from "@/components/SEO"
 
 // const customComponents = {
 //   ...components,
@@ -29,10 +30,14 @@ import {
 
 export default function DataTrackerPage({ source }) {
   const { frontmatter } = source
-  const title = source.frontmatter.title
-  const description = source.frontmatter.description
+  const title = frontmatter.title
+  const description = frontmatter.description
   return (
     <>
+      <SEO
+        title={frontmatter.title}
+        description={frontmatter.description || ""}
+      />
       <SiteHeader />
       <PageHeader>
         <PageHeaderGrid bg="rgba(255,255,255,1)" color="gray.200" />

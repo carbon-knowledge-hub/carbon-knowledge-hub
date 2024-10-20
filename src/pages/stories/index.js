@@ -10,18 +10,25 @@ import {
   PageHeaderContent,
   PageHeaderBreadcrumbs,
   PageHeaderTitle,
+  PageHeaderDescription,
 } from "@/components/PageHeader"
 import StoryCard from "@/components/StoryCard"
+import SEO from "@/components/SEO"
 
 export default function StoriesPage({ stories, partners }) {
   return (
     <>
+      <SEO
+        title="Stories"
+        description=""
+      />
       <SiteHeader />
       <PageHeader>
         <PageHeaderGrid bg="rgba(255,255,255,1)" color="gray.200" />
         <PageHeaderContent gridColumn="1 / -1">
           <PageHeaderBreadcrumbs items={[{ label: "Stories" }]} />
           <PageHeaderTitle>{"Stories"}</PageHeaderTitle>
+          {/* <PageHeaderDescription>{"Stories"}</PageHeaderDescription> */}
         </PageHeaderContent>
       </PageHeader>
       <Divider borderColor="gray.300" />

@@ -37,10 +37,15 @@ import {
   PageHeaderDescription,
 } from "@/components/PageHeader"
 import FactsheetCard from "@/components/FactsheetCard"
+import SEO from "@/components/SEO"
 
 export default function FactsheetsPage({ factsheets }) {
   return (
     <>
+      <SEO
+        title={"Factsheets"}
+        description={"Delve into specific carbon-related topics across the voluntary and compliance markets" || ""}
+      />
       <SiteHeader />
       <PageHeader>
         <PageHeaderGrid bg="rgba(255,255,255,1)" color="gray.200" />
@@ -49,7 +54,7 @@ export default function FactsheetsPage({ factsheets }) {
           <PageHeaderTitle>{"Factsheets"}</PageHeaderTitle>
           <PageHeaderDescription>
             {
-              "Pages that concisely explain important issues and themes relating to carbon trading"
+              "Delve into specific carbon-related topics across the voluntary and compliance markets"
             }
           </PageHeaderDescription>
         </PageHeaderContent>

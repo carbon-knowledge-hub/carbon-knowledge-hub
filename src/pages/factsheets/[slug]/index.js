@@ -25,12 +25,16 @@ import {
   PageHeaderTitle,
   PageHeaderMetadata,
 } from "@/components/PageHeader"
+import SEO from "@/components/SEO"
 
 export default function FactsheetPage({ source, dictionary }) {
+  const { frontmatter } = source
   const setTerms = useDictionaryStore((state) => state.setTerms)
-  const title = source.frontmatter.title
-  const date = source.frontmatter.date
-  const level = source.frontmatter.level
+  const title = frontmatter.title
+  const description = frontmatter.description
+  const date = frontmatter.date
+  const level = frontmatter.level
+
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined
@@ -39,8 +43,11 @@ export default function FactsheetPage({ source, dictionary }) {
 
   return (
     <>
+      <SEO
+        title={frontmatter.title}
+        description={frontmatter.description || ""}
+      />
       <SiteHeader bg="brand.1000" color="white" />
-
       <PageHeader bg="brand.1000" color="white">
         <PageHeaderGrid bg="brand.1000" color="brand.900" />
         <PageHeaderContent gridColumn={["1 / -1", null, "2 / -2"]}>

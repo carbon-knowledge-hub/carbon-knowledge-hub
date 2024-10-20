@@ -22,10 +22,15 @@ import SiteHeader from "@/components/SiteHeader"
 import PartnersSection from "@/components/PartnersSection"
 import GetStarted from "@/components/GetStarted"
 import DiveDeeper from "@/components/DiveDeeper"
+import SEO from "@/components/SEO"
 
 export default function IndexPage({ factsheets, partners, latestUpdates }) {
   return (
     <>
+    <SEO
+        title=""
+        description="The Carbon Knowledge Hub gives the knowhow and insights to navigate the carbon markets."
+      />
       <SiteHeader />
       <Container>
         <Stack spacing={12} py={10}>
