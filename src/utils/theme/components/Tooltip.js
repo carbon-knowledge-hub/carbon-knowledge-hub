@@ -1,1 +1,0 @@
-export default {"defaultProps":{"colorScheme":"action","size":"md"},"baseStyle":{"--tooltip-bg":"colors.gray.700","px":"8px","py":"2px","bg":["var(--tooltip-bg)"],"--popper-arrow-bg":["var(--tooltip-bg)"],"color":"whiteAlpha.900","borderRadius":"sm","fontWeight":"medium","fontSize":"sm","boxShadow":"md","maxW":"320px","zIndex":"tooltip"},"variants":{},"sizes":{}}

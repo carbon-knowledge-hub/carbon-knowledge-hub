@@ -1,43 +1,45 @@
 import Head from "next/head"
-import getConfig from "next/config"
+import { useRouter } from "next/router"
 
-const { publicRuntimeConfig } = getConfig()
-const siteUrl = publicRuntimeConfig.shareUrl
+const siteUrl = "https://www.carbonknowledgehub.com/"
 
 export default function SEO({
-  title,
-  description = "The Carbon Knowledge Hub gives the knowhow and insights to navigate the carbon markets. It is a collaboration between the Indonesian Chamber of Commerce and Industry (KADIN) and BloombergNEF, and part of the Carbon Centre of Excellence — one of Indonesia's B20 Legacy Programs.",
-  cover = "cover-lg.jpg",
-  type = "website" /* website | article */,
+  title = "",
+  description = "The Carbon Knowledge Hub gives the knowhow and insights to navigate the carbon markets",
+  cover = "social-cover-lg.jpg",
+  type = "website",
+  lang = "en-US",
 }) {
-  const slugUrl = siteUrl
-  const coverImg = cover ? siteUrl + "/images/" + cover : ""
+  const { basePath, asPath } = useRouter()
+
+  const fixedCover = cover
+
+  const slugUrl =
+    siteUrl + basePath + (asPath[0] === "/" ? asPath.slice(1) : asPath)
+  const coverImg = fixedCover ? siteUrl + basePath + "images/" + fixedCover : ""
+
   const combinedTitle = title
     ? `Carbon Knowledge Hub | ${title}`
-    : "Carbon Knowledge Hub"
-
-  const desc = description || "The Carbon Knowledge Hub gives the knowhow and insights to navigate the carbon markets. It is a collaboration between the Indonesian Chamber of Commerce and Industry (KADIN) and BloombergNEF, and part of the Carbon Centre of Excellence — one of Indonesia's B20 Legacy Programs."
+    : `Carbon Knowledge Hub`
 
   return (
     <Head>
+      <meta content={lang} httpEquiv="Content-Language" />
+
       <title>{combinedTitle}</title>
-      <meta name="description" content={desc} />
+      <meta name="description" content={description} />
 
-      <meta name="og:type" content={type} />
-      <meta name="og:url" content={slugUrl} />
-      <meta name="og:title" content={combinedTitle} />
-      <meta name="og:description" content={desc} />
-      {cover && <meta name="og:image" content={coverImg} />}
-
+      <meta property="og:type" content={type} />
+      <meta property="og:url" content={slugUrl} />
+      <meta property="og:title" content={combinedTitle} />
+      <meta property="og:description" content={description} />
       {cover && <meta name="image" property="og:image" content={coverImg} />}
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={slugUrl} />
       <meta name="twitter:title" content={combinedTitle} />
-      <meta name="twitter:description" content={desc} />
+      <meta name="twitter:description" content={description} />
       {cover && <meta name="twitter:image" content={coverImg} />}
-
-      <link rel="shortcut icon" href="/favicon.png" />
 
       <link rel="canonical" href={slugUrl} />
     </Head>

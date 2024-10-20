@@ -1,1 +1,0 @@
-export default {"xs":"0.75rem","sm":"0.875rem","md":"1rem","lg":"1.25rem","xl":"1.5rem","2xl":"2rem","3xl":"2.5rem","4xl":"3rem","5xl":"4rem","6xl":"5rem","7xl":"4.5rem","8xl":"6rem","9xl":"8rem"}

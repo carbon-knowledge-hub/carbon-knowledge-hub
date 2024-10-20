@@ -1,244 +1,288 @@
-import { useRef } from "react"
-import { useRouter } from "next/router"
-import { useTheme } from "@chakra-ui/system"
-import { Box, Stack, HStack, Text, Container, Divider } from "@chakra-ui/layout"
-import { Button } from "@chakra-ui/button"
 import {
+  Box,
+  HStack,
+  Container,
+  Button,
+  Text,
   Drawer,
   DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
+  // DrawerFooter,
+  // DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-} from "@chakra-ui/modal"
-import { useDisclosure } from "@chakra-ui/hooks"
+  useDisclosure,
+  Stack,
+} from "@chakra-ui/react"
 
-import { Link, ButtonLink } from "@components/Link"
-import { NavigationIcon } from "@components/Icon"
-import { navigation } from "@utils/navigation"
-import CKHLogo from "@components/Logo/CKHLogo"
+import Logo from "@/components/Logo"
+import { Link, ButtonLink } from "@/components/Link"
+import { MenuIcon } from "@/components/Icon"
 
-function NavigationDrawer({ isInverted }) {
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const btnRef = useRef()
+const navigationItems = [
+  { label: "Factsheets", href: "/factsheets" },
+  { label: "Data tracker", href: "/data-tracker" },
+  { label: "Stories", href: "/stories" },
+  { label: "Media", href: "/media" },
+  { label: "B20 recommendations", href: "/b20-recommendations" },
+].map((d, i) => ({ ...d, key: i + 1 }))
 
+export default function SiteHeader({ bg = "white", color = "currentcolor" }) {
   return (
-    <>
-      <Button
-        colorScheme={isInverted ? "whiteAlpha" : "gray"}
-        rightIcon={<NavigationIcon />}
-        onClick={onOpen}
-        display={["none", null, "flex"]}
-      >
-        {"Menu"}
-      </Button>
-      <Button
-        colorScheme="gray"
-        px={0}
-        onClick={onOpen}
-        display={["flex", null, "none"]}
-      >
-        <NavigationIcon />
-      </Button>
-      <Drawer
-        isOpen={isOpen}
-        placement="right"
-        onClose={onClose}
-        finalFocusRef={btnRef}
-      >
-        <DrawerOverlay bg="rgba(45,45,99,0.5)" />
-        <DrawerContent bg="#2D2D63" color="white">
-          <DrawerCloseButton
-            bg="whiteAlpha.300"
-            w="2.5rem"
-            h="2.5rem"
-            _hover={{ bg: "whiteAlpha.200" }}
-            _focus={{ bg: "whiteAlpha.300" }}
-            _active={{ bg: "whiteAlpha.500" }}
-          />
-          <DrawerHeader
-            h={20}
-            flex="none"
-            borderBottom="0.0625rem solid"
-            borderBottomColor="whiteAlpha.300"
-          >
-            &nbsp;
-          </DrawerHeader>
-          <DrawerBody p={0}>
-            <Box>
-              <Stack
-                spacing={3}
-                divider={<Divider borderColor="whiteAlpha.300" />}
-              >
-                <Stack spacing={3} p={3}>
-                  <Text
-                    textTransform="uppercase"
-                    fontSize="sm"
-                    fontWeight={600}
-                    color="whiteAlpha.600"
-                    px={3}
-                  >
-                    {"Carbon Knowledge Hub"}
-                  </Text>
-                  {navigation
-                    .filter((d) => d.category === "knowledgeHub")
-                    .map((d) => {
-                      return (
-                        <ButtonLink
-                          key={d.label}
-                          href={d.href}
-                          variant="ghost"
-                          colorScheme="whiteAlpha"
-                          textAlign="left"
-                          justifyContent="flex-start"
-                          px={3}
-                          onClick={onClose}
-                        >
-                          {d.label}
-                        </ButtonLink>
-                      )
-                    })}
-                </Stack>
-
-                <Stack spacing={3} p={3}>
-                  <Text
-                    textTransform="uppercase"
-                    fontSize="sm"
-                    fontWeight={600}
-                    color="whiteAlpha.600"
-                    px={3}
-                  >
-                    {"Resources"}
-                  </Text>
-                  {navigation
-                    .filter((d) => d.category === "resources")
-                    .map((d) => {
-                      return (
-                        <ButtonLink
-                          key={d.label}
-                          href={d.href}
-                          variant="ghost"
-                          colorScheme="whiteAlpha"
-                          textAlign="left"
-                          justifyContent="flex-start"
-                          px={3}
-                          onClick={onClose}
-                        >
-                          {d.label}
-                        </ButtonLink>
-                      )
-                    })}
-                </Stack>
-
-                <Stack spacing={3} p={3}>
-                  <Text
-                    textTransform="uppercase"
-                    fontSize="sm"
-                    fontWeight={600}
-                    color="whiteAlpha.600"
-                    px={3}
-                  >
-                    {"About"}
-                  </Text>
-                  {navigation
-                    .filter((d) => d.category === "about")
-                    .map((d) => {
-                      return (
-                        <ButtonLink
-                          key={d.label}
-                          href={d.href}
-                          variant="ghost"
-                          colorScheme="whiteAlpha"
-                          textAlign="left"
-                          justifyContent="flex-start"
-                          px={3}
-                          onClick={onClose}
-                        >
-                          {d.label}
-                        </ButtonLink>
-                      )
-                    })}
-                </Stack>
-              </Stack>
-            </Box>
-          </DrawerBody>
-          <DrawerFooter
-            borderTop="0.0625rem solid"
-            borderColor="whiteAlpha.300"
-          >
-            <Text color="whiteAlpha.600" lineHeight="short">
-              {
-                "The Carbon Knowledge Hub is a collaboration between BloombergNEF  and the Indonesian Chamber of Commerce and Industry (KADIN)."
-              }
-            </Text>
-          </DrawerFooter>
-        </DrawerContent>
-      </Drawer>
-    </>
-  )
-}
-
-export default function SiteHeader() {
-  const router = useRouter()
-  const { pathname } = router
-  const isInverted =
-    pathname.split("/").length > 2 &&
-    (pathname.includes("/factsheets/") || pathname.includes("/basics/"))
-  const { colors } = useTheme()
-  return (
-    <Stack
-      as="header"
-      borderBottom="0.0625rem solid"
-      alignItems="center"
-      style={{
-        background: isInverted ? colors.brand[800] : "#FFFFFF",
-        borderColor: isInverted ? colors.brand[600] : colors.gray[100],
-        color: isInverted ? "#FFF" : colors.gray[900],
+    <Box
+      bg={bg}
+      color={color}
+      sx={{
+        ".fill-owl-bg": { fill: color },
+        ".fill-owl-color": { fill: bg },
+        ".fill-primary-text-color": { fill: color },
+        ".fill-secondary-text-color": { fill: color, opacity: 0.5 },
       }}
     >
-      <Container>
-        <HStack spacing={6} justifyContent="space-between" h={20}>
-          <Link href="/">
-            <CKHLogo
-              hexagonFill={isInverted ? colors.brand[800] : colors.brand[700]}
-              hexagonOutline={isInverted ? "#FFF" : "none"}
-              owlFill="#FFF"
-              mainTextFill={isInverted ? "#FFF" : colors.brand[700]}
-              subtitleText={colors.gray[500]}
-            />
+      <Container as="header">
+        <HStack spacing={10} justifyContent="space-between" h={20}>
+          <Link href="/" w="17rem" flex="none">
+            <Logo />
           </Link>
-          <HStack spacing={[0, null, null, null, 6]}>
-            <HStack
-              as="nav"
-              spacing={[0, null, null, null, 6]}
-              display={["none", null, null, null, "flex"]}
-            >
-              {navigation
-                .filter((d) => d.level === 1)
-                .map((navItem) => {
-                  return (
-                    <Link
-                      key={navItem.href}
-                      href={navItem.href}
-                      variant="navigationLink"
-                    >
-                      {navItem.label}
-                    </Link>
-                  )
-                })}
+          <HStack spacing={8}>
+            <HStack spacing={2} display={["none", null, null, null, "flex"]}>
+              {navigationItems.map((navItem) => (
+                <ButtonLink
+                  key={navItem.key}
+                  href={navItem.href}
+                  variant="navLink"
+                >
+                  {navItem.label}
+                </ButtonLink>
+              ))}
             </HStack>
-            <HStack spacing={3}>
-              <NavigationDrawer isInverted={isInverted} />
-              {/* <IconButton
-                colorScheme="gray"
-                icon={<SearchIcon />}
-                display={["none", null, "flex"]}
-              /> */}
-            </HStack>
+            <NavigationOverlay />
           </HStack>
         </HStack>
       </Container>
-    </Stack>
+    </Box>
+  )
+}
+
+const extendedNavigationItems = [
+  { label: "Factsheets", href: "/factsheets" },
+  { label: "Data tracker", href: "/data-tracker" },
+  { label: "Stories", href: "/stories" },
+  { label: "Dictionary", href: "/dictionary" },
+  { label: "Media", href: "/media" },
+  { label: "Links", href: "/links" },
+  { label: "B20 recommendations", href: "/b20-recommendations" },
+].map((d, i) => ({ ...d, key: i + 1 }))
+
+function NavigationOverlay() {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  return (
+    <>
+      <Button onClick={onOpen} borderRadius="none" rightIcon={<MenuIcon />}>
+        {"Menu"}
+      </Button>
+      <Drawer isOpen={isOpen} onClose={onClose} size="sm">
+        <DrawerOverlay />
+        <DrawerContent bg="primary.1000" color="white">
+          <DrawerCloseButton
+            bg="whiteAlpha.200"
+            borderRadius="none"
+            w="2.5rem"
+            h="2.5rem"
+            mt={2}
+          />
+          <DrawerBody py={20} px={0}>
+            <Stack
+              spacing={3}
+              py={6}
+              px={5}
+              borderY="0.0625rem solid"
+              borderColor="whiteAlpha.200"
+            >
+              <Stack spacing={6} py={6}>
+                <Text variant="metaHeadingSmall" color="whiteAlpha.600" px={1}>
+                  {"Carbon Knowledge Hub"}
+                </Text>
+                <ButtonLink
+                  href={"/factsheets"}
+                  variant="ghost"
+                  color="white"
+                  colorScheme="whiteAlpha"
+                  textAlign="left"
+                  justifyContent="flex-start"
+                  px={6}
+                  mx={-5}
+                  fontSize="xl"
+                >
+                  {"Factsheets"}
+                </ButtonLink>
+                <ButtonLink
+                  href={"/b20-recommendations"}
+                  variant="ghost"
+                  color="white"
+                  colorScheme="whiteAlpha"
+                  textAlign="left"
+                  justifyContent="flex-start"
+                  px={6}
+                  mx={-5}
+                  fontSize="xl"
+                >
+                  {"B20 recommendations"}
+                </ButtonLink>
+                <ButtonLink
+                  href={"/data-tracker"}
+                  variant="ghost"
+                  color="white"
+                  colorScheme="whiteAlpha"
+                  textAlign="left"
+                  justifyContent="flex-start"
+                  px={6}
+                  mx={-5}
+                  fontSize="xl"
+                >
+                  {"Data tracker"}
+                </ButtonLink>
+              </Stack>
+
+              {/* {extendedNavigationItems.map((navItem) => (
+                <Link key={navItem.key} href={navItem.href} fontWeight={600}>
+                  {navItem.label}
+                </Link>
+              ))} */}
+            </Stack>
+            <Stack
+              spacing={3}
+              py={6}
+              px={5}
+              borderY="0.0625rem solid"
+              borderColor="whiteAlpha.200"
+            >
+              <Stack spacing={6} py={6}>
+                <Text variant="metaHeadingSmall" color="whiteAlpha.600" px={1}>
+                  {"Resources"}
+                </Text>
+                <ButtonLink
+                  href={"/stories"}
+                  variant="ghost"
+                  color="white"
+                  colorScheme="whiteAlpha"
+                  textAlign="left"
+                  justifyContent="flex-start"
+                  px={6}
+                  mx={-5}
+                  fontSize="xl"
+                >
+                  {"Stories"}
+                </ButtonLink>
+                <ButtonLink
+                  href={"/links"}
+                  variant="ghost"
+                  color="white"
+                  colorScheme="whiteAlpha"
+                  textAlign="left"
+                  justifyContent="flex-start"
+                  px={6}
+                  mx={-5}
+                  fontSize="xl"
+                >
+                  {"Links"}
+                </ButtonLink>
+                <ButtonLink
+                  href={"/media"}
+                  variant="ghost"
+                  color="white"
+                  colorScheme="whiteAlpha"
+                  textAlign="left"
+                  justifyContent="flex-start"
+                  px={6}
+                  mx={-5}
+                  fontSize="xl"
+                >
+                  {"Media"}
+                </ButtonLink>
+                <ButtonLink
+                  href={"/dictionary"}
+                  variant="ghost"
+                  color="white"
+                  colorScheme="whiteAlpha"
+                  textAlign="left"
+                  justifyContent="flex-start"
+                  px={6}
+                  mx={-5}
+                  fontSize="xl"
+                >
+                  {"Dictionary"}
+                </ButtonLink>
+              </Stack>
+            </Stack>
+            <Stack
+              spacing={3}
+              py={6}
+              px={5}
+              borderY="0.0625rem solid"
+              borderColor="whiteAlpha.200"
+            >
+              <Stack spacing={6} py={6}>
+                <Text variant="metaHeadingSmall" color="whiteAlpha.600" px={1}>
+                  {"About"}
+                </Text>
+                <ButtonLink
+                  href={"/about"}
+                  variant="ghost"
+                  color="white"
+                  colorScheme="whiteAlpha"
+                  textAlign="left"
+                  justifyContent="flex-start"
+                  px={6}
+                  mx={-5}
+                  fontSize="xl"
+                >
+                  {"About"}
+                </ButtonLink>
+                <ButtonLink
+                  href={"/partners"}
+                  variant="ghost"
+                  color="white"
+                  colorScheme="whiteAlpha"
+                  textAlign="left"
+                  justifyContent="flex-start"
+                  px={6}
+                  mx={-5}
+                  fontSize="xl"
+                >
+                  {"Partners"}
+                </ButtonLink>
+                <ButtonLink
+                  href={"/faq"}
+                  variant="ghost"
+                  color="white"
+                  colorScheme="whiteAlpha"
+                  textAlign="left"
+                  justifyContent="flex-start"
+                  px={6}
+                  mx={-5}
+                  fontSize="xl"
+                >
+                  {"Frequently asked questions"}
+                </ButtonLink>
+                <ButtonLink
+                  href={"/contact"}
+                  variant="ghost"
+                  color="white"
+                  colorScheme="whiteAlpha"
+                  textAlign="left"
+                  justifyContent="flex-start"
+                  px={6}
+                  mx={-5}
+                  fontSize="xl"
+                >
+                  {"Contact"}
+                </ButtonLink>
+              </Stack>
+            </Stack>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+    </>
   )
 }
