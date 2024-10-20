@@ -199,20 +199,6 @@ function FactsheetsListing({ factsheets }) {
       </Container>
     </>
   )
-
-  // return (
-  //   <Stack spacing={10}>
-  //     {filteredFactsheets.map((factsheet) => {
-  //       return (
-  //         <FactsheetCard
-  //           key={factsheet.frontmatter.slug}
-  //           href={factsheet.frontmatter.slug}
-  //           frontmatter={factsheet.frontmatter}
-  //         />
-  //       )
-  //     })}
-  //   </Stack>
-  // )
 }
 
 function Filters({ count }) {
@@ -270,9 +256,12 @@ function Filters({ count }) {
         </HStack>
       ) : (
         <Box>
-          <Stack py={5}>
+          <Stack py={5} spacing={6}>
             <Text variant="metaHeadingSmall">{"Market type"}</Text>
             <RadioGroup
+              display="flex"
+              flexDirection="column"
+              gap={2}
               value={marketTypeValue}
               onChange={(val) => {
                 const queryString = createQueryString("marketType", val)
@@ -292,9 +281,12 @@ function Filters({ count }) {
               </Radio>
             </RadioGroup>
           </Stack>
-          <Stack py={5}>
+          <Stack py={5} spacing={6}>
             <Text variant="metaHeadingSmall">{"Organization type"}</Text>
             <RadioGroup
+              display="flex"
+              flexDirection="column"
+              gap={2}
               value={organizationTypeValue}
               onChange={(val) => {
                 const queryString = createQueryString("organizationType", val)
@@ -320,9 +312,12 @@ function Filters({ count }) {
               </Radio>
             </RadioGroup>
           </Stack>
-          <Stack py={5}>
+          <Stack py={5} spacing={6}>
             <Text variant="metaHeadingSmall">{"Level"}</Text>
             <RadioGroup
+              display="flex"
+              flexDirection="column"
+              gap={2}
               value={levelValue}
               onChange={(val) => {
                 const queryString = createQueryString("level", val)
@@ -350,10 +345,13 @@ function Filters({ count }) {
 
 function FilterDrawer({ onConfirm, values = [] }) {
   const { isOpen, onClose, onOpen } = useDisclosure()
-  const count = values.filter(d => !!d).length
+  const count = values.filter((d) => !!d).length
   return (
     <>
-      <Button onClick={onOpen}>{`Filters`}{count ? ` (${count})` : ""}</Button>
+      <Button onClick={onOpen}>
+        {`Filters`}
+        {count ? ` (${count})` : ""}
+      </Button>
       <Drawer isOpen={isOpen} onClose={onClose} size="md">
         <DrawerOverlay />
         {isOpen && (
@@ -386,9 +384,12 @@ function DrawerFilters({ onConfirm, values, onClose }) {
         <DrawerCloseButton />
       </DrawerHeader>
       <DrawerBody>
-        <Stack py={5}>
+        <Stack py={5} spacing={6}>
           <Text variant="metaHeadingSmall">{"Market type"}</Text>
           <RadioGroup
+            display="flex"
+            flexDirection="column"
+            gap={2}
             value={marketTypeValue}
             onChange={(val) => setMarketTypeValue(val)}
           >
@@ -403,9 +404,12 @@ function DrawerFilters({ onConfirm, values, onClose }) {
             </Radio>
           </RadioGroup>
         </Stack>
-        <Stack py={5}>
+        <Stack py={5} spacing={6}>
           <Text variant="metaHeadingSmall">{"Organization type"}</Text>
           <RadioGroup
+            display="flex"
+            flexDirection="column"
+            gap={2}
             value={organizationTypeValue}
             onChange={(val) => setOrganizationTypeValue(val)}
           >
@@ -426,9 +430,15 @@ function DrawerFilters({ onConfirm, values, onClose }) {
             </Radio>
           </RadioGroup>
         </Stack>
-        <Stack py={5}>
+        <Stack py={5} spacing={6}>
           <Text variant="metaHeadingSmall">{"Level"}</Text>
-          <RadioGroup value={levelValue} onChange={(val) => setLevelValue(val)}>
+          <RadioGroup
+            display="flex"
+            flexDirection="column"
+            gap={2}
+            value={levelValue}
+            onChange={(val) => setLevelValue(val)}
+          >
             <Radio w="100%" value="">
               {"All"}
             </Radio>
@@ -442,7 +452,7 @@ function DrawerFilters({ onConfirm, values, onClose }) {
         </Stack>
       </DrawerBody>
       <DrawerFooter>
-        <Button onClick={handleConfirm} w="100%">
+        <Button onClick={handleConfirm} w="100%" colorScheme="brand" size="lg">
           {"Apply filters"}
         </Button>
       </DrawerFooter>
