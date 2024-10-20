@@ -167,7 +167,6 @@ function AboutBanner() {
         <Link
           href="/about"
           variant="standalone"
-          fontSize="lg"
           rightIcon={<ArrowRightIcon size="1.5rem" />}
         >
           {"About Carbon Knowledge Hub"}
@@ -321,17 +320,9 @@ function GetStartedItem({
               key={tag.key}
               as="span"
               color={tag.label === "basic" ? "secondary.800" : "tertiary.800"}
-              // bg="brand.900"
               bg={tag.label === "basic" ? "secondary.200" : "tertiary.200"}
               alignSelf="flex-start"
-              px={3}
-              py={1}
-              fontSize="0.875rem"
-              lineHeight="shorter"
-              textTransform="uppercase"
-              fontWeight={600}
-              letterSpacing="0.02em"
-              borderRadius="full"
+              variant="tag"
             >
               {tag.label}
             </Text>

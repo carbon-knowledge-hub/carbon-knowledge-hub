@@ -49,7 +49,7 @@ export default function StoriesPage({ stories, partners }) {
           })}
         </SimpleGrid>
       </Container>
-      <Container py={10}>
+      <Container pb={20}>
         <SimpleGrid spacing={10} columns={[1, null, 2, null, 3]}>
           {stories.map(({ frontmatter }, i) => {
             return <StoryCard key={i} frontmatter={frontmatter} />

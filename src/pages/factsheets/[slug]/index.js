@@ -55,18 +55,13 @@ export default function FactsheetPage({ source, dictionary }) {
           <PageHeaderMetadata>
             <HStack spacing={3}>
               {level && (
-                <Tag
-                  colorScheme="secondary"
-                  fontSize="0.875rem"
-                  lineHeight="shorter"
-                  textTransform="uppercase"
-                  fontWeight={600}
-                  letterSpacing="0.02em"
-                  variant="outline"
-                  borderRadius="full"
+                <Text
+                  color={level === "intermediate" ? "secondary.800" : "tertiary.800"}
+                  bg={level === "intermediate" ? "secondary.200" : "tertiary.200"}
+                  variant="tag"
                 >
                   {level}
-                </Tag>
+                </Text>
               )}
               {date && (
                 <Text fontWeight={600} fontSize="0.875rem">
@@ -89,7 +84,7 @@ export default function FactsheetPage({ source, dictionary }) {
         </PageHeaderContent>
       </PageHeader>
 
-      <Stack spacing={20}>
+      <Stack spacing={20} pb={[10, null, 20]}>
         <Container bg="primary.900" position="relative" overflow="hidden">
           {/* <SimpleGrid columns={8}>
             <Box gridColumn={["1 / -1", null, "2 / -2"]} color="white" py={20}>

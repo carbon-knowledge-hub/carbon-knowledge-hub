@@ -63,14 +63,14 @@ export default {
     letterSpacing: "-0.015em",
   },
   metaHeading: {
-    fontSize:"md",
+    fontSize: "md",
     lineHeight: "shorter",
     textTransform: "uppercase",
     letterSpacing: "0.01em",
     fontWeight: 700,
   },
   metaHeadingSmall: {
-    fontSize:"sm",
+    fontSize: "sm",
     lineHeight: "shorter",
     textTransform: "uppercase",
     letterSpacing: "0.01em",
@@ -86,5 +86,14 @@ export default {
     lineHeight: "shorter",
     letterSpacing: "-0.015em",
   },
-
+  tag: {
+    px: 3,
+    py: 1,
+    fontSize: "0.875rem",
+    lineHeight: "shorter",
+    textTransform: "uppercase",
+    fontWeight: 600,
+    letterSpacing: "0.02em",
+    borderRadius: "full",
+  },
 }

@@ -22,7 +22,7 @@ function CustomLinkComponent(props) {
 }
 
 export default {
-  h1: (props) => <Heading as="h1" {...props} />,
+  h1: (props) => <Heading as="h1" variant="factsheetTitle" pb={6} pt={6} {...props} {...props} />,
   h2: (props) => (
     <Heading as="h2" variant="factsheetHeading2" pb={6} pt={6} {...props} />
   ),
@@ -75,9 +75,10 @@ export default {
         pb={6}
         fontSize={["xl", null, "2xl"]}
         lineHeight="taller"
+        letterSpacing= "0.01em"
         gridColumn={["1 / -1", null, "2 / -3"]}
         sx={{
-          li: { a: { color: "brand.500", fontWeight: 700 } },
+          li: { a: { color: "brand.500", fontWeight: 600 } },
         }}
         {...props}
       />
@@ -87,13 +88,17 @@ export default {
     return (
       <Stack
         as="ol"
-        spacing={5}
+        spacing={6}
         w="100%"
         maxW="container.sm"
         pl={6}
         fontSize={["xl", null, "2xl"]}
         lineHeight="taller"
+        letterSpacing= "0.01em"
         gridColumn={["1 / -1", null, "2 / -3"]}
+        sx={{
+          li: { a: { color: "brand.500", fontWeight: 600 } },
+        }}
         {...props}
       />
     )

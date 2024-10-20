@@ -44,7 +44,22 @@ export default {
     baseStyle: { opacity: 1, borderColor: "gray.200" },
   },
   Button: {
-    baseStyle: { borderRadius: "sm" },
+    baseStyle: { borderRadius: "none" },
+    variants: {
+      buttonLink: {
+        color: "primary.500",
+        _hover: { color: "primary.600" },
+        _focus: { color: "primary.600" },
+        _focusVisible: {
+          outline: "0.125rem solid",
+          outlineColor: "currentcolor",
+          outlineOffset: "0.125rem",
+        },
+        fontWeight: 600,
+        fontSize: ["lg", null, "xl"],
+        gap: 3,
+      }
+    }
   },
   Link: {
     baseStyle: {
@@ -57,6 +72,13 @@ export default {
     variants: {
       standalone: {
         color: "primary.500",
+        _hover: { color: "primary.600" },
+        _focus: { color: "primary.600" },
+        _focusVisible: {
+          outline: "0.125rem solid",
+          outlineColor: "currentcolor",
+          outlineOffset: "0.125rem",
+        },
         fontWeight: 600,
         fontSize: "xl",
         gap: 3,

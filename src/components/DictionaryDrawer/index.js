@@ -12,7 +12,8 @@ import {
 } from "@chakra-ui/react"
 
 import { useDictionaryStore } from "@/utils/useDictionaryDrawer"
-import { Link } from "@/components/Link"
+import { ButtonLink } from "@/components/Link"
+import { ArrowRightIcon } from "@/components/Icon"
 
 export default function DictionaryDrawer() {
   const isOpen = useDictionaryStore((state) => state.isOpen)
@@ -25,19 +26,24 @@ export default function DictionaryDrawer() {
     <Drawer isOpen={isOpen} onClose={onClose} size="lg" placement="bottom">
       <DrawerOverlay />
       <DrawerContent>
-        <DrawerCloseButton />
+        <DrawerCloseButton
+          borderRadius="none"
+          w="2.5rem"
+          h="2.5rem"
+        />
         <DrawerBody>
           <Stack
             py={[5, null, 10]}
             justifyContent="space-between"
             direction={["column", null, "row"]}
+            alignItems="flex-end"
           >
             <Stack spacing={3} maxW="48rem">
               {" "}
               <Heading variant="dictionaryDrawerTerm">{definition}</Heading>
               <Text
                 as="div"
-                variant="bodySmall"
+                variant="body"
                 dangerouslySetInnerHTML={{ __html: description }}
                 sx={{
                   "a": {
@@ -53,13 +59,22 @@ export default function DictionaryDrawer() {
                 }}
               />
             </Stack>
-            <Link
+            <ButtonLink
               href={`/dictionary#term-${definition.split(" ").join("-")}`}
               onClick={onClose}
               flex="none"
+              variant="buttonLink"
+              alignSelf="flexStart"
+              rightIcon={
+                <ArrowRightIcon
+                  size="1.5rem"
+                  strokeWidth={2}
+                  isAnimated="right"
+                />
+              }
             >
               {"See term in dictionary"}
-            </Link>
+            </ButtonLink>
           </Stack>
         </DrawerBody>
       </DrawerContent>

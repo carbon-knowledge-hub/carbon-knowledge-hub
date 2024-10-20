@@ -46,6 +46,7 @@ export default function StoryCard({ children, frontmatter, ...restProps }) {
           variant="ghost"
           colorScheme="primary"
           alignSelf="flex-start"
+          fontSize={["lg", null, "xl"]}
         >
           {"Download as pdf"}
         </ButtonLink>
