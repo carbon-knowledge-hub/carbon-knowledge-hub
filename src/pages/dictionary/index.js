@@ -16,9 +16,9 @@ import {
 } from "@/components/PageHeader"
 
 export default function DictionaryPage({ source }) {
-  const { frontmatter } = source
+  // const { frontmatter } = source
   const title = source.frontmatter.title
-  const description = source.frontmatter.description
+  // const description = source.frontmatter.description
   // const setTerms = useDictionaryStore((state) => state.setTerms)
 
   // useEffect(() => {
@@ -44,14 +44,14 @@ export default function DictionaryPage({ source }) {
       </PageHeader>
       <Divider borderColor="gray.300" />
       <Container>
-        <SimpleGrid columns="8">
+        <SimpleGrid columns={8} gridGap={10}>
           <Stack
             spacing={10}
             py={10}
             gridColumn={["1 / -1", null, "2 / -3"]}
             fontSize={["lg", null, "xl"]}
             lineHeight="tall"
-            letterSpacing="0.01em"
+            letterSpacing="-0.01em"
             sx={{
               dl: {},
               dt: { fontWeight: 700 },
