@@ -1,15 +1,19 @@
 import { useState, useRef } from "react"
-import { Box, Text, Stack } from "@chakra-ui/layout"
-import { Button } from "@chakra-ui/button"
-import { Checkbox } from "@chakra-ui/checkbox"
-import { Input } from "@chakra-ui/input"
-import { useTheme } from "@chakra-ui/system"
+import {
+  Box,
+  Text,
+  Stack,
+  Button,
+  Checkbox,
+  Input,
+  useTheme,
+} from "@chakra-ui/react"
 
-import { MailIcon } from "@components/Icon"
+import { EnvelopeIcon } from "@/components/Icon"
 
-import addToMailchimp from "@utils/mailchimp"
+import addToMailchimp from "@/utils/mailchimp"
 
-const NewsletterSection = () => {
+export default function NewsletterSignup() {
   const [GDPRConfirmation, setGDPRConfirmation] = useState(false)
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
@@ -75,18 +79,22 @@ const NewsletterSection = () => {
           name="email"
           isRequired
           onChange={handleChange}
-          borderColor="brand.200"
-          _placeholder={{ "color": "brand.200", "fontFamily": "body" }}
+          borderColor="brand.100"
+          _placeholder={{ "color": "brand.100", "fontFamily": "body" }}
+          borderRadius="none"
+          color="white"
         />
         <Button
           type="submit"
-          bg="brand.400"
-          _hover={{ "bg": "brand.500" }}
-          _active={{ "bg": "brand.600" }}
-          _focus={{ "bg": "brand.600" }}
+          bg="brand.500"
+          color="white"
+          _hover={{ "bg": "brand.600" }}
+          _active={{ "bg": "brand.700" }}
+          _focus={{ "bg": "brand.700" }}
           size="lg"
           px={10}
-          leftIcon={<MailIcon />}
+          rightIcon={<EnvelopeIcon />}
+          borderRadius="none"
         >
           {"Sign up"}
         </Button>
@@ -103,9 +111,9 @@ const NewsletterSection = () => {
       </Checkbox>
       {message ? (
         <Box
-          borderRadius="lg"
           py={3}
           px={5}
+          color="white"
           style={{
             background: hasError ? colors.red[300] : colors.green[300],
             color: hasError ? colors.red[900] : colors.green[900],
@@ -123,5 +131,3 @@ const NewsletterSection = () => {
     </Stack>
   )
 }
-
-export default NewsletterSection

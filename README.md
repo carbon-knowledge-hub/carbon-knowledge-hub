@@ -13,3 +13,4 @@ You can find the editable [factsheets here](./pages/factsheets).
 ## Dictionary
 
 Check the [dictionary wiki](../../wiki/Adding-words-to-the-dictionary) page for more info on how to contribute dictionary terms.
+

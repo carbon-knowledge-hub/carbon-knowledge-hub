@@ -1,81 +1,79 @@
-import { Heading, Text, Stack, Wrap, WrapItem } from "@chakra-ui/layout"
-import { Tag, TagLabel } from "@chakra-ui/tag"
-import day from "dayjs"
+import {
+  Text,
+  Stack,
+  HStack,
+  Box,
+  Heading,
+  Tag,
+  TagLabel,
+} from "@chakra-ui/react"
 
-import { LinkOverlay, LinkBox } from "@components/Link"
-export default function FactsheetCard({ d }) {
+import day from "dayjs"
+import { LinkBox, LinkOverlay } from "@/components/Link"
+// import { DownloadIcon } from "@/components/Icon"
+
+export default function FactsheetCard({
+  href,
+  children,
+  frontmatter,
+  ...restProps
+}) {
+  // console.log("Frontmatter", frontmatter)
   return (
     <LinkBox
-      href={d.href}
+      href={href}
+      borderColor="gray.300"
+      borderWidth="0.0625rem"
+      px={6}
+      py={10}
       bg="white"
-      boxShadow="md"
-      borderRadius="md"
-      py={[20, null, 14]}
-      px={[5, null, 10]}
-      position="relative"
-      transition="box-shadow 0.25s"
-      _hover={{
-        boxShadow: "lg",
-      }}
-      _active={{
-        boxShadow: "sm",
-      }}
+      {...restProps}
     >
-      {d.date && (
-        <Tag
-          position="absolute"
-          top={4}
-          left={[5, null, 10]}
-          variant="date"
-          colorScheme="gray"
-          fontSize="xs"
-        >
-          {day(d.date).format("DD MMM YYYY")}
-        </Tag>
-      )}
-      {d.level && (
-        <Tag
-          position="absolute"
-          top={4}
-          right={4}
-          variant="level"
-          colorScheme="green"
-          fontSize="xs"
-        >
-          {d.level}
-        </Tag>
-      )}
-      <Stack spacing={10}>
-        <Stack spacing={5}>
-          <Heading as="h2">
-            <LinkOverlay href={d.href}>{d.title}</LinkOverlay>
-          </Heading>
-          <Text color="gray.500" fontSize="lg" lineHeight="tall">
-            {d.description}
+      <Stack spacing={6} w="100%" h="100%" justifyContent="space-between">
+        <HStack justifyContent="space-between">
+          <Text variant="metaHeadingSmall">
+            {day(frontmatter?.date).format("DD MMM YYYY")}
           </Text>
+          {frontmatter?.level && (
+            <Tag
+              colorScheme={
+                frontmatter.level === "basic" ? "tertiary" : "secondary"
+              }
+              fontSize="0.875rem"
+              lineHeight="shorter"
+              textTransform="uppercase"
+              fontWeight={600}
+              letterSpacing="0.02em"
+              borderRadius="full"
+            >
+              {frontmatter.level}
+            </Tag>
+          )}
+        </HStack>
+        <Stack spacing={3}>
+          <Heading as="h2" variant="storyTitle">
+            <LinkOverlay href={frontmatter?.slug || "/"}>
+              {frontmatter?.title}
+            </LinkOverlay>
+          </Heading>
+          <Text variant="body">{frontmatter?.description}</Text>
         </Stack>
-        <Wrap spacing={2}>
-          {d.marketType.map((tag) => {
-            const key = tag.toLowerCase().split(" ").join("-")
+        <HStack>
+          {frontmatter?.marketType?.map((tag) => {
             return (
-              <WrapItem key={key}>
-                <Tag colorScheme="gray" size="sm">
+              <Box key={tag}>
+                <Tag
+                  colorScheme="gray"
+                  size="lg"
+                  borderRadius="none"
+                  fontWeight={600}
+                >
                   <TagLabel>{tag}</TagLabel>
                 </Tag>
-              </WrapItem>
+              </Box>
             )
           })}
-          {d.organizationType.map((tag) => {
-            const key = tag.toLowerCase().split(" ").join("-")
-            return (
-              <WrapItem key={key}>
-                <Tag colorScheme="gray" size="sm">
-                  <TagLabel>{tag}</TagLabel>
-                </Tag>
-              </WrapItem>
-            )
-          })}
-        </Wrap>
+        </HStack>
       </Stack>
     </LinkBox>
   )

@@ -1,13 +1,13 @@
-import { Box, HStack } from "@chakra-ui/layout"
+import { Box, HStack } from "@chakra-ui/react"
 
-import { ArrowLeftIcon } from "@components/Icon"
-import { ButtonLink } from "@components/Link"
+import { ButtonLink } from "@/components/Link"
+import { ArrowLeftIcon } from "@/components/Icon"
 
 export function BreadCrumb({ href, children, isInverted, ...restProps }) {
   return href ? (
     <ButtonLink
       href={href}
-      size="sm"
+      size="md"
       variant="ghost"
       colorScheme={isInverted ? "whiteAlpha" : "gray"}
       px={2}
@@ -29,8 +29,8 @@ export function BreadCrumbs({ children, isInverted }) {
     <HStack
       spacing={2}
       fontWeight={600}
-      color={isInverted ? "brand.200" : "gray.500"}
-      fontSize="sm"
+      color={isInverted ? "brand.100" : "gray.500"}
+      fontSize="md"
       ml={-2}
       divider={
         <Box border={0} p={0}>
@@ -40,7 +40,7 @@ export function BreadCrumbs({ children, isInverted }) {
     >
       <ButtonLink
         href="/"
-        size="sm"
+        size="md"
         variant="ghost"
         colorScheme={isInverted ? "whiteAlpha" : "gray"}
         leftIcon={<ArrowLeftIcon size={5} />}
