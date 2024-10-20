@@ -10,7 +10,7 @@ import {
   PageHeaderContent,
   PageHeaderBreadcrumbs,
   PageHeaderTitle,
-  PageHeaderDescription,
+  // PageHeaderDescription,
 } from "@/components/PageHeader"
 import StoryCard from "@/components/StoryCard"
 import SEO from "@/components/SEO"
@@ -18,10 +18,7 @@ import SEO from "@/components/SEO"
 export default function StoriesPage({ stories, partners }) {
   return (
     <>
-      <SEO
-        title="Stories"
-        description=""
-      />
+      <SEO title="Stories" />
       <SiteHeader />
       <PageHeader>
         <PageHeaderGrid bg="rgba(255,255,255,1)" color="gray.200" />
