@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import localFont from "next/font/local"
 import { ChakraProvider, extendTheme } from "@chakra-ui/react"
+import Script from "next/script"
 
 import componentStyles from "@/styles/components"
 import textStyles from "@/styles/textStyles"
@@ -80,10 +81,13 @@ export default function App({ Component, pageProps, factsheets }) {
   }, [])
 
   return (
-    <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
-      <DictionaryDrawer />
-      <SiteFooter factsheets={factsheets} />
-    </ChakraProvider>
+    <>
+      <ChakraProvider theme={theme}>
+        <Component {...pageProps} />
+        <DictionaryDrawer />
+        <SiteFooter factsheets={factsheets} />
+      </ChakraProvider>
+      <Script src="https://scripts.simpleanalyticscdn.com/latest.js" />
+    </>
   )
 }
