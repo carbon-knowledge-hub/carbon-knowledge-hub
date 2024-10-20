@@ -1,6 +1,5 @@
 // import { theme } from "@chakra-ui/react"
 // import { createMultiStyleConfigHelpers } from "@chakra-ui/styled-system"
-
 import textStyles from "./textStyles"
 
 // console.groupCollapsed("Theme")
@@ -61,17 +60,6 @@ export default {
         fontSize: "xl",
         gap: 3,
       },
-      // navLink: {
-      //   fontWeight: 600,
-      //   fontSize: "md",
-      //   _hover: { color: "brand.500", bg: "whiteAlpha.100" },
-      //   _focus: { color: "brand.600", bg: "whiteAlpha.100" },
-      //   _focusVisible: {
-      //     outline: "0.125rem solid",
-      //     outlineColor: "currentcolor",
-      //     outlineOffset: "0.125rem",
-      //   },
-      // },
       footerLink: {
         color: "white",
         fontWeight: 700,
@@ -88,6 +76,30 @@ export default {
           outlineColor: "currentcolor",
           outlineOffset: "0.125rem",
         },
+      },
+    },
+  },
+  Radio: {
+    defaultProps: { size: "lg", colorScheme: "brand" },
+    baseStyle: {
+      container: {
+        fontWeight: 600,
+        alignItems: "flex-start",
+      },
+      control: {
+        mt: 0.5,
+        _checked: {
+          _before: { w: "62.11%", h: "62.11%" },
+        },
+        _focusVisible: {
+          boxShadow: "none",
+          outline: "0.125rem solid",
+          outlineColor: "brand.500",
+          outlineOffset: "0.125rem",
+        },
+      },
+      label: {
+        lineHeight: "short",
       },
     },
   },
