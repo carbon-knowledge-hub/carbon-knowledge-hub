@@ -32,11 +32,6 @@ export default function GetStarted({ }) {
         href="/factsheets/participants"
       />
       <GetStartedItem
-        title="Participants and their role in carbon trading"
-        imgSrc="/images/participants.svg"
-      />
-
-      <GetStartedItem
         title="Current state of carbon trading"
         imgSrc="/images/current-status.svg"
         href="/factsheets/current-status"
