@@ -307,8 +307,8 @@ function Filters({ count }) {
               <Radio w="100%" value="Corporate credit buyers">
                 {"Corporate credit buyers"}
               </Radio>
-              <Radio w="100%" value="Policy makers">
-                {"Policy makers"}
+              <Radio w="100%" value="Policymakers">
+                {"Policymakers"}
               </Radio>
               <Radio w="100%" value="Compliance market participants">
                 {"Compliance market participants"}
@@ -413,8 +413,8 @@ function DrawerFilters({ onConfirm, values, onClose }) {
             <Radio w="100%" value="Corporate credit buyers">
               {"Corporate credit buyers"}
             </Radio>
-            <Radio w="100%" value="Policy makers">
-              {"Policy makers"}
+            <Radio w="100%" value="Policymakers">
+              {"Policymakers"}
             </Radio>
             <Radio w="100%" value="Compliance market participants">
               {"Compliance market participants"}
