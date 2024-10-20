@@ -53,8 +53,8 @@ jobs:
           SHARE_URL: ${{ secrets.SHARE_URL }}
           BASE_PATH: ${{ secrets.BASE_PATH }}
           MAILCHIMP_ADDRESS: ${{ secrets.MAILCHIMP_ADDRESS }}
-          NEXT_PUBLIC_MAILCHIMP_ADDRESS: ${{ secrets.NODE_PUBLIC_MAILCHIMP_ADDRESS }}
-          NEXT_PUBLIC_MAILCHIMP_TIMEOUT: ${{ secrets.NODE_PUBLIC_MAILCHIMP_TIMEOUT }}
+          NEXT_PUBLIC_MAILCHIMP_ADDRESS: ${{ secrets.NEXT_PUBLIC_MAILCHIMP_ADDRESS }}
+          NEXT_PUBLIC_MAILCHIMP_TIMEOUT: ${{ secrets.NEXT_PUBLIC_MAILCHIMP_TIMEOUT }}
 
   deploy:
     runs-on: ubuntu-latest

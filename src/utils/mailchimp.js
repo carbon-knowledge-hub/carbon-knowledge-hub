@@ -16,12 +16,12 @@ import { validate } from "email-validator"
  */
 
 const subscribeEmailToMailchimp = ({ url, timeout }) =>
-    new Promise((resolve, reject) =>
-        jsonp(url, { param: "c", timeout }, (err, data) => {
-            if (err) reject(err);
-            if (data) resolve(data);
-        }),
-    );
+  new Promise((resolve, reject) =>
+    jsonp(url, { param: "c", timeout }, (err, data) => {
+      if (err) reject(err)
+      if (data) resolve(data)
+    })
+  )
 
 /**
  * Build a query string of MC list fields
@@ -32,19 +32,19 @@ const subscribeEmailToMailchimp = ({ url, timeout }) =>
  *
  * @return {String} - `&FIELD1=value1&FIELD2=value2&group[21265][2]=group1`
  */
-const convertListFields = fields => {
-    let queryParams = "";
-    for (const field in fields) {
-        if (Object.prototype.hasOwnProperty.call(fields, field)) {
-            // If this is a list group, not user field then keep lowercase, as per MC reqs
-            // https://github.com/benjaminhoffman/gatsby-plugin-mailchimp/blob/master/README.md#groups
-            const fieldTransformed =
-                field.substring(0, 6) === "group[" ? field : field.toUpperCase();
-            queryParams = queryParams.concat(`&${fieldTransformed}=${fields[field]}`);
-        }
+const convertListFields = (fields) => {
+  let queryParams = ""
+  for (const field in fields) {
+    if (Object.prototype.hasOwnProperty.call(fields, field)) {
+      // If this is a list group, not user field then keep lowercase, as per MC reqs
+      // https://github.com/benjaminhoffman/gatsby-plugin-mailchimp/blob/master/README.md#groups
+      const fieldTransformed =
+        field.substring(0, 6) === "group[" ? field : field.toUpperCase()
+      queryParams = queryParams.concat(`&${fieldTransformed}=${fields[field]}`)
     }
-    return queryParams;
-};
+  }
+  return queryParams
+}
 
 /**
  * Subscribe an email address to a Mailchimp email list.
@@ -61,35 +61,39 @@ const convertListFields = fields => {
  *    msg: <String>(`Thank you for subscribing!` || `The email you entered is not valid.`),
  *  }
  */
-const addToMailchimp = function addToMailchimp(email, fields, endpointOverride) {
-    const isEmailValid = validate(email);
-    const emailEncoded = encodeURIComponent(email);
-    if (!isEmailValid) {
-        return Promise.resolve({
-            result: "error",
-            msg: "The email you entered is not valid.",
-        });
-    }
+const addToMailchimp = function addToMailchimp(
+  email,
+  fields,
+  endpointOverride
+) {
+  const isEmailValid = validate(email)
+  const emailEncoded = encodeURIComponent(email)
+  if (!isEmailValid) {
+    return Promise.resolve({
+      result: "error",
+      msg: "The email you entered is not valid.",
+    })
+  }
 
-    let endpoint = process.env.NEXT_PUBLIC_MAILCHIMP_ADDRESS; // eslint-disable-line no-undef
-    const timeout = process.env.NEXT_PUBLIC_MAILCHIMP_TIMEOUT; // eslint-disable-line no-undef
+  let endpoint = process.env.NEXT_PUBLIC_MAILCHIMP_ADDRESS // eslint-disable-line no-undef
+  const timeout = process.env.NEXT_PUBLIC_MAILCHIMP_TIMEOUT // eslint-disable-line no-undef
 
-    // The following tests for whether you passed in a `fields` object. If
-    // there are only two params and the second is a string, then we can safely
-    // assume the second param is a MC mailing list, and not a fields object.
-    if (arguments.length < 3 && typeof fields === "string") {
-        endpoint = fields;
-    } else if (typeof endpointOverride === "string") {
-        endpoint = endpointOverride;
-    }
+  // The following tests for whether you passed in a `fields` object. If
+  // there are only two params and the second is a string, then we can safely
+  // assume the second param is a MC mailing list, and not a fields object.
+  if (arguments.length < 3 && typeof fields === "string") {
+    endpoint = fields
+  } else if (typeof endpointOverride === "string") {
+    endpoint = endpointOverride
+  }
 
-    // Generates MC endpoint for our jsonp request. We have to
-    // change `/post` to `/post-json` otherwise, MC returns an error
-    endpoint = endpoint.replace(/\/post/g, "/post-json");
-    const queryParams = `&EMAIL=${emailEncoded}${convertListFields(fields)}`;
-    const url = `${endpoint}${queryParams}`;
+  // Generates MC endpoint for our jsonp request. We have to
+  // change `/post` to `/post-json` otherwise, MC returns an error
+  endpoint = endpoint.replace(/\/post/g, "/post-json")
+  const queryParams = `&EMAIL=${emailEncoded}${convertListFields(fields)}`
+  const url = `${endpoint}${queryParams}`
 
-    return subscribeEmailToMailchimp({ url, timeout });
-};
+  return subscribeEmailToMailchimp({ url, timeout })
+}
 
-export default addToMailchimp;
+export default addToMailchimp
