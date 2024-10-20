@@ -6,7 +6,7 @@ const siteUrl = "https://www.carbonknowledgehub.com/"
 export default function SEO({
   title = "",
   description = "The Carbon Knowledge Hub gives the knowhow and insights to navigate the carbon markets",
-  cover = "social-cover.jpg",
+  cover = "social-cover-lg.jpg",
   type = "website",
   lang = "en-US",
 }) {

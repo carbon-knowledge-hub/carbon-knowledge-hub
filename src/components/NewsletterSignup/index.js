@@ -1,6 +1,13 @@
 import { useState, useRef } from "react"
-import { Box, Text, Stack, Button, Checkbox, Input } from "@chakra-ui/react"
-// import { useTheme } from "@chakra-ui/system"
+import {
+  Box,
+  Text,
+  Stack,
+  Button,
+  Checkbox,
+  Input,
+  useTheme,
+} from "@chakra-ui/react"
 
 import { EnvelopeIcon } from "@/components/Icon"
 
@@ -13,7 +20,7 @@ export default function NewsletterSignup() {
   const [hasError, setError] = useState(false)
   const lastPressed = useRef(0)
 
-  // const { colors } = useTheme()
+  const { colors } = useTheme()
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
@@ -75,6 +82,7 @@ export default function NewsletterSignup() {
           borderColor="brand.100"
           _placeholder={{ "color": "brand.100", "fontFamily": "body" }}
           borderRadius="none"
+          color="white"
         />
         <Button
           type="submit"
@@ -105,10 +113,11 @@ export default function NewsletterSignup() {
         <Box
           py={3}
           px={5}
-          // style={{
-          //   background: hasError ? colors.red[300] : colors.green[300],
-          //   color: hasError ? colors.red[900] : colors.green[900],
-          // }}
+          color="white"
+          style={{
+            background: hasError ? colors.red[300] : colors.green[300],
+            color: hasError ? colors.red[900] : colors.green[900],
+          }}
         >
           <Text
             lineHeight="short"
