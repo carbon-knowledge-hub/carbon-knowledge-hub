@@ -37,7 +37,7 @@ export default function LinksPage({ source }) {
       <Container py={10}>
         <SimpleGrid columns="8">
           <Stack
-            spacing={0}
+            spacing={10}
             py={10}
             gridColumn={["1 / -1", null, "2 / -3"]}
             fontSize={["lg", null, "xl"]}
