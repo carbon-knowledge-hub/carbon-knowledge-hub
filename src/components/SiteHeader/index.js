@@ -45,7 +45,7 @@ export default function SiteHeader({ bg = "white", color = "currentcolor" }) {
             <Logo />
           </Link>
           <HStack spacing={8}>
-            <HStack spacing={2} display={["none", null, null, null, "flex"]}>
+            <HStack as="nav" spacing={2} display={["none", null, null, null, "flex"]}>
               {navigationItems.map((navItem) => (
                 <ButtonLink
                   key={navItem.key}

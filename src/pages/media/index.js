@@ -16,7 +16,6 @@ import {
 
 import day from "dayjs"
 import getContent from "@/utils/api/server/getContent"
-import SiteHeader from "@/components/SiteHeader"
 import { LinkBox, LinkOverlay } from "@/components/Link"
 import {
   PageHeader,
@@ -105,7 +104,6 @@ export default function MediaPage({
         title={frontmatter.title}
         description={frontmatter.description || ""}
       />
-      <SiteHeader />
       <PageHeader>
         <PageHeaderGrid bg="rgba(255,255,255,1)" color="gray.200" />
         <PageHeaderContent gridColumn={["1 / -1", null, "1 / -1"]}>

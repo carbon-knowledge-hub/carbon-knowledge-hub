@@ -1,9 +1,8 @@
-import { Box, Container, SimpleGrid, HStack, Text } from "@chakra-ui/react"
+import { Container, SimpleGrid } from "@chakra-ui/react"
 import { MDXRemote } from "next-mdx-remote"
 
 import getPage from "@/utils/api/server/getPage"
 import components from "@/components/MDXComponents"
-import SiteHeader from "@/components/SiteHeader"
 import {
   PageHeader,
   PageHeaderGrid,
@@ -15,7 +14,7 @@ import {
 } from "@/components/PageHeader"
 import SEO from "@/components/SEO"
 
-export default function DataTrackerPage({ source }) {
+function DataTrackerPage({ source }) {
   const { frontmatter } = source
   const title = frontmatter.title
   const description = frontmatter.description
@@ -25,7 +24,6 @@ export default function DataTrackerPage({ source }) {
         title={frontmatter.title}
         description={frontmatter.description || ""}
       />
-      <SiteHeader bg="brand.1000" color="white" />
       <PageHeader bg="brand.1000" color="white">
         <PageHeaderGrid bg="brand.1000" color="brand.900" />
         <PageHeaderContent
@@ -71,6 +69,10 @@ export default function DataTrackerPage({ source }) {
     </>
   )
 }
+
+DataTrackerPage.displayName = "DataTrackerPage"
+
+export default DataTrackerPage
 
 export async function getStaticProps() {
   const source = await getPage({ slug: "data-tracker", pageType: "pages" })

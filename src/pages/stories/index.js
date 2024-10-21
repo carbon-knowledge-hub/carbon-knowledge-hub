@@ -3,7 +3,6 @@ import { Divider, SimpleGrid, Container } from "@chakra-ui/react"
 import { Link } from "@/components/Link"
 import getPages from "@/utils/api/server/getPages"
 import getContent from "@/utils/api/server/getContent"
-import SiteHeader from "@/components/SiteHeader"
 import {
   PageHeader,
   PageHeaderGrid,
@@ -19,7 +18,6 @@ export default function StoriesPage({ stories, partners }) {
   return (
     <>
       <SEO title="Stories" />
-      <SiteHeader />
       <PageHeader>
         <PageHeaderGrid bg="rgba(255,255,255,1)" color="gray.200" />
         <PageHeaderContent gridColumn="1 / -1">

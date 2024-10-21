@@ -1,12 +1,10 @@
 import { useEffect } from "react"
 import {
-  Box,
   Container,
   SimpleGrid,
   Stack,
   Text,
   HStack,
-  Tag,
 } from "@chakra-ui/react"
 import { MDXRemote } from "next-mdx-remote"
 import { micromark } from "micromark"
@@ -15,7 +13,6 @@ import getPages from "@/utils/api/server/getPages"
 import getPage from "@/utils/api/server/getPage"
 import { useDictionaryStore } from "@/utils/useDictionaryDrawer"
 import components from "@/components/MDXComponents"
-import SiteHeader from "@/components/SiteHeader"
 import day from "dayjs"
 import {
   PageHeader,
@@ -27,11 +24,11 @@ import {
 } from "@/components/PageHeader"
 import SEO from "@/components/SEO"
 
-export default function FactsheetPage({ source, dictionary }) {
+function FactsheetPage({ source, dictionary }) {
   const { frontmatter } = source
   const setTerms = useDictionaryStore((state) => state.setTerms)
   const title = frontmatter.title
-  const description = frontmatter.description
+  // const description = frontmatter.description
   const date = frontmatter.date
   const level = frontmatter.level
 
@@ -47,7 +44,6 @@ export default function FactsheetPage({ source, dictionary }) {
         title={frontmatter.title}
         description={frontmatter.description || ""}
       />
-      <SiteHeader bg="brand.1000" color="white" />
       <PageHeader bg="brand.1000" color="white">
         <PageHeaderGrid bg="brand.1000" color="brand.900" />
         <PageHeaderContent gridColumn={["1 / -1", null, "2 / -2"]}>
@@ -163,6 +159,10 @@ export default function FactsheetPage({ source, dictionary }) {
     </>
   )
 }
+
+FactsheetPage.displayName = "FactsheetPage"
+
+export default FactsheetPage
 
 export async function getStaticPaths(ctx) {
   const factsheets = await getPages({

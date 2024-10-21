@@ -25,7 +25,6 @@ import {
 import { useCallback, useState } from "react"
 import { useRouter, usePathname, useSearchParams } from "next/navigation"
 
-import SiteHeader from "@/components/SiteHeader"
 import getPages from "@/utils/api/server/getPages"
 
 import {
@@ -46,7 +45,6 @@ export default function FactsheetsPage({ factsheets }) {
         title={"Factsheets"}
         description={"Delve into specific carbon-related topics across the voluntary and compliance markets" || ""}
       />
-      <SiteHeader />
       <PageHeader>
         <PageHeaderGrid bg="rgba(255,255,255,1)" color="gray.200" />
         <PageHeaderContent gridColumn="1 / -1">

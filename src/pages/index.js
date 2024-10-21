@@ -18,7 +18,6 @@ import { Link } from "@/components/Link"
 
 import UpdatesList from "@/components/UpdatesList"
 import SectionHeader from "@/components/SectionHeader"
-import SiteHeader from "@/components/SiteHeader"
 import PartnersSection from "@/components/PartnersSection"
 import GetStarted from "@/components/GetStarted"
 import DiveDeeper from "@/components/DiveDeeper"
@@ -31,7 +30,6 @@ export default function IndexPage({ factsheets, partners, latestUpdates }) {
         title=""
         description="The Carbon Knowledge Hub gives the knowhow and insights to navigate the carbon markets."
       />
-      <SiteHeader />
       <Container>
         <Stack spacing={12} py={10}>
           <SimpleGrid columns={8} gridGap={10}>

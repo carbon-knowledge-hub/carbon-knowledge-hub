@@ -7,7 +7,7 @@ import componentStyles from "@/styles/components"
 import textStyles from "@/styles/textStyles"
 import colors from "@/styles/colors"
 import DictionaryDrawer from "@/components/DictionaryDrawer"
-// import SiteHeader from "@/components/SiteHeader"
+import SiteHeader from "@/components/SiteHeader"
 import SiteFooter from "@/components/SiteFooter"
 
 const avenirSans = localFont({
@@ -80,9 +80,18 @@ export default function App({ Component, pageProps, factsheets }) {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const headerIsInverted = ["FactsheetPage", "DataTrackerPage"].includes(
+    Component.displayName
+  )
+
   return (
     <>
       <ChakraProvider theme={theme}>
+        {headerIsInverted ? (
+          <SiteHeader bg="brand.1000" color="white" />
+        ) : (
+          <SiteHeader />
+        )}
         <Component {...pageProps} />
         <DictionaryDrawer />
         <SiteFooter factsheets={factsheets} />

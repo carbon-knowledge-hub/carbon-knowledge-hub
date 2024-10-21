@@ -4,7 +4,6 @@ import { MDXRemote } from "next-mdx-remote"
 import getPage from "@/utils/api/server/getPage"
 import getContent from "@/utils/api/server/getContent"
 import components from "@/components/MDXComponents"
-import SiteHeader from "@/components/SiteHeader"
 import {
   PageHeader,
   PageHeaderGrid,
@@ -27,7 +26,6 @@ export default function DataTrackerPage({ source, partners }) {
         title={frontmatter.title}
         description={frontmatter.description || ""}
       />
-      <SiteHeader />
       <PageHeader>
         <PageHeaderGrid bg="rgba(255,255,255,1)" color="gray.200" />
         <PageHeaderContent gridColumn={["1 / -1", null, "2 / -2"]}>
