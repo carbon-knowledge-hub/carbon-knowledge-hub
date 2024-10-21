@@ -80,7 +80,7 @@ export default function SiteFooter() {
               alignItems={["flex-start", null, "center"]}
               direction={["column", null, "row"]}
             >
-              <Box>{"© 2022 Bloomberg Finance L.P. All rights reserved."}</Box>
+              <Box>{"© 2024 Bloomberg Finance L.P. All rights reserved."}</Box>
               <HStack divider={<Divider h={4} />}>
                 <Link href="https://about.bnef.com/bnef-privacy-policy/">
                   {"Privacy"}
