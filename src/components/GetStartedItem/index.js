@@ -27,7 +27,7 @@ export default function GetStartedItem({
       pb={10}
       overflow="hidden"
       sx={{
-        "&:nth-child(even)": {
+        "&:nth-of-type(odd)": {
           gridTemplateAreas: ["'img' 'content'", null, null, "'img content'"],
           "--content-padding-left": ["1.25rem", null, null, 0],
           "--content-padding-right": ["1.25rem", null, null, "2.5rem"],
@@ -35,7 +35,7 @@ export default function GetStartedItem({
           "--gradient-end": "var(--chakra-colors-brand-1000)",
           "--gradient-direction": "right",
         },
-        "&:nth-child(odd)": {
+        "&:nth-of-type(even)": {
           gridTemplateAreas: ["'img' 'content'", null, null, "'content img'"],
           "--content-padding-left": ["1.25rem", null, null, "2.5rem"],
           "--content-padding-right": ["1.25rem", null, null, 0],
