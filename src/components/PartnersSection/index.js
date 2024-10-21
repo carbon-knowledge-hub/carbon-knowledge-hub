@@ -18,7 +18,7 @@ export default function PartnersSection({ partners }) {
       >
         <SectionHeader
           title="Carbon Centre of Excellence Partners"
-          description="Partners to the Carbon Centre of Excellence support the development of carbon markets worldwide, as a mechanism to drive decarbonization."
+          description="As part of B20 Indonesia's legacy project, these companies and organizations agreed to support and contribute to the Carbon Knowledge Hub as a sign of their commitment to the development of carbon markets worldwide."
           href="/partners"
           hrefLabel="Read more"
           gridColumn="span 8"

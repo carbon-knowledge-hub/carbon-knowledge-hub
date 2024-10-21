@@ -34,7 +34,7 @@ export default function SectionHeader({
             </Heading>
           )}
           {description && (
-            <Text textStyle="sectionSubheading">{description}</Text>
+            <Text textStyle="sectionSubheading" maxW="55rem">{description}</Text>
           )}
         </Stack>
         {href && (
