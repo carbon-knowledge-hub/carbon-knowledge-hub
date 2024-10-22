@@ -83,7 +83,6 @@ export default {
         as="ol"
         spacing={6}
         w="100%"
-        maxW="container.sm"
         pl={6}
         fontSize={["xl", null, "2xl"]}
         lineHeight="taller"
