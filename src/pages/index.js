@@ -127,6 +127,7 @@ function LogoBanner() {
     >
       <img src="/logos/bnef.png" />
       <img src="/logos/b20-brasil.png" />
+      <img src="/logos/cni.png" />
       <img src="/logos/b20-indonesia.png" />
       <img src="/logos/kadin.png" />
       <img src="/logos/asean.png" />
