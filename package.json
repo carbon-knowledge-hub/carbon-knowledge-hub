@@ -14,6 +14,7 @@
     "prepareImages": "node ./scripts/prepareImages.js",
     "prepareStories": "rm -Rf ./public/pdf && mkdir ./public/pdf && cp -R ./stories ./public/pdf/stories && cp ./data/partners.csv ./public/partners.csv && cp ./data/media.csv ./public/media.csv",
     "prepareMedia": "node ./scripts/prepareMedia.mjs",
+    "serve": "serve ./out",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -40,6 +41,7 @@
     "path": "^0.12.7",
     "react": "^18",
     "react-dom": "^18",
+    "serve": "^14.2.4",
     "sharp": "^0.33.5",
     "usehooks-ts": "^3.1.0",
     "zustand": "^5.0.0-rc.2"

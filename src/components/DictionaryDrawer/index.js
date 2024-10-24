@@ -10,6 +10,7 @@ import {
   Text,
   Stack,
 } from "@chakra-ui/react"
+import { useRouter } from "next/navigation"
 
 import { useDictionaryStore } from "@/utils/useDictionaryDrawer"
 import { ButtonLink } from "@/components/Link"
@@ -21,6 +22,8 @@ export default function DictionaryDrawer() {
 
   const definition = useDictionaryStore((state) => state.definition)
   const description = useDictionaryStore((state) => state.description)
+
+  const router = useRouter()
 
   return (
     <Drawer isOpen={isOpen} onClose={onClose} size="lg" placement="bottom">
@@ -57,7 +60,15 @@ export default function DictionaryDrawer() {
             </Stack>
             <ButtonLink
               href={`/dictionary#term-${definition.split(" ").join("-")}`}
-              onClick={onClose}
+              onClick={(e) => {
+                e.preventDefault()
+                onClose()
+                setTimeout(() => {
+                  router.push(
+                    `/dictionary#term-${definition.split(" ").join("-")}`
+                  )
+                }, 300)
+              }}
               flex="none"
               variant="buttonLink"
               alignSelf="flexStart"
