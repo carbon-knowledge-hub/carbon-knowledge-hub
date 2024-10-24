@@ -9,7 +9,7 @@ import {
   Divider,
 } from "@chakra-ui/react"
 
-import { ButtonLink, Link } from "@/components/Link"
+import { Link } from "@/components/Link"
 import NewsletterSignup from "@/components/NewsletterSignup"
 
 const extendedNavigationItems = [

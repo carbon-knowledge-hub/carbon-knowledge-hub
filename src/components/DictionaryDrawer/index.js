@@ -26,11 +26,7 @@ export default function DictionaryDrawer() {
     <Drawer isOpen={isOpen} onClose={onClose} size="lg" placement="bottom">
       <DrawerOverlay />
       <DrawerContent>
-        <DrawerCloseButton
-          borderRadius="none"
-          w="2.5rem"
-          h="2.5rem"
-        />
+        <DrawerCloseButton borderRadius="none" w="2.5rem" h="2.5rem" />
         <DrawerBody>
           <Stack
             py={[5, null, 10]}

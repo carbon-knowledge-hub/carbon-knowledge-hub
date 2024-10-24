@@ -6,8 +6,6 @@ import {
   Text,
   Drawer,
   DrawerBody,
-  // DrawerFooter,
-  // DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
@@ -45,7 +43,11 @@ export default function SiteHeader({ bg = "white", color = "currentcolor" }) {
             <Logo />
           </Link>
           <HStack spacing={8}>
-            <HStack as="nav" spacing={2} display={["none", null, null, null, "flex"]}>
+            <HStack
+              as="nav"
+              spacing={2}
+              display={["none", null, null, null, "flex"]}
+            >
               {navigationItems.map((navItem) => (
                 <ButtonLink
                   key={navItem.key}
@@ -113,6 +115,7 @@ function NavigationOverlay() {
                   px={6}
                   mx={-5}
                   fontSize="xl"
+                  onClick={onClose}
                 >
                   {"Factsheets"}
                 </ButtonLink>
@@ -126,6 +129,7 @@ function NavigationOverlay() {
                   px={6}
                   mx={-5}
                   fontSize="xl"
+                  onClick={onClose}
                 >
                   {"B20 recommendations"}
                 </ButtonLink>
@@ -139,6 +143,7 @@ function NavigationOverlay() {
                   px={6}
                   mx={-5}
                   fontSize="xl"
+                  onClick={onClose}
                 >
                   {"Data tracker"}
                 </ButtonLink>
@@ -171,6 +176,7 @@ function NavigationOverlay() {
                   px={6}
                   mx={-5}
                   fontSize="xl"
+                  onClick={onClose}
                 >
                   {"Stories"}
                 </ButtonLink>
@@ -184,6 +190,7 @@ function NavigationOverlay() {
                   px={6}
                   mx={-5}
                   fontSize="xl"
+                  onClick={onClose}
                 >
                   {"Links"}
                 </ButtonLink>
@@ -197,6 +204,7 @@ function NavigationOverlay() {
                   px={6}
                   mx={-5}
                   fontSize="xl"
+                  onClick={onClose}
                 >
                   {"Media"}
                 </ButtonLink>
@@ -210,6 +218,7 @@ function NavigationOverlay() {
                   px={6}
                   mx={-5}
                   fontSize="xl"
+                  onClick={onClose}
                 >
                   {"Dictionary"}
                 </ButtonLink>
@@ -236,6 +245,7 @@ function NavigationOverlay() {
                   px={6}
                   mx={-5}
                   fontSize="xl"
+                  onClick={onClose}
                 >
                   {"About"}
                 </ButtonLink>
@@ -249,6 +259,7 @@ function NavigationOverlay() {
                   px={6}
                   mx={-5}
                   fontSize="xl"
+                  onClick={onClose}
                 >
                   {"Partners"}
                 </ButtonLink>
@@ -262,6 +273,7 @@ function NavigationOverlay() {
                   px={6}
                   mx={-5}
                   fontSize="xl"
+                  onClick={onClose}
                 >
                   {"Frequently asked questions"}
                 </ButtonLink>
@@ -275,6 +287,7 @@ function NavigationOverlay() {
                   px={6}
                   mx={-5}
                   fontSize="xl"
+                  onClick={onClose}
                 >
                   {"Contact"}
                 </ButtonLink>

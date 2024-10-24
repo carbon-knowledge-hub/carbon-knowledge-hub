@@ -1,9 +1,7 @@
-// import { useEffect } from "react"
 import { SimpleGrid, Stack, Divider, Container } from "@chakra-ui/react"
 import { MDXRemote } from "next-mdx-remote"
 
 import getPage from "@/utils/api/server/getPage"
-// import { useDictionaryStore } from "@/utils/useDictionaryDrawer"
 import components from "@/components/MDXComponents"
 import {
   PageHeader,
@@ -19,13 +17,6 @@ export default function DictionaryPage({ source }) {
   const { frontmatter } = source
   const title = frontmatter.title
   const description = frontmatter.description
-  // const setTerms = useDictionaryStore((state) => state.setTerms)
-
-  // useEffect(() => {
-  //   if (typeof window === "undefined") return undefined
-  //   console.log("FRONTMATTER: ", frontmatter)
-  //   setTerms([])
-  // }, [setTerms])
 
   return (
     <>
