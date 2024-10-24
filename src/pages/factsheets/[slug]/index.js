@@ -83,7 +83,7 @@ function FactsheetPage({ source, dictionary }) {
         </PageHeaderContent>
       </PageHeader>
 
-      <Stack spacing={20} pb={[10, null, 20]}>
+      <Stack spacing={20} pt={10} pb={[10, null, 20]}>
         <Container>
           <SimpleGrid columns={8} gridGap={10}>
             <Stack

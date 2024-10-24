@@ -59,11 +59,7 @@ export default function DictionaryPage({ source }) {
               },
             }}
           >
-            <MDXRemote
-              {...source}
-              components={components}
-              scope={{ terms: [{ key: 1, label: "THIS IS A LABEL" }] }}
-            />
+            <MDXRemote {...source} components={components} />
           </Stack>
         </SimpleGrid>
       </Container>
