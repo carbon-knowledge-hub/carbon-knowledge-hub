@@ -26,7 +26,12 @@ export default function SectionHeader({
       gridRowGap={5}
       gridColumn="1 / -1"
     >
-      <HStack gridColumn="1 / -1" spacing={10} alignItems="flex-start">
+      <HStack
+        gridColumn="1 / -1"
+        spacing={10}
+        alignItems="flex-start"
+        flexDirection={["column", null, null, "row"]}
+      >
         <Stack spacing={3} flex={1}>
           {title && (
             <Heading as="h1" variant="sectionHeading">
@@ -34,7 +39,9 @@ export default function SectionHeader({
             </Heading>
           )}
           {description && (
-            <Text textStyle="sectionSubheading" maxW="55rem">{description}</Text>
+            <Text textStyle="sectionSubheading" maxW="55rem">
+              {description}
+            </Text>
           )}
         </Stack>
         {href && (

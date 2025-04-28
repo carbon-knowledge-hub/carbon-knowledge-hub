@@ -8,12 +8,12 @@ import SectionHeader from "@/components/SectionHeader"
 
 export default function PartnersSection({ partners }) {
   return (
-    <Box mx={-10}>
+    <Box mx={[-5, null, null, null, -10]}>
       <SimpleGrid
         as="section"
         columns={[2, 4, 6, 8]}
         gridGap={10}
-        px={10}
+        px={[5, null, null, null, 10]}
         py={20}
       >
         <SectionHeader

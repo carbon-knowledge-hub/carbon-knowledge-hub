@@ -1,15 +1,18 @@
-import {
-  Box,
-  SimpleGrid,
-} from "@chakra-ui/react"
+import { Box, SimpleGrid } from "@chakra-ui/react"
 
 import SectionHeader from "@/components/SectionHeader"
 import FactsheetCard from "@/components/FactsheetCard"
 
 export default function DiveDeeper({ factsheets }) {
   return (
-    <Box bg="gray.100" mx={-10}>
-      <SimpleGrid as="section" columns={8} gridGap={10} px={10} py={20}>
+    <Box bg="gray.100" mx={[-5, null, null, -10]}>
+      <SimpleGrid
+        as="section"
+        columns={8}
+        gridGap={10}
+        px={[5, null, null, 10]}
+        py={20}
+      >
         <SectionHeader
           title="Dive deeper"
           description="Delve into specific carbon-related topics across the voluntary and compliance markets."

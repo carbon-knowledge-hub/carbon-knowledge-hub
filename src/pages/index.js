@@ -26,7 +26,7 @@ import SEO from "@/components/SEO"
 export default function IndexPage({ factsheets, partners, latestUpdates }) {
   return (
     <>
-    <SEO
+      <SEO
         title=""
         description="The Carbon Knowledge Hub gives the knowhow and insights to navigate the carbon markets."
       />
@@ -109,29 +109,60 @@ function Overview() {
 
 function LogoBanner() {
   return (
-    <HStack
-      spacing={24}
-      justifyContent="center"
-      sx={{
-        img: {
-          maxHeight: "5rem",
-          maxWidth: "10rem",
-          objectFit: "contain",
-          filter: "saturate(0)",
-          transition: "all 0.3s",
-          _hover: {
-            filter: "saturate(1)",
-          },
-        },
+    <Box
+      position="relative"
+      _before={{
+        content: "''",
+        position: "absolute",
+        top: 0,
+        bottom: [4, null, null, null, 0],
+        right: 0,
+        w: "25%",
+        bgGradient: "linear(to-r, rgba(255,255,255,0), rgba(255,255,255,1))",
+        display: ["block", null, null, null, "none"],
+        zIndex: 1,
+      }}
+      _after={{
+        content: "''",
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        h: 4,
+        bg: "white",
+        display: ["block", null, null, null, "none"],
       }}
     >
-      <img src="/logos/bnef.png" />
-      <img src="/logos/b20-brasil.png" />
-      <img src="/logos/cni.png" />
-      <img src="/logos/b20-indonesia.png" />
-      <img src="/logos/kadin.png" />
-      <img src="/logos/asean.png" />
-    </HStack>
+      <HStack
+        spacing={24}
+        justifyContent={["start", null, null, null, "center"]}
+        overflowX="scroll"
+        scrollSnapType="x mandatory"
+        pb={[5, null, null, null, 0]}
+        pr={["25%", null, null, null, 0]}
+        sx={{
+          img: {
+            scrollSnapAlign: "start",
+            minWidth: ["none", null, null, null, "0"],
+            maxHeight: "5rem",
+            maxWidth: "10rem",
+            objectFit: "contain",
+            filter: "saturate(0)",
+            transition: "all 0.3s",
+            _hover: {
+              filter: "saturate(1)",
+            },
+          },
+        }}
+      >
+        <img src="/logos/bnef.png" />
+        <img src="/logos/b20-brasil.png" />
+        <img src="/logos/cni.png" />
+        <img src="/logos/b20-indonesia.png" />
+        <img src="/logos/kadin.png" />
+        <img src="/logos/asean.png" />
+      </HStack>
+    </Box>
   )
 }
 
@@ -179,7 +210,6 @@ function AboutBanner() {
     </SimpleGrid>
   )
 }
-
 
 export async function getStaticProps() {
   const factsheets = await getPages({
