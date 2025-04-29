@@ -168,7 +168,12 @@ function LogoBanner() {
 
 function AboutBanner() {
   return (
-    <SimpleGrid columns={8} gridGap={10} gridTemplateRows="auto 7.625rem auto">
+    <SimpleGrid
+      columns={8}
+      gridGap={10}
+      gridTemplateRows="auto 7.625rem auto"
+      mx={[-5, null, null, 0]}
+    >
       <Box
         gridColumn="1 / -1"
         gridRow="1 / span 2"
@@ -180,18 +185,18 @@ function AboutBanner() {
         <BBGrid rows={8} columns={10} color="whiteAlpha.500" />
       </Box>
       <Stack
-        gridColumn="2 / -2"
+        gridColumn={["1 / -1", null, null, "2 / -2"]}
         bg="white"
         pt={12}
         gridRow="2 / span 2"
-        mx={-10}
-        px={10}
+        mx={[5, null, null, -10]}
+        px={[5, null, null, 10]}
         spacing={10}
         alignItems="center"
       >
         <Text
-          fontSize="2rem"
-          lineHeight="tall"
+          fontSize={["xl", "2xl", "3xl", "2rem"]}
+          lineHeight={["base", null, "tall"]}
           fontWeight={600}
           textAlign="center"
         >

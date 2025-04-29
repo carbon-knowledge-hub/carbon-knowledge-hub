@@ -58,7 +58,7 @@ export default function SiteFooter() {
           borderColor="whiteAlpha.200"
         >
           <Container>
-            <SimpleGrid columns={[1, null, 2, null, 4]} gridGap={10}>
+            <SimpleGrid columns={[1, null, 2, null, 4]} gridGap={[6, null, 10]}>
               {extendedNavigationItems.map(({ label, href }) => {
                 return (
                   <Link key={href} href={href} variant="footerLink">

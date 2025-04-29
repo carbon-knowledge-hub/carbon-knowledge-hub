@@ -80,8 +80,17 @@ function NavigationOverlay() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <>
-      <Button onClick={onOpen} borderRadius="none" rightIcon={<MenuIcon />}>
-        {"Menu"}
+      <Button
+        onClick={onOpen}
+        borderRadius="none"
+        rightIcon={<MenuIcon />}
+        px={[0, null, null, 4]}
+        sx={{
+          "span:last-of-type": { ml: [0, null, null, 2] },
+          "span:first-of-type": { display: ["none", null, "block"] },
+        }}
+      >
+        <span>{"Menu"}</span>
       </Button>
       <Drawer isOpen={isOpen} onClose={onClose} size="sm">
         <DrawerOverlay />

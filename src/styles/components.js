@@ -84,8 +84,8 @@ export default {
       },
       footerLink: {
         color: "white",
-        fontWeight: 700,
-        fontSize: "2xl",
+        fontWeight: 600,
+        fontSize: ["lg", "xl", "2xl"],
         gap: 3,
       },
       inText: {

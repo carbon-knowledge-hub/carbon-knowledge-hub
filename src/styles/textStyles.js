@@ -27,7 +27,7 @@ export default {
     lineHeight: "short",
   },
   bannerHeading: {
-    fontSize: "2.5rem",
+    fontSize: ["3xl", "4xl", "2.5rem"],
     lineHeight: "short",
     fontWeight: 700,
     letterSpacing: "-0.015em",
