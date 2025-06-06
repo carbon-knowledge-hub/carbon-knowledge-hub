@@ -1,4 +1,5 @@
 import { Divider, SimpleGrid, Container } from "@chakra-ui/react"
+import _sortBy from "lodash/sortBy"
 
 import { Link } from "@/components/Link"
 import getPages from "@/utils/api/server/getPages"
@@ -68,16 +69,20 @@ export async function getStaticProps() {
     fields: ["frontmatter"],
   })
   const partners = await getContent("partners.txt", "json")
-  const storiesWithLogos = stories.map((d) => {
-    const relevantPartner = partners.find(
-      (s) => s.name === d.frontmatter.partner
-    )
-    const logo = relevantPartner?.logo || ""
-    const logoBase = logo.split(".").slice(0, -1).join(".")
-    const logoExtension = logo.split(".").slice(-1)[0]
-    d.frontmatter.partnerLogo = logo ? `${logoBase}-sm.${logoExtension}` : ""
-    return { frontmatter: d.frontmatter }
-  })
+  const storiesWithLogos = _sortBy(
+    stories.map((d) => {
+      const relevantPartner = partners.find(
+        (s) => s.name === d.frontmatter.partner
+      )
+      const logo = relevantPartner?.logo || ""
+      const logoBase = logo.split(".").slice(0, -1).join(".")
+      const logoExtension = logo.split(".").slice(-1)[0]
+      d.frontmatter.partnerLogo = logo ? `${logoBase}-sm.${logoExtension}` : ""
+      return { frontmatter: d.frontmatter }
+    }),
+    (o) => -parseInt(o.frontmatter.date.split("-").join("").trim() || "0")
+  )
+
   return {
     props: {
       stories: storiesWithLogos,

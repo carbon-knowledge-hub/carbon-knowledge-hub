@@ -14,8 +14,9 @@ export default function LatestUpdates({ updates }) {
       {updates.map((updateItem, i) => {
         return (
           <UpdatesListItem
-            key={updateItem.title}
+            key={`${updateItem.title}-${i}`}
             href={updateItem.slug || updateItem.url}
+            downloadLink={updateItem.pdf || ""}
             date={day(updateItem.date).format("DD MMM YYYY")}
             type={
               updateItem.type ||

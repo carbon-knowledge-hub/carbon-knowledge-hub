@@ -3,7 +3,14 @@ import { Stack, HStack, Heading, Text, Divider } from "@chakra-ui/react"
 import { Link } from "@/components/Link"
 import { ArrowRightIcon } from "@/components/Icon"
 
-export default function UpdateItem({ href, date, type, title }) {
+export default function UpdateItem({ href, downloadLink, date, type, title }) {
+  const isStory = type === "storie"
+  const _type = isStory ? "story" : type || ""
+  const _href = isStory
+    ? downloadLink
+      ? `/pdfs/${downloadLink}`
+      : "" || "/"
+    : href || "/"
   return (
     <Stack spacing={3}>
       <HStack spacing={2}>
@@ -18,11 +25,11 @@ export default function UpdateItem({ href, date, type, title }) {
           fontWeight={600}
           textTransform="capitalize"
         >
-          {type || ""}
+          {_type}
         </Text>
       </HStack>
       <Heading fontSize="xl">
-        <Link href={href || "/"} rightIcon={<ArrowRightIcon size="1.5rem" />}>
+        <Link href={_href} rightIcon={<ArrowRightIcon size="1.5rem" />}>
           {title || ""}
         </Link>
       </Heading>
