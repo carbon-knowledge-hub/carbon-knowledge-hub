@@ -49,7 +49,7 @@ function SpotifyPreview({ item }) {
 }
 
 function VimeoPreview({ item }) {
-  const uploadDate = day(item.upload_date)
+  const uploadDate = item.upload_date ? day(item.upload_date) : undefined
   return (
     <LinkBox
       sx={{
@@ -70,9 +70,10 @@ function VimeoPreview({ item }) {
         </AspectRatio>
         <Stack spacing={2}>
           <Heading fontSize="xl">
-            <LinkOverlay href={`https://vimeo.com/${item.video_id}`}>
+            {/* <LinkOverlay href={`https://vimeo.com/${item.video_id}`}>
               {item.title}
-            </LinkOverlay>
+            </LinkOverlay> */}
+            <LinkOverlay href={item.url}>{item.title}</LinkOverlay>
           </Heading>
           <Text
             fontSize="md"
@@ -80,7 +81,8 @@ function VimeoPreview({ item }) {
             fontWeight={600}
             color="gray.500"
           >
-            {`${item.author_name} | ${uploadDate.format("DD MMM YYYY")}`}
+            {`${item.author_name}`}
+            {uploadDate ? ` | ${uploadDate.format("DD MMM YYYY")}` : null}
           </Text>
         </Stack>
       </Stack>
@@ -95,9 +97,10 @@ export default function MediaPage({
   const { frontmatter } = source
   const title = frontmatter.title
   const description = frontmatter.description
-  console.log(allMedia)
+
   const videoItems = allMedia.filter((d) => d.mediaCategory === "video-vimeo")
   const audioItems = allMedia.filter((d) => d.mediaCategory === "audio-spotify")
+
   return (
     <>
       <SEO
