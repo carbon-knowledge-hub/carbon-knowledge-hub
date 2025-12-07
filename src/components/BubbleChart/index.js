@@ -89,23 +89,27 @@ export default function BubbleChart({ ratio = 2 }) {
     if (typeof window === "undefined") return undefined
     fetchDataset(`/data/charts/bubble-chart.txt`).then((dataset) => {
       const parsed = dataset.map((d, i) => {
+        const carbon_price = d.carbon_price
+          ? parseFloat(fixNumber(d.carbon_price))
+          : ""
+        const economy_total_emissions = d.economy_total_emissions
+          ? parseFloat(fixNumber(d.economy_total_emissions))
+          : ""
+        const share_of_economy_emissions_covered_by_carbon_price =
+          d.share_of_economy_emissions_covered_by_carbon_price
+            ? parseFloat(
+                fixNumber(d.share_of_economy_emissions_covered_by_carbon_price)
+              )
+            : ""
         return {
           ...d,
           key: i + 1,
-          carbon_price: d.carbon_price
-            ? parseFloat(fixNumber(d.carbon_price)) || ""
-            : "",
-          economy_total_emissions: d.economy_total_emissions
-            ? parseFloat(fixNumber(d.economy_total_emissions)) || ""
-            : "",
+          carbon_price: carbon_price || (carbon_price === 0 ? 0 : ""),
+          economy_total_emissions:
+            economy_total_emissions || (economy_total_emissions === 0 ? 0 : ""),
           share_of_economy_emissions_covered_by_carbon_price:
-            d.share_of_economy_emissions_covered_by_carbon_price
-              ? parseFloat(
-                  fixNumber(
-                    d.share_of_economy_emissions_covered_by_carbon_price
-                  )
-                ) || ""
-              : "",
+            share_of_economy_emissions_covered_by_carbon_price ||
+            (share_of_economy_emissions_covered_by_carbon_price === 0 ? 0 : ""),
         }
       })
       setData(sort(parsed, (o) => -o.economy_total_emissions))
