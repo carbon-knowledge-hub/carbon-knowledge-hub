@@ -5,8 +5,6 @@ export default function Legend() {
 
   if (!legend.length) return null
 
-  console.log("LEGEND: ", legend)
-
   return (
     <div
       style={{

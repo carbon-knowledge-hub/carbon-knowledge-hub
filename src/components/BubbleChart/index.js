@@ -93,10 +93,10 @@ export default function BubbleChart({ ratio = 2 }) {
           ...d,
           key: i + 1,
           carbon_price: d.carbon_price
-            ? parseFloat(fixNumber(d.carbon_price))
+            ? parseFloat(fixNumber(d.carbon_price)) || ""
             : "",
           economy_total_emissions: d.economy_total_emissions
-            ? parseFloat(fixNumber(d.economy_total_emissions))
+            ? parseFloat(fixNumber(d.economy_total_emissions)) || ""
             : "",
           share_of_economy_emissions_covered_by_carbon_price:
             d.share_of_economy_emissions_covered_by_carbon_price
@@ -104,7 +104,7 @@ export default function BubbleChart({ ratio = 2 }) {
                   fixNumber(
                     d.share_of_economy_emissions_covered_by_carbon_price
                   )
-                )
+                ) || ""
               : "",
         }
       })
@@ -176,7 +176,14 @@ export default function BubbleChart({ ratio = 2 }) {
       .size([width, height])
       .x((d) => xScale(d.carbon_price))
       .y((d) => yScale(d.share_of_economy_emissions_covered_by_carbon_price))
-    return voronoi(data).polygons()
+    return voronoi(
+      data.filter((d) => {
+        return (
+          d.carbon_price !== "" &&
+          d.share_of_economy_emissions_covered_by_carbon_price !== ""
+        )
+      })
+    ).polygons()
   }, [width, height, JSON.stringify(data), xScale, yScale])
 
   return (
@@ -343,6 +350,9 @@ function Bubble({ data = {}, xScale, yScale, sizeScale }) {
   const r = data.economy_total_emissions
   const currentKey = useTooltipStore((state) => state.currentKey)
   const isSelected = currentKey === data.key
+
+  if (x === "" || y === "" || r === "") return null
+
   return (
     <>
       <motion.circle

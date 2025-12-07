@@ -92,10 +92,10 @@ export function processLineChart(data, colors) {
     },
   }
 
-  console.groupCollapsed("Line chart processor")
-  console.log("Original data: ", data)
-  console.log("Processed data: ", finalData)
-  console.groupEnd()
+  // console.groupCollapsed("Line chart processor")
+  // console.log("Original data: ", data)
+  // console.log("Processed data: ", finalData)
+  // console.groupEnd()
 
   return finalData
 }
